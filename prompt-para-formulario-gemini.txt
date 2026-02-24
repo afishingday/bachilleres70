@@ -1,0 +1,20 @@
+Crea un formulario en español para recopilar datos de padres de familia. Es para una página web regalo de graduación (Generación 70 LSyH, bachilleres). Cada padre envía la información de UN estudiante (su hijo o hija).
+
+Preguntas que debe tener el formulario, EN ESTE ORDEN y con estos tipos:
+
+1. "Nombre completo del estudiante" — Respuesta breve, obligatoria.
+2. "Grupo" — Lista desplegable con exactamente estas 6 opciones: 11A, 11B, 11C, 11D, 11E, 11F. Obligatoria.
+3. "Dedicatoria para el Muro de los Deseos" — Párrafo (texto largo). Explicar que es el mensaje que quieren dejarle a su hijo o hija para que lo lean en la web. Obligatoria.
+4. "Canción para la playlist" — Respuesta breve. Indicar que pueden poner el nombre de la canción o un enlace de Spotify/YouTube. Obligatoria.
+5. "Sueño o meta (para el Mapa de Sueños)" — Respuesta breve. Ejemplos: "Estudiar Ingeniería", "Viajar por el mundo". Obligatoria.
+6. "Foto de infancia (antes)" — Subida de archivo, 1 archivo, solo imágenes. Obligatoria.
+7. "Foto actual (grado 11)" — Subida de archivo, 1 archivo, solo imágenes. Obligatoria.
+8. "Foto para el Muro de los Deseos" — Subida de archivo, 1 archivo, solo imágenes. Obligatoria.
+
+Requisitos adicionales:
+- Todas las preguntas obligatorias.
+- En las 3 preguntas de subida de archivo, que se pueda elegir una carpeta de Google Drive donde guardar las respuestas (para poder procesarlas después con un script).
+- Título del formulario algo como: "Datos y fotos – Generación 70 LSyH" o similar.
+- Descripción breve al inicio: que es un espacio para que las familias envíen la información y las fotos para el regalo de graduación de sus hijos.
+
+Si tienes acceso al archivo @RECOPILACION-DATOS.md, úsalo como referencia para el contexto del proyecto y los nombres exactos de las secciones (El Antes y el Ahora, Muro de los Deseos, Mapa de Sueños, Playlist).

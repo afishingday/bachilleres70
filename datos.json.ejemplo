@@ -1,0 +1,24 @@
+[
+  {
+    "nombre": "María García López",
+    "documento": "12345678",
+    "grupo": "11A",
+    "dedicatoria": "Hija querida: que cada paso que des sea con la misma ilusión con la que entraste al colegio. Con amor, mamá y papá.",
+    "cancion": "Nombre de la canción o enlace Spotify",
+    "sueno": "Estudiar Ingeniería",
+    "foto_infancia": "11A/12345678-infancia.jpg",
+    "foto_actual": "11A/12345678-actual.jpg",
+    "foto_muro": "11A/12345678-muro.jpg"
+  },
+  {
+    "nombre": "Carlos López",
+    "documento": "87654321",
+    "grupo": "11B",
+    "dedicatoria": "Carlos: este logro es solo el comienzo. Te amamos.",
+    "cancion": "Otra canción",
+    "sueno": "Viajar por el mundo",
+    "foto_infancia": "11B/87654321-infancia.jpg",
+    "foto_actual": "11B/87654321-actual.jpg",
+    "foto_muro": "11B/87654321-muro.jpg"
+  }
+]
