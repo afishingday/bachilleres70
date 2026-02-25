@@ -62,6 +62,25 @@
 (function () {
   'use strict';
 
+  var studentCards = document.querySelectorAll('.student-card');
+  if (!studentCards.length) return;
+
+  studentCards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      card.classList.toggle('is-flipped');
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('is-flipped');
+      }
+    });
+  });
+})();
+
+(function () {
+  'use strict';
+
   var pins = document.querySelectorAll('.mapa-pin');
   pins.forEach(function (pin) {
     pin.addEventListener('click', function (e) {
@@ -92,12 +111,47 @@
   var tabs = document.querySelectorAll('.group-filter-tab');
   var studentCards = document.querySelectorAll('.student-card');
   var wishCards = document.querySelectorAll('.wish-card');
+  var searchInput = document.querySelector('#student-search');
+
+  if (!tabs.length && !searchInput) return;
+
+  var currentGrupo = '';
+  var currentSearch = '';
+
+  function normalize(text) {
+    return (text || '')
+      .toString()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function cardMatchesFilters(card) {
+    var grupo = card.getAttribute('data-grupo') || '';
+    var matchesGrupo = !currentGrupo || grupo === currentGrupo;
+    if (!matchesGrupo) return false;
+
+    if (!currentSearch) return true;
+
+    var nameEl = card.querySelector('.student-card-name, .wish-card-name');
+    var name = nameEl ? normalize(nameEl.textContent) : '';
+    return name.indexOf(currentSearch) !== -1;
+  }
+
+  function applyFilters() {
+    studentCards.forEach(function (card) {
+      card.classList.toggle('filter-hidden', !cardMatchesFilters(card));
+    });
+    wishCards.forEach(function (card) {
+      card.classList.toggle('filter-hidden', !cardMatchesFilters(card));
+    });
+  }
 
   function setActiveGrupo(grupo) {
-    var grupoValue = grupo === null || grupo === undefined ? '' : String(grupo);
+    currentGrupo = grupo === null || grupo === undefined ? '' : String(grupo);
     tabs.forEach(function (tab) {
       var tabGrupo = tab.getAttribute('data-grupo') || '';
-      if (tabGrupo === grupoValue) {
+      if (tabGrupo === currentGrupo) {
         tab.classList.add('is-active');
         tab.setAttribute('aria-selected', 'true');
       } else {
@@ -105,22 +159,7 @@
         tab.setAttribute('aria-selected', 'false');
       }
     });
-    studentCards.forEach(function (card) {
-      var cardGrupo = card.getAttribute('data-grupo') || '';
-      if (grupoValue === '' || cardGrupo === grupoValue) {
-        card.classList.remove('filter-hidden');
-      } else {
-        card.classList.add('filter-hidden');
-      }
-    });
-    wishCards.forEach(function (card) {
-      var cardGrupo = card.getAttribute('data-grupo') || '';
-      if (grupoValue === '' || cardGrupo === grupoValue) {
-        card.classList.remove('filter-hidden');
-      } else {
-        card.classList.add('filter-hidden');
-      }
-    });
+    applyFilters();
   }
 
   tabs.forEach(function (tab) {
@@ -134,4 +173,14 @@
       }
     });
   });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function () {
+      currentSearch = normalize(searchInput.value.trim());
+      applyFilters();
+    });
+  }
+
+  // Estado inicial: todos los grupos y sin búsqueda
+  setActiveGrupo('');
 })();
