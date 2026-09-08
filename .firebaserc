@@ -1,5 +1,12 @@
 {
   "projects": {
     "default": "bachilleres70-384ed"
+  },
+  "targets": {
+    "bachilleres70-384ed": {
+      "hosting": {
+        "syhg70": ["syhg70"]
+      }
+    }
   }
 }

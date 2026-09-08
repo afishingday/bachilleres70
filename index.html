@@ -3,252 +3,323 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generación 70 LSyH</title>
+  <title>Universo de los Sueños · Gen 70 LSyH</title>
+  <meta name="description" content="Los sueños de los bachilleres de la Generación 70 del Liceo Salazar y Herrera, brillando juntos como constelaciones. Explora el universo, busca a un compañero y comparte su sueño.">
+  <meta name="theme-color" content="#020617">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Universo de los Sueños · Gen 70 LSyH">
+  <meta property="og:title" content="Universo de los Sueños · Gen 70 LSyH">
+  <meta property="og:description" content="Los sueños de los bachilleres de la Generación 70 del Liceo Salazar y Herrera, brillando juntos como constelaciones.">
+  <meta property="og:url" content="https://syhg70.web.app/">
+  <meta property="og:image" content="https://syhg70.web.app/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <header class="header" id="header">
     <nav class="nav" aria-label="Navegación principal">
       <a href="#inicio" class="nav-logo">Gen 70</a>
-      <button type="button" class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <ul class="nav-menu">
-        <li><a href="#inicio">El Inicio</a></li>
-        <li><a href="#antes-ahora">El Antes y el Ahora</a></li>
-        <li><a href="#muro-deseos">Muro de los Deseos</a></li>
-        <li><a href="#futuro-playlist">Vuestro Futuro & Playlist</a></li>
+        <li><a href="#universo">Universo</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#playlist">Playlist</a></li>
       </ul>
+      <div class="nav-search-wrap">
+        <svg class="nav-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="busqueda-global" class="nav-search-input" placeholder="Buscar sueño o nombre…" autocomplete="off" aria-label="Buscar sueño o nombre">
+      </div>
     </nav>
   </header>
 
   <main>
+
+    <!-- ── HERO ─────────────────────────────────────────────────── -->
     <section class="hero" id="inicio">
-      <div class="hero-bg">
-        <div class="hero-gradient"></div>
-        <div class="hero-grain" aria-hidden="true"></div>
+      <div class="hero-nebula hero-nebula--1" aria-hidden="true"></div>
+      <div class="hero-nebula hero-nebula--2" aria-hidden="true"></div>
+      <div class="hero-nebula hero-nebula--3" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Promoción 2026 · Generación 70</p>
+          <h1 class="hero-title">Universo<br>de los<br>Sueños</h1>
+          <p class="hero-desc">Los sueños de los bachilleres del Liceo Salazar&nbsp;y&nbsp;Herrera, brillando juntos como constelaciones en el cosmos.</p>
+          <a href="#universo" class="hero-cta">Explorar el universo</a>
+        </div>
+        <div class="hero-mascot" aria-hidden="true">
+          <picture>
+            <source srcset="assets/mascota-lsyh.webp" type="image/webp">
+            <img src="assets/mascota-lsyh.png" alt="" width="408" height="612" fetchpriority="high">
+          </picture>
+        </div>
       </div>
-      <div class="hero-content">
-        <p class="hero-eyebrow">Para nuestros hijos</p>
-        <h1 class="hero-title">Generación 70<br><span class="hero-title-accent">LSyH</span></h1>
-        <p class="hero-welcome">
-          Este espacio es un regalo para vosotros. Lo hemos preparado con cariño para que guardéis el camino que hemos visto recorrer: el antes y el ahora, nuestras palabras y deseos, y la música de vuestra generación. Con todo nuestro amor, vuestros padres.
-        </p>
-        <a href="#antes-ahora" class="hero-cta">Ver vuestro espacio</a>
-      </div>
-      <div class="hero-mascot" aria-hidden="true">
-        <img src="assets/mascota-lsyh.png" alt="">
-      </div>
-      <div class="hero-scroll" aria-hidden="true">
+      <a href="#universo" class="hero-scroll" aria-label="Ir al universo de sueños">
         <span class="hero-scroll-line"></span>
-      </div>
+      </a>
     </section>
 
-    <section class="section section-antes" id="antes-ahora">
-      <div class="section-inner section-inner--wide">
-        <span class="section-number" aria-hidden="true">01</span>
-        <h2 class="section-title">El Antes y el Ahora</h2>
-        <p class="section-subtitle">El camino que hemos visto recorrer: de la infancia al hoy</p>
-        <div class="students-search">
-          <input type="search" id="student-search" class="students-search-input" placeholder="Buscar por nombre...">
-        </div>
-        <p class="section-note-mobile">En dispositivos táctiles, toca la foto para ver el antes y el ahora.</p>
-        <div class="group-filter" role="tablist" aria-label="Filtrar por grupo">
-          <button type="button" class="group-filter-tab is-active" role="tab" aria-selected="true" data-grupo="">Todos</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11A">11A</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11B">11B</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11C">11C</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11D">11D</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11E">11E</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11F">11F</button>
-        </div>
-        <div class="students-grid" role="list">
-          <!-- GEN70-STUDENTS-GRID -->
-          <article class="student-card" role="listitem" data-grupo="11A">
-            <div class="student-card-images">
-              <img class="student-card-img student-card-img--current" src="fotos/11A/8100898-actual.png" alt="" width="500" height="500" loading="lazy">
-              <img class="student-card-img student-card-img--childhood" src="fotos/11A/8100898-infancia.png" alt="" width="500" height="500" loading="lazy">
-            </div>
-            <p class="student-card-name">Luis Montoya</p>
-          </article>
-          <article class="student-card" role="listitem" data-grupo="11C">
-            <div class="student-card-images">
-              <img class="student-card-img student-card-img--current" src="fotos/11C/43983203-lina-cartagena-actual.png" alt="" width="500" height="500" loading="lazy">
-              <img class="student-card-img student-card-img--childhood" src="fotos/11C/43983203-lina-cartagena-infancia.png" alt="" width="500" height="500" loading="lazy">
-            </div>
-            <p class="student-card-name">Lina Cartagena</p>
-          </article>
-          <article class="student-card" role="listitem" data-grupo="">
-            <div class="student-card-images">
-              <img class="student-card-img student-card-img--current" src="https://picsum.photos/seed/-now/500/500" alt="" width="500" height="500" loading="lazy">
-              <img class="student-card-img student-card-img--childhood" src="https://picsum.photos/seed/-child/500/500" alt="" width="500" height="500" loading="lazy">
-            </div>
-            <p class="student-card-name"></p>
-          </article>
-          <!-- /GEN70-STUDENTS-GRID -->
-        </div>
-      </div>
-    </section>
+    <!-- ── UNIVERSO DE LOS SUEÑOS ────────────────────────────────── -->
+    <section class="section-universo" id="universo" aria-label="Universo de los Sueños">
+      <div class="universo-layout">
 
-    <section class="section section-muro" id="muro-deseos">
-      <div class="section-inner section-inner--wide">
-        <span class="section-number" aria-hidden="true">02</span>
-        <h2 class="section-title">Muro de los Deseos</h2>
-        <p class="section-subtitle">Palabras que queremos que guardéis para siempre</p>
-        <div class="group-filter group-filter--muro" role="tablist" aria-label="Filtrar por grupo (Muro de los Deseos)">
-          <button type="button" class="group-filter-tab is-active" role="tab" aria-selected="true" data-grupo="">Todos</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11A">11A</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11B">11B</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11C">11C</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11D">11D</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11E">11E</button>
-          <button type="button" class="group-filter-tab" role="tab" aria-selected="false" data-grupo="11F">11F</button>
-        </div>
-        <div class="wish-cards-grid">
-          <!-- GEN70-WISH-CARDS-GRID -->
-          <article class="wish-card" tabindex="0" role="button" aria-label="Ver dedicatoria de Luis Montoya" data-grupo="11A">
-            <div class="wish-card-inner">
-              <div class="wish-card-front">
-                <div class="wish-card-photo">
-                  <img src="fotos/11A/8100898-muro.png" alt="" width="400" height="400" loading="lazy">
-                </div>
-                <p class="wish-card-name">Luis Montoya</p>
-              </div>
-              <div class="wish-card-back">
-                <div class="wish-card-back-scroll">
-                  <p class="wish-card-dedication">Test</p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="wish-card" tabindex="0" role="button" aria-label="Ver dedicatoria de Lina Cartagena" data-grupo="11C">
-            <div class="wish-card-inner">
-              <div class="wish-card-front">
-                <div class="wish-card-photo">
-                  <img src="fotos/11C/43983203-lina-cartagena-muro.png" alt="" width="400" height="400" loading="lazy">
-                </div>
-                <p class="wish-card-name">Lina Cartagena</p>
-              </div>
-              <div class="wish-card-back">
-                <div class="wish-card-back-scroll">
-                  <p class="wish-card-dedication">Test2</p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="wish-card" tabindex="0" role="button" aria-label="Ver dedicatoria de " data-grupo="">
-            <div class="wish-card-inner">
-              <div class="wish-card-front">
-                <div class="wish-card-photo">
-                  <img src="https://picsum.photos/seed/wish-/400/400" alt="" width="400" height="400" loading="lazy">
-                </div>
-                <p class="wish-card-name"></p>
-              </div>
-              <div class="wish-card-back">
-                <div class="wish-card-back-scroll">
-                  <p class="wish-card-dedication"></p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <!-- /GEN70-WISH-CARDS-GRID -->
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-futuro" id="futuro-playlist">
-      <div class="section-inner section-inner--wide">
-        <span class="section-number" aria-hidden="true">03</span>
-        <h2 class="section-title">Vuestro Futuro & Playlist</h2>
-        <p class="section-subtitle">Los sueños que tenemos para vosotros y la banda sonora de vuestra generación</p>
-        <div class="futuro-columns">
-          <div class="futuro-col futuro-col--mapa">
-            <h3 class="futuro-col-title">Mapa de Sueños</h3>
-            <p class="futuro-col-desc">Los sueños que tenemos para cada uno de vosotros</p>
-            <div class="mapa-suenos">
-              <div class="mapa-suenos-canvas" aria-hidden="true"></div>
-              <div class="mapa-pin" style="--x: 22%; --y: 35%;" tabindex="0" role="button" aria-label="Sueño de María García">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>María García</strong>
-                  <span>Estudiar Ingeniería</span>
-                </div>
-              </div>
-              <div class="mapa-pin mapa-pin--tooltip-below" style="--x: 68%; --y: 28%;" tabindex="0" role="button" aria-label="Sueño de Carlos López">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Carlos López</strong>
-                  <span>Viajar por el mundo</span>
-                </div>
-              </div>
-              <div class="mapa-pin" style="--x: 45%; --y: 55%;" tabindex="0" role="button" aria-label="Sueño de Ana Martínez">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Ana Martínez</strong>
-                  <span>Medicina</span>
-                </div>
-              </div>
-              <div class="mapa-pin" style="--x: 78%; --y: 62%;" tabindex="0" role="button" aria-label="Sueño de Diego Rodríguez">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Diego Rodríguez</strong>
-                  <span>Diseño gráfico y animación</span>
-                </div>
-              </div>
-              <div class="mapa-pin" style="--x: 30%; --y: 70%;" tabindex="0" role="button" aria-label="Sueño de Sofía Hernández">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Sofía Hernández</strong>
-                  <span>Psicología</span>
-                </div>
-              </div>
-              <div class="mapa-pin mapa-pin--tooltip-below" style="--x: 55%; --y: 22%;" tabindex="0" role="button" aria-label="Sueño de Andrés Fernández">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Andrés Fernández</strong>
-                  <span>Emprender su propia empresa</span>
-                </div>
-              </div>
-              <div class="mapa-pin" style="--x: 15%; --y: 58%;" tabindex="0" role="button" aria-label="Sueño de Valentina Díaz">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Valentina Díaz</strong>
-                  <span>Arquitectura</span>
-                </div>
-              </div>
-              <div class="mapa-pin" style="--x: 82%; --y: 48%;" tabindex="0" role="button" aria-label="Sueño de Miguel Torres">
-                <span class="mapa-pin-icon"></span>
-                <div class="mapa-pin-tooltip">
-                  <strong>Miguel Torres</strong>
-                  <span>Música y producción</span>
-                </div>
-              </div>
-            </div>
+        <aside class="universo-sidebar">
+          <div class="sidebar-head">
+            <h2 class="sidebar-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Universo de los Sueños
+            </h2>
+            <p class="sidebar-desc">Cada estrella es un estudiante. Explora y filtra por constelación.</p>
           </div>
-          <div class="futuro-col futuro-col--playlist">
-            <h3 class="futuro-col-title">El Soundtrack de la Generación 70 LSyH</h3>
-            <p class="futuro-col-desc">La banda sonora que hemos elegido para vosotros</p>
-            <div class="playlist-container">
-              <div class="playlist-placeholder" id="playlist-spotify">
-                <p class="playlist-placeholder-text">Pega aquí el iframe de la playlist de Spotify</p>
-                <p class="playlist-placeholder-hint">Desde Spotify: Compartir → Incrustar playlist</p>
-              </div>
-            </div>
+
+          <div class="sidebar-search-wrap">
+            <svg class="sidebar-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="search" id="mapa-search" class="sidebar-search-input" placeholder="Buscar sueño o nombre…" autocomplete="off" aria-label="Buscar en el universo">
+          </div>
+          <p class="sidebar-mobile-hint">Cada estrella es un estudiante. Explora y filtra por constelación.</p>
+
+          <p class="sidebar-section-label">Constelaciones</p>
+          <div class="categorias-list" id="categorias-list" role="group" aria-label="Filtrar por constelación">
+            <!-- generado por JS -->
+          </div>
+
+          <p class="sidebar-section-label">Grupo</p>
+          <div class="grupos-list" id="grupos-list" role="group" aria-label="Filtrar por grupo">
+            <!-- generado por JS -->
+          </div>
+
+          <div class="sidebar-stats">
+            <p class="stats-number" id="stats-count" aria-live="polite">—</p>
+            <p class="stats-label">sueños en el universo</p>
+          </div>
+        </aside>
+
+        <div class="universo-mapa" id="universo-mapa" aria-label="Mapa de estrellas interactivo">
+          <div class="mapa-nebulaes" id="mapa-nebulaes" aria-hidden="true"></div>
+          <div class="mapa-labels"   id="mapa-labels"   aria-hidden="true"></div>
+          <div class="mapa-estrellas" id="mapa-estrellas"></div>
+          <p class="mapa-hint" aria-hidden="true">Pasa el cursor sobre una estrella para ver el sueño</p>
+          <div class="mapa-tooltip"  id="mapa-tooltip"  role="tooltip" hidden></div>
+          <div class="mapa-loading"  id="mapa-loading">
+            <div class="mapa-loading-spinner" aria-hidden="true"></div>
+            <p>Cargando el universo…</p>
+          </div>
+          <button class="btn-presentacion" id="btn-presentacion" aria-label="Modo presentación">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Presentación
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── GALERÍA DE SUEÑOS ────────────────────────────────────────── -->
+    <section class="section-galeria" id="galeria" aria-labelledby="galeria-title">
+      <div class="galeria-inner">
+        <div class="galeria-header">
+          <p class="section-eyebrow">Generación 70</p>
+          <h2 class="galeria-title" id="galeria-title">Galería de Sueños</h2>
+          <p class="galeria-desc">Encuentra tu sueño o el de un compañero</p>
+        </div>
+        <div class="galeria-controles">
+          <div class="galeria-search-wrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="search" id="galeria-search" class="galeria-search-input" placeholder="Buscar por nombre o sueño…" autocomplete="off" aria-label="Buscar en la galería">
+          </div>
+          <div class="galeria-tabs" id="galeria-tabs" role="group" aria-label="Filtrar por grado"></div>
+        </div>
+        <div class="galeria-grid" id="galeria-grid"></div>
+      </div>
+    </section>
+
+    <!-- ── PLAYLIST ───────────────────────────────────────────────── -->
+    <section class="section-playlist" id="playlist" aria-labelledby="playlist-title">
+      <div class="playlist-inner">
+        <div class="playlist-text">
+          <p class="section-eyebrow">La música de su generación</p>
+          <h2 class="playlist-title" id="playlist-title">El Soundtrack de la<br>Generación&nbsp;70&nbsp;LSyH</h2>
+        </div>
+        <div class="playlist-embed-wrap">
+          <div class="playlist-embed" id="playlist-spotify">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2wO4X5OPppFjR6AbbxpZ7k?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <p class="footer-text">Generación 70 LSyH · Con cariño, las familias · creado por @AFishingDay</p>
+    <div class="footer-inner">
+      <p class="footer-gen-name">Generación 70 · Promoción 2026</p>
+      <p class="footer-aviso">
+        Este portal es una iniciativa exclusiva de los padres de familia de la Generación 70.
+        No es un proyecto del Liceo Salazar y Herrera ni de ninguna de sus dependencias,
+        y la institución no tiene responsabilidad sobre el contenido publicado aquí.
+      </p>
+      <p class="footer-aviso">
+        Los datos que aparecen (nombre, grupo, sueño y mensaje) los enviaron los propios estudiantes
+        a través de un formulario, con el único fin de este portal. No se usan con fines comerciales
+        ni se comparten con terceros. Si eres estudiante o acudiente y prefieres que un nombre no aparezca,
+        o quieres corregir algo,
+        <button type="button" class="footer-contacto" data-abrir-solicitud>envía una solicitud aquí</button>
+        y lo retiramos o corregimos de inmediato (Ley 1581 de 2012).
+      </p>
+      <p class="footer-aviso">
+        El sitio usa Google Analytics para medir las visitas de forma agregada (cuántas personas entran
+        y desde qué tipo de dispositivo), sin identificar a nadie.
+      </p>
+      <p class="footer-legal">Hecho con cariño por los padres de familia de la Generación 70 · 2026</p>
+    </div>
   </footer>
 
-  <script src="main.js"></script>
+  <!-- OVERLAY: Modo Presentación -->
+  <div class="pres-overlay" id="pres-overlay" hidden aria-modal="true" role="dialog" aria-label="Modo presentación">
+    <div class="pres-nebula" id="pres-nebula" aria-hidden="true"></div>
+    <button class="pres-close" id="pres-close" aria-label="Cerrar presentación">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="pres-top-bar">
+      <div class="pres-search-wrap">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="search" id="pres-search" class="pres-search-input" placeholder="Buscar estudiante…" autocomplete="off" aria-label="Buscar estudiante en la presentación">
+      </div>
+      <div class="pres-orden" role="group" aria-label="Orden de la presentación">
+        <button type="button" class="pres-orden-btn is-active" data-orden="az" aria-pressed="true">A–Z</button>
+        <button type="button" class="pres-orden-btn" data-orden="za" aria-pressed="false">Z–A</button>
+        <button type="button" class="pres-orden-btn" data-orden="rand" aria-pressed="false">Aleatorio</button>
+      </div>
+      <div class="pres-counter" id="pres-counter" aria-live="polite"></div>
+    </div>
+    <div class="pres-content" id="pres-content">
+      <div class="pres-star-wrap">
+        <div class="pres-star" id="pres-star"></div>
+      </div>
+      <p class="pres-cat" id="pres-cat"></p>
+      <h2 class="pres-nombre" id="pres-nombre"></h2>
+      <p class="pres-grupo" id="pres-grupo"></p>
+      <p class="pres-sueno" id="pres-sueno"></p>
+    </div>
+    <div class="pres-bottom">
+      <div class="pres-progress-track">
+        <div class="pres-progress-fill" id="pres-progress-fill"></div>
+      </div>
+      <div class="pres-controls">
+        <button class="pres-btn" id="pres-prev" aria-label="Anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="pres-btn pres-btn--play" id="pres-play" aria-label="Pausar">
+          <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <button class="pres-btn" id="pres-next" aria-label="Siguiente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mini-modal: elegir si compartir con o sin Leo -->
+  <div id="share-choice-overlay" hidden aria-modal="true" role="dialog" aria-label="Opciones para compartir">
+    <div class="share-choice-dialog">
+      <button class="share-choice-close" id="share-choice-cancel" aria-label="Cancelar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <p class="share-choice-label">Compartir sueño</p>
+      <h2 class="share-choice-title">¿Cómo quieres la tarjeta?</h2>
+      <div class="share-choice-btns">
+        <button id="share-con-leo" class="share-choice-btn share-choice-leo">
+          <div class="share-choice-visual share-choice-visual-leo">
+            <span id="share-choice-leo-preview" class="share-choice-leo-img" aria-hidden="true"></span>
+            <div class="share-choice-leo-glow" aria-hidden="true"></div>
+          </div>
+          <span class="share-choice-btn-name">Con Leo</span>
+          <span class="share-choice-btn-desc">Con la mascota de la generación</span>
+        </button>
+        <button id="share-sin-leo" class="share-choice-btn share-choice-plain">
+          <div class="share-choice-visual share-choice-visual-stars" aria-hidden="true">
+            <span class="sc-star sc-s1"></span>
+            <span class="sc-star sc-s2"></span>
+            <span class="sc-star sc-s3"></span>
+            <span class="sc-star sc-s4"></span>
+            <span class="sc-star sc-s5"></span>
+            <span class="sc-star sc-s6"></span>
+          </div>
+          <span class="share-choice-btn-name">Sin Leo</span>
+          <span class="share-choice-btn-desc">Solo el sueño y las estrellas</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: solicitud de corrección o retiro de datos (Ley 1581) -->
+  <div id="solicitud-overlay" class="sol-overlay" hidden aria-modal="true" role="dialog" aria-labelledby="solicitud-titulo">
+    <div class="sol-dialog">
+      <button type="button" class="sol-cerrar" id="solicitud-cerrar" aria-label="Cerrar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <div id="solicitud-cuerpo">
+        <p class="sol-label">Ley 1581 de 2012</p>
+        <h2 class="sol-titulo" id="solicitud-titulo">Corregir o retirar mis datos</h2>
+        <p class="sol-desc">Cuéntanos qué necesitas y el comité de padres lo atiende. Si dejas un correo, te confirmamos cuando esté listo.</p>
+        <form id="form-solicitud" class="sol-form" novalidate>
+          <label class="sol-campo">
+            <span>Nombre completo del estudiante</span>
+            <input id="sol-nombre" name="nombre_estudiante" type="text" required minlength="3" maxlength="120" autocomplete="off" placeholder="Tal como aparece en el portal">
+          </label>
+          <div class="sol-fila">
+            <label class="sol-campo">
+              <span>Grupo</span>
+              <select name="grupo" required>
+                <option value="">Selecciona</option>
+                <option value="11A">11A</option><option value="11B">11B</option><option value="11C">11C</option>
+                <option value="11D">11D</option><option value="11E">11E</option><option value="11F">11F</option>
+              </select>
+            </label>
+            <label class="sol-campo">
+              <span>Qué necesitas</span>
+              <select name="tipo" required>
+                <option value="">Selecciona</option>
+                <option value="retirar">Retirar mi nombre del portal</option>
+                <option value="corregir">Corregir mi sueño o mi mensaje</option>
+                <option value="otra">Otra solicitud</option>
+              </select>
+            </label>
+          </div>
+          <label class="sol-campo">
+            <span>Detalle</span>
+            <textarea name="detalle" rows="4" required minlength="10" maxlength="2000" placeholder="Ej.: quiero que mi sueño diga… / prefiero no aparecer en el portal"></textarea>
+          </label>
+          <label class="sol-campo">
+            <span>Correo para responderte <em>(opcional)</em></span>
+            <input name="contacto_correo" type="email" maxlength="200" autocomplete="email" placeholder="tu@correo.com">
+          </label>
+          <label class="sol-trampa" aria-hidden="true"><input name="sitio_web" type="text" tabindex="-1" autocomplete="off"></label>
+          <p id="solicitud-feedback" class="sol-feedback" role="alert" hidden></p>
+          <button type="submit" id="solicitud-enviar" class="sol-btn">Enviar solicitud</button>
+        </form>
+      </div>
+      <div id="solicitud-exito" class="sol-exito" hidden>
+        <div class="sol-exito-icono" aria-hidden="true">✓</div>
+        <h2 class="sol-titulo">Solicitud recibida</h2>
+        <p class="sol-desc">El comité de padres la revisará y hará el cambio en el portal. Si dejaste un correo, te avisamos cuando esté listo.</p>
+        <button type="button" id="solicitud-listo" class="sol-btn">Listo</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Colección principal de estudiantes ──────────────────────────────────
+    // Lectura pública (el portal la usará cuando se conecte a Firestore).
+    // Escritura solo desde el panel de administración (usuario autenticado).
+    // El formulario de familias se retiró el 2026-09-08: ya no hay escrituras anónimas.
+    match /estudiantes/{docId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // ── Envíos sin asignar (histórico del formulario de familias) ───────────
+    match /envios_pendientes/{docId} {
+      allow read, write: if request.auth != null;
+    }
+
+    // ── Solicitudes Ley 1581 (formulario del pie del portal) ────────────────
+    // Cualquiera puede registrar una solicitud, con validación estricta de forma y tamaño.
+    // Solo el administrador las lee, actualiza o borra (panel → Solicitudes Ley 1581).
+    match /solicitudes_borrado/{docId} {
+      allow create: if request.auth != null;
+      allow create: if request.resource.data.keys().hasOnly(['nombre_estudiante', 'grupo', 'tipo', 'detalle', 'contacto_correo', 'fecha', 'estado', 'origen'])
+        && request.resource.data.keys().hasAll(['nombre_estudiante', 'grupo', 'tipo', 'detalle', 'contacto_correo', 'fecha', 'estado', 'origen'])
+        && request.resource.data.estado == 'pendiente'
+        && request.resource.data.origen == 'portal'
+        && request.resource.data.nombre_estudiante is string
+        && request.resource.data.nombre_estudiante.size() >= 3
+        && request.resource.data.nombre_estudiante.size() <= 120
+        && request.resource.data.grupo in ['11A', '11B', '11C', '11D', '11E', '11F']
+        && request.resource.data.tipo in ['retirar', 'corregir', 'otra']
+        && request.resource.data.detalle is string
+        && request.resource.data.detalle.size() >= 10
+        && request.resource.data.detalle.size() <= 2000
+        && request.resource.data.contacto_correo is string
+        && request.resource.data.contacto_correo.size() <= 200
+        && request.resource.data.fecha is string
+        && request.resource.data.fecha.size() <= 40;
+      allow read, update, delete: if request.auth != null;
+    }
+
+  }
+}

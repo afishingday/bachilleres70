@@ -1,0 +1,1442 @@
+[
+  {
+    "id": "70001",
+    "nombre": "Ángel Villa Arango",
+    "grupo": "11A",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar derecho, especializarme en derecho internacional y derechos humanos, y hacer voluntariados por todo el mundo",
+    "activo": true
+  },
+  {
+    "id": "70002",
+    "nombre": "Ailin Juliana Cardona Duque",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Estudiar animación y crear obras que reflejen las situaciones sociales del mundo, ayudando a crear conciencia",
+    "mensaje": "Así como logramos generar cambio en nuestra institución, seremos capaces de cambiar el país o hasta el mundo.",
+    "activo": true
+  },
+  {
+    "id": "70003",
+    "nombre": "Alejandro Tamayo Rendón",
+    "grupo": "11A",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería de sistemas y ayudar a crear páginas web para grandes empresas",
+    "activo": true
+  },
+  {
+    "id": "70004",
+    "nombre": "Ana Sofía Cañas Ospina",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Estudiar fashion business en el Institut Français de la Mode en París y ejercer en París o en Milán",
+    "mensaje": "Gracias por cada momento y por hacer de nuestro último año mucho más ameno.",
+    "activo": true
+  },
+  {
+    "id": "70005",
+    "nombre": "Ana Valeria Díaz",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Tener una empresa de moda, ser actriz y trabajar en el extranjero",
+    "mensaje": "Aprovechen cada oportunidad, mejoren en cada aspecto negativo, den todo de sí mismos y vayan más allá del límite.",
+    "activo": true
+  },
+  {
+    "id": "70006",
+    "nombre": "Isabella Bobadilla Rojas",
+    "grupo": "11A",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar medicina y convertirme en doctora",
+    "mensaje": "Gracias por convertir años normales en recuerdos inolvidables.",
+    "activo": true
+  },
+  {
+    "id": "70007",
+    "nombre": "Isabela López Gómez",
+    "grupo": "11A",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Estudiar zootecnia",
+    "mensaje": "Gracias por convertir años normales en recuerdos inolvidables.",
+    "activo": true
+  },
+  {
+    "id": "70008",
+    "nombre": "Jacobo Gaviria Jiménez",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Administración de empresas",
+    "mensaje": "Fuimos un salón, nos vamos como una generación llena de sueños, historias y metas por cumplir.",
+    "activo": true
+  },
+  {
+    "id": "70009",
+    "nombre": "Jeferson Orozco",
+    "grupo": "11A",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Estudiar Astronomía",
+    "mensaje": "Gracias a todos por estar ahí.",
+    "activo": true
+  },
+  {
+    "id": "70010",
+    "nombre": "Juan José Guevara",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Tener una joyería y aprender a tatuar",
+    "mensaje": "Gracias por tantos momentos juntos, por hacerme sentir acompañado y hacerme sentir que pertenezco.",
+    "activo": true
+  },
+  {
+    "id": "70011",
+    "nombre": "Kenan Nohava",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser profesional en economía y finanzas internacionales",
+    "activo": true
+  },
+  {
+    "id": "70012",
+    "nombre": "Laura Valentina Porras Cubides",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser arquitecta para diseñarle una casa a mi mamá",
+    "mensaje": "Los voy a extrañar.",
+    "activo": true
+  },
+  {
+    "id": "70013",
+    "nombre": "Lorenzo Fons",
+    "grupo": "11A",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Ser peleador profesional o montar mi propia empresa",
+    "mensaje": "Sin importar qué pase, no se rindan.",
+    "activo": true
+  },
+  {
+    "id": "70014",
+    "nombre": "Luciana Delgado",
+    "grupo": "11A",
+    "categoria": "Salud y Medicina",
+    "sueno": "Tener mi propio consultorio de odontología",
+    "mensaje": "La mejor generación del Salazar y la más unida.",
+    "activo": true
+  },
+  {
+    "id": "70015",
+    "nombre": "Luciana Guarín Lenis",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Gastronomía",
+    "mensaje": "La mejor generación del Salazar.",
+    "activo": true
+  },
+  {
+    "id": "70016",
+    "nombre": "Luna Vanessa Cadavid Correa",
+    "grupo": "11A",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar psicología y fisioterapia para ayudar a personas en su proceso de rehabilitación",
+    "mensaje": "Sigan sus sueños.",
+    "activo": true
+  },
+  {
+    "id": "70017",
+    "nombre": "Manuela Gutiérrez Sepúlveda",
+    "grupo": "11A",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Convertirme en Química Farmacéutica",
+    "mensaje": "Fuimos una generación unida que está dejando huellas. Demostramos sabiduría, avance y amor en nuestro proceso académico.",
+    "activo": true
+  },
+  {
+    "id": "70018",
+    "nombre": "Manuela Toro Correa",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Negocios internacionales",
+    "mensaje": "Esta generación fue mi hogar durante 13 maravillosos años. Me formaron y me enseñaron lo valioso de la etapa escolar. Siempre permanecerán en mi corazón.",
+    "activo": true
+  },
+  {
+    "id": "70019",
+    "nombre": "Matías Ospina Ortiz",
+    "grupo": "11A",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Ser arquero profesional y estudiar ingeniería civil o eléctrica",
+    "mensaje": "Es imposible devolver el tiempo, pero en mi cabeza el presente siempre será con la Generación 70.",
+    "activo": true
+  },
+  {
+    "id": "70020",
+    "nombre": "Miguel Ángel Restrepo",
+    "grupo": "11A",
+    "categoria": "Explorando su camino",
+    "sueno": "Ser exitoso con estudios y trabajo",
+    "mensaje": "Luchen por sus sueños.",
+    "activo": true
+  },
+  {
+    "id": "70021",
+    "nombre": "Miguel Olarte",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Gastronomía",
+    "activo": true
+  },
+  {
+    "id": "70022",
+    "nombre": "Samuel Aguirre",
+    "grupo": "11A",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar derecho para ayudar a personas",
+    "activo": true
+  },
+  {
+    "id": "70023",
+    "nombre": "Samuel Pérez Acosta",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser ingeniero financiero y tener mi propia empresa",
+    "mensaje": "Disfruten al máximo, al final todo cambia y todo se acaba.",
+    "activo": true
+  },
+  {
+    "id": "70024",
+    "nombre": "Santiago Álvarez",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Manejar acuerdos monetarios con empresas extranjeras y la logística de importación de productos",
+    "mensaje": "Disfruta cada etapa.",
+    "activo": true
+  },
+  {
+    "id": "70025",
+    "nombre": "Santiago Barrera Gutiérrez",
+    "grupo": "11A",
+    "categoria": "Explorando su camino",
+    "sueno": "Convertirme en alguien famoso y amado por mucha gente",
+    "mensaje": "Gracias por todos los momentos que pasamos y todas las experiencias que vivimos.",
+    "activo": true
+  },
+  {
+    "id": "70026",
+    "nombre": "Sara Leal",
+    "grupo": "11A",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Ser astrónoma",
+    "activo": true
+  },
+  {
+    "id": "70027",
+    "nombre": "Saray Castaño Salazar",
+    "grupo": "11A",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Ser abogada",
+    "mensaje": "Que marquen la diferencia académicamente.",
+    "activo": true
+  },
+  {
+    "id": "70028",
+    "nombre": "Susana Flórez Duque",
+    "grupo": "11A",
+    "categoria": "Salud y Medicina",
+    "sueno": "Graduarme en psicología forense o criminalística y formarme como profesional",
+    "mensaje": "No sabemos qué viene después, pero sí sabemos todo lo que superamos para llegar aquí.",
+    "activo": true
+  },
+  {
+    "id": "70029",
+    "nombre": "Susana Martínez Urrego",
+    "grupo": "11A",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médica pediatra y neonatóloga",
+    "mensaje": "No pierdan su esencia por encajar. Aprendamos a apoyarnos más, a ser reales y a nunca dejar de luchar por nuestros sueños.",
+    "activo": true
+  },
+  {
+    "id": "70030",
+    "nombre": "Tomás Ospina",
+    "grupo": "11A",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Zootecnia",
+    "activo": true
+  },
+  {
+    "id": "70031",
+    "nombre": "Tomás Rincón",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Convertirme en chef y emprendedor",
+    "mensaje": "Vamos, muchachos, ustedes pueden.",
+    "activo": true
+  },
+  {
+    "id": "70032",
+    "nombre": "Valeria Buitrago Montoya",
+    "grupo": "11A",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Trabajar en organizaciones internacionales a favor de los derechos humanos",
+    "activo": true
+  },
+  {
+    "id": "70033",
+    "nombre": "Valeria Montoya Cartagena",
+    "grupo": "11A",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser diseñadora de modas y tener mi propia empresa con impacto social y ambiental",
+    "mensaje": "Aunque no nos habláramos entre todos, fuimos una generación muy unida y buscamos marcar al colegio a nuestra manera. Espero que cada uno pueda cumplir sus sueños.",
+    "activo": true
+  },
+  {
+    "id": "70034",
+    "nombre": "Alejandro Abello Sáenz",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Empresario",
+    "activo": true
+  },
+  {
+    "id": "70035",
+    "nombre": "Alejandro Dávila",
+    "grupo": "11B",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería en sistemas con especialización en IA",
+    "mensaje": "Todos podemos cumplir nuestros objetivos. Somos la mejor generación del Salazar.",
+    "activo": true
+  },
+  {
+    "id": "70036",
+    "nombre": "Ana Sofía Díaz Jaramillo",
+    "grupo": "11B",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar derecho",
+    "mensaje": "Y si el destino nos cruzó, tal vez sea lo mejor.",
+    "activo": true
+  },
+  {
+    "id": "70037",
+    "nombre": "Danilo Zapata",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser economista y trader independiente",
+    "mensaje": "Agradecido siempre estaré. Los amo mucho, me alegro de conocerlos y nunca se olviden de esta locura.",
+    "activo": true
+  },
+  {
+    "id": "70038",
+    "nombre": "Danna Sofía Rivas García",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser nutricionista y tener mi propio consultorio",
+    "mensaje": "Muchas gracias por esta experiencia, que se cumplan todos los sueños y metas.",
+    "activo": true
+  },
+  {
+    "id": "70039",
+    "nombre": "Emmanuel David Cardona Ramírez",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser economista o contador",
+    "activo": true
+  },
+  {
+    "id": "70040",
+    "nombre": "Isabella Arboleda Cano",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar medicina o negocios internacionales",
+    "mensaje": "Espero que después de graduarnos no empecemos a ser desconocidos. Guardemos de esto un recuerdo especial para toda la vida.",
+    "activo": true
+  },
+  {
+    "id": "70041",
+    "nombre": "Isabella Cataño Zuluaga",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médica veterinaria y desarrollar técnicas para ayudar y proteger a los animales",
+    "mensaje": "No somos perfectos ni excelentes, somos personas únicas, y mientras seamos nosotros siempre lograremos lo que soñamos.",
+    "activo": true
+  },
+  {
+    "id": "70042",
+    "nombre": "Isabella Martínez Vélez",
+    "grupo": "11B",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar comunicación social",
+    "mensaje": "Los amo, los recordaré siempre.",
+    "activo": true
+  },
+  {
+    "id": "70043",
+    "nombre": "Juan Camilo Paniagua Parra",
+    "grupo": "11B",
+    "categoria": "Explorando su camino",
+    "sueno": "Ser un profesional",
+    "activo": true
+  },
+  {
+    "id": "70044",
+    "nombre": "Juan Felipe Contreras Cruz",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Doctor especialista",
+    "mensaje": "Dios los bendiga y les dé éxitos.",
+    "activo": true
+  },
+  {
+    "id": "70045",
+    "nombre": "Juan José Montes",
+    "grupo": "11B",
+    "categoria": "Explorando su camino",
+    "sueno": "Ser una mejor persona",
+    "activo": true
+  },
+  {
+    "id": "70046",
+    "nombre": "Juan Ossa",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Empresario",
+    "activo": true
+  },
+  {
+    "id": "70047",
+    "nombre": "Juanita Gómez",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Tener un emprendimiento propio",
+    "mensaje": "Nos vamos del colegio, pero nunca de los recuerdos.",
+    "activo": true
+  },
+  {
+    "id": "70048",
+    "nombre": "Julieta Echavarría",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Convertirme en profesional en mercadeo o negocios internacionales",
+    "mensaje": "Los quiero mucho y los voy a recordar toda la vida.",
+    "activo": true
+  },
+  {
+    "id": "70049",
+    "nombre": "Mariana Álvarez Álvarez",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser doctora especialista en cirugía y vivir en Europa",
+    "mensaje": "Somos una generación que está haciendo historia y marcando la diferencia. Espero que sigamos siendo una generación unida y muy feliz.",
+    "activo": true
+  },
+  {
+    "id": "70050",
+    "nombre": "Mariana Hurtado",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar negocios internacionales y tener una vida estable y feliz",
+    "mensaje": "Gracias por esta linda experiencia, espero que todos logren sus metas.",
+    "activo": true
+  },
+  {
+    "id": "70051",
+    "nombre": "Mariangel Longa",
+    "grupo": "11B",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Convertirme en trabajadora social y periodista, y ayudar a mi familia",
+    "mensaje": "Gracias por esta experiencia, los quiero mucho. Cumplan sus sueños.",
+    "activo": true
+  },
+  {
+    "id": "70052",
+    "nombre": "María Fernanda Aristizabal",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar psicología y especializarme en psicología forense",
+    "mensaje": "Nos vamos para nunca volver, pero será uno de nuestros mejores recuerdos.",
+    "activo": true
+  },
+  {
+    "id": "70053",
+    "nombre": "Maximiliano Quintero Arcila",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser empresario",
+    "activo": true
+  },
+  {
+    "id": "70054",
+    "nombre": "Najhan Tomás Arboleda Julio",
+    "grupo": "11B",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar aviación",
+    "mensaje": "La mejor generación de todas.",
+    "activo": true
+  },
+  {
+    "id": "70055",
+    "nombre": "Nikolas Rivera",
+    "grupo": "11B",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ingeniero en sistemas",
+    "mensaje": "Mucho juicio.",
+    "activo": true
+  },
+  {
+    "id": "70056",
+    "nombre": "Sara Giraldo",
+    "grupo": "11B",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser actriz famosa",
+    "mensaje": "No cualquiera puede ser un artista, pero un artista puede provenir de cualquier parte.",
+    "activo": true
+  },
+  {
+    "id": "70057",
+    "nombre": "Saray Yu",
+    "grupo": "11B",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser modelo profesional",
+    "mensaje": "Disfrutemos nuestro último año con alegría y unión.",
+    "activo": true
+  },
+  {
+    "id": "70058",
+    "nombre": "Salomé Jaramillo",
+    "grupo": "11B",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser excelente médico especialista en cirugía ortopédica",
+    "mensaje": "El último año de una eternidad.",
+    "activo": true
+  },
+  {
+    "id": "70059",
+    "nombre": "Samuel Marín Agudelo",
+    "grupo": "11B",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser músico independiente",
+    "mensaje": "La mejor generación de todas.",
+    "activo": true
+  },
+  {
+    "id": "70060",
+    "nombre": "Samuel Paneso Aristizabal",
+    "grupo": "11B",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar aviación, conocer el mundo y ayudar a los que necesitan",
+    "mensaje": "Sigamos demostrando la unión, la alegría y todo el potencial que tenemos. Que este año quede marcado por los buenos momentos, las metas cumplidas y los recuerdos que estamos construyendo juntos.",
+    "activo": true
+  },
+  {
+    "id": "70061",
+    "nombre": "Sebastián Zuluaga Salazar",
+    "grupo": "11B",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Convertirme en futbolista profesional",
+    "mensaje": "Espero que algún día nos volvamos a reencontrar.",
+    "activo": true
+  },
+  {
+    "id": "70062",
+    "nombre": "Sofía Ramírez Arenas",
+    "grupo": "11B",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar negocios internacionales",
+    "mensaje": "Que seamos recordados por nuestra unión, nuestra alegría y la fuerza con la que enfrentamos cada desafío. El futuro nos pertenece, y apenas estamos comenzando.",
+    "activo": true
+  },
+  {
+    "id": "70063",
+    "nombre": "Susana Herrera Rivero",
+    "grupo": "11B",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar derecho y ciencias sociales, viajar por el mundo y trabajar independientemente",
+    "mensaje": "Ojalá la vida nos premie a todos con el éxito de la tranquilidad, de la paz y de la abundancia.",
+    "activo": true
+  },
+  {
+    "id": "70064",
+    "nombre": "Alejandra Palacio Montoya",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Convertirme en traumatóloga y ortopedista y ayudar a mis pacientes lo más que pueda",
+    "mensaje": "Todo es posible si te lo propones.",
+    "activo": true
+  },
+  {
+    "id": "70065",
+    "nombre": "Alisson Restrepo Rodríguez",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser veterinaria",
+    "mensaje": "Fue un gusto compartir con ustedes como generación. Les deseo lo mejor a todos y que cumplan sus sueños y metas.",
+    "activo": true
+  },
+  {
+    "id": "70066",
+    "nombre": "Ana Sofía Pineda Mejía",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Maquillaje profesional",
+    "activo": true
+  },
+  {
+    "id": "70067",
+    "nombre": "Emmanuel Cardona Acevedo",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Contaduría",
+    "activo": true
+  },
+  {
+    "id": "70068",
+    "nombre": "Isabela Benjumea",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser ingeniera administrativa o economista con enfoque en finanzas",
+    "mensaje": "Gracias por todos los momentos y recuerdos. Es muy bonito compartir esta etapa con ustedes. Les deseo lo mejor siempre.",
+    "activo": true
+  },
+  {
+    "id": "70069",
+    "nombre": "Isabella Ospina",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Comunicadora audiovisual",
+    "mensaje": "Que nunca los olvidaré.",
+    "activo": true
+  },
+  {
+    "id": "70070",
+    "nombre": "Jerónimo Cardona Salazar",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médico cirujano, ayudar a las personas a sentirse mejor y crear fundaciones para animales",
+    "mensaje": "Si se presenta algo difícil en sus vidas, pueden contar conmigo para lo que sea.",
+    "activo": true
+  },
+  {
+    "id": "70071",
+    "nombre": "Juan Diego Giraldo",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser uno de los mejores trompetistas del país, estudiar música y producción musical",
+    "activo": true
+  },
+  {
+    "id": "70072",
+    "nombre": "Juan José Campo García",
+    "grupo": "11C",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ingeniero en sistemas",
+    "mensaje": "Más que amigos, somos una familia. Gen 70.",
+    "activo": true
+  },
+  {
+    "id": "70073",
+    "nombre": "Juan José Cuartas Osorio",
+    "grupo": "11C",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ingeniero en sistemas",
+    "activo": true
+  },
+  {
+    "id": "70074",
+    "nombre": "Juanes Restrepo",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Convertirme en cardiólogo",
+    "activo": true
+  },
+  {
+    "id": "70075",
+    "nombre": "Julián Torres",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Médico veterinario",
+    "activo": true
+  },
+  {
+    "id": "70076",
+    "nombre": "Luciana Quiñones",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar medicina y especializarme en anestesiología",
+    "mensaje": "Me voy con miles de recuerdos y muy feliz.",
+    "activo": true
+  },
+  {
+    "id": "70077",
+    "nombre": "Mariana Fajardo",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Negocios internacionales y viajar por el mundo",
+    "mensaje": "Vivan su vida, disfruten, no le hagan daño a nadie y luchen por conseguir lo que quieren.",
+    "activo": true
+  },
+  {
+    "id": "70078",
+    "nombre": "María Isabel Jaramillo Tamayo",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar medicina para ayudar al otro",
+    "mensaje": "Gracias por ser una parte tan importante de nuestras vidas. Que todos sigan por un buen camino y que todas sus metas se cumplan.",
+    "activo": true
+  },
+  {
+    "id": "70079",
+    "nombre": "María José Muñoz",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser gran médica, especializarme en cirugía plástica o cardiovascular",
+    "mensaje": "Me voy llena de lindos recuerdos.",
+    "activo": true
+  },
+  {
+    "id": "70080",
+    "nombre": "Mathias López",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar finanzas",
+    "mensaje": "Fue un momento muy importante de mi vida.",
+    "activo": true
+  },
+  {
+    "id": "70081",
+    "nombre": "Matías Arias Patiño",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar fisioterapia y seguir con mi carrera deportiva",
+    "mensaje": "Los amo a todos.",
+    "activo": true
+  },
+  {
+    "id": "70082",
+    "nombre": "Matías Gómez",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Trabajar en el exterior",
+    "mensaje": "Somos una familia.",
+    "activo": true
+  },
+  {
+    "id": "70083",
+    "nombre": "Matías Moncada Ceballos",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar contaduría pública y tener una finca con ganado",
+    "mensaje": "La mejor generación del colegio.",
+    "activo": true
+  },
+  {
+    "id": "70084",
+    "nombre": "Melany López",
+    "grupo": "11C",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Abogada",
+    "mensaje": "Deseo que todos sus sueños se cumplan.",
+    "activo": true
+  },
+  {
+    "id": "70085",
+    "nombre": "Noider Bejarano",
+    "grupo": "11C",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser contador privado",
+    "mensaje": "Lo mejor para todos.",
+    "activo": true
+  },
+  {
+    "id": "70086",
+    "nombre": "Paulina Rendón Vergara",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser arquitecta y fundar mi propia empresa",
+    "mensaje": "Llegar a este colegio y graduarme con estas personas fue una de las mejores experiencias que voy a tener.",
+    "activo": true
+  },
+  {
+    "id": "70087",
+    "nombre": "Samuel David Salazar Espinosa",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Convertirme en chef profesional y construir mi propio restaurante",
+    "mensaje": "Muchachos, fue un gusto tenerlos como amigos y compañeros. Ya toca luchar y construir nuestro futuro. Los quiero demasiado.",
+    "activo": true
+  },
+  {
+    "id": "70088",
+    "nombre": "Santiago Osorio",
+    "grupo": "11C",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser piloto",
+    "mensaje": "Los amo.",
+    "activo": true
+  },
+  {
+    "id": "70089",
+    "nombre": "Sofía Londoño",
+    "grupo": "11C",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médica veterinaria, zootecnista y bióloga, y administrar una empresa veterinaria",
+    "activo": true
+  },
+  {
+    "id": "70090",
+    "nombre": "Sthephanie Nariño Rincón",
+    "grupo": "11C",
+    "categoria": "Explorando su camino",
+    "sueno": "Ser una persona independiente y exitosa en mi vida",
+    "activo": true
+  },
+  {
+    "id": "70091",
+    "nombre": "Valentina Amaya Quiceno",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Diseñadora de modas",
+    "mensaje": "Todo es posible si das lo mejor de ti.",
+    "activo": true
+  },
+  {
+    "id": "70092",
+    "nombre": "Ana Isabel Villegas",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser veterinaria profesional, tener mi propia clínica veterinaria y ser exitosa",
+    "mensaje": "Gracias por cada esfuerzo y por cada oportunidad dada para demostrar lo que somos.",
+    "activo": true
+  },
+  {
+    "id": "70093",
+    "nombre": "Ana María Cataño",
+    "grupo": "11D",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería ambiental o cosmetología",
+    "mensaje": "Gen 70, todavía no puedo creer que ya estemos en once. Entre risas, tareas y recuerdos, crecimos juntos sin darnos cuenta. Gracias por hacer parte de esta historia tan bonita. Pase lo que pase después, siempre vamos a ser la Gen 70.",
+    "activo": true
+  },
+  {
+    "id": "70094",
+    "nombre": "Felipe Armero",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Odontólogo especializado en estética",
+    "mensaje": "Gracias.",
+    "activo": true
+  },
+  {
+    "id": "70095",
+    "nombre": "Isabella Agudelo",
+    "grupo": "11D",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser arquitecta y darle todo a mi familia para que nunca les falte nada",
+    "mensaje": "Que disfruten este último año lo más que puedan.",
+    "activo": true
+  },
+  {
+    "id": "70096",
+    "nombre": "Jacobo Gómez Velásquez",
+    "grupo": "11D",
+    "categoria": "Artes y Diseño",
+    "sueno": "Diseño interactivo",
+    "mensaje": "La mejor energía.",
+    "activo": true
+  },
+  {
+    "id": "70097",
+    "nombre": "Jerónimo Higuita Mesa",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser ingeniero financiero",
+    "mensaje": "Los aprecio.",
+    "activo": true
+  },
+  {
+    "id": "70098",
+    "nombre": "Juan José Bedoya López",
+    "grupo": "11D",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Convertirme en mecánico de avión",
+    "mensaje": "Gracias por ser tan buena generación.",
+    "activo": true
+  },
+  {
+    "id": "70099",
+    "nombre": "Juan José Zapata",
+    "grupo": "11D",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar filosofía y explorar cada una de sus ramas",
+    "mensaje": "Regálenme sobres del mundial.",
+    "activo": true
+  },
+  {
+    "id": "70100",
+    "nombre": "Kerlys Molina",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Convertirme en psicóloga y ayudar a las personas con su salud mental",
+    "mensaje": "Que todos disfrutemos mucho esta etapa y que todos nos podamos graduar juntos.",
+    "activo": true
+  },
+  {
+    "id": "70101",
+    "nombre": "María Paula Bedoya",
+    "grupo": "11D",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Ser abogada para defender a la gente que no tiene recursos para pagar un defensor",
+    "mensaje": "La unión que tenemos como generación la van a envidiar los demás.",
+    "activo": true
+  },
+  {
+    "id": "70102",
+    "nombre": "Mariangel Vanegas Céspedes",
+    "grupo": "11D",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser maquilladora profesional y crear mi propia marca de maquillaje",
+    "mensaje": "Que sueñen en grande.",
+    "activo": true
+  },
+  {
+    "id": "70103",
+    "nombre": "Maximiliano Clavijo Rendón",
+    "grupo": "11D",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Licenciatura en ciencias sociales para ser profesor, con maestría en filosofía o especialización en ciencias políticas",
+    "mensaje": "A pesar de que no todos se hablan con todos, se ve un apoyo entre nosotros en los momentos difíciles. Sigan así y lleguen lejos.",
+    "activo": true
+  },
+  {
+    "id": "70104",
+    "nombre": "Michelle Martínez Berrio",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Tener grandes metas en la vida y apoyarme en el trading para lograrlo",
+    "mensaje": "Que jamás se rindan en lo que quieren, que no les dé pena hacer lo que aman. Disfruten mucho este último año.",
+    "activo": true
+  },
+  {
+    "id": "70105",
+    "nombre": "Mike Usuga Tangarife",
+    "grupo": "11D",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser ingeniero mecánico",
+    "mensaje": "Los amo.",
+    "activo": true
+  },
+  {
+    "id": "70106",
+    "nombre": "Nicolás Cano Guzmán",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar ingeniería en administración de empresas y emprender",
+    "mensaje": "Este último año es solo el inicio del resto de nuestras vidas. Recuerden que ningún sueño es muy grande y ningún soñador es muy pequeño.",
+    "activo": true
+  },
+  {
+    "id": "70107",
+    "nombre": "Emanuel Velasco (Plancha)",
+    "grupo": "11D",
+    "categoria": "Explorando su camino",
+    "sueno": "Ser un excelente compañero y vivir plenamente cada momento compartido",
+    "mensaje": "Ser parte de esta generación fue poder ver cuántas dificultades, cuántos años, cuántos recuerdos y cuántas amistades tuvimos a lo largo de todos estos años. Más que un camino de aprendizaje, fue uno de descubrimiento y reflexión. Disfruten con responsabilidad. ¡Gen 70: la buena!",
+    "activo": true
+  },
+  {
+    "id": "70108",
+    "nombre": "Santiago Aguirre Cardona",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Medicina",
+    "mensaje": "La ambición logra cualquier meta.",
+    "activo": true
+  },
+  {
+    "id": "70109",
+    "nombre": "Santiago Santa Gregory",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar negocios internacionales",
+    "activo": true
+  },
+  {
+    "id": "70110",
+    "nombre": "Sebastián Gómez Vallejo",
+    "grupo": "11D",
+    "categoria": "Artes y Diseño",
+    "sueno": "Productor musical",
+    "mensaje": "Que no llores porque pasó sino porque sucedió.",
+    "activo": true
+  },
+  {
+    "id": "70111",
+    "nombre": "Susana Gómez Hernández",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar administración de empresas en la UPB y complementarlo con un curso profesional de maquillaje",
+    "mensaje": "Los amo.",
+    "activo": true
+  },
+  {
+    "id": "70112",
+    "nombre": "Tomás Aguirre Usma",
+    "grupo": "11D",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser ingeniero financiero o entrenador personal",
+    "mensaje": "Actúa cada acción como si fuera la última y lo lograrás.",
+    "activo": true
+  },
+  {
+    "id": "70113",
+    "nombre": "Abraham Delgado",
+    "grupo": "11E",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser negociador internacional",
+    "activo": true
+  },
+  {
+    "id": "70114",
+    "nombre": "Ana Vélez",
+    "grupo": "11E",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser odontóloga",
+    "activo": true
+  },
+  {
+    "id": "70115",
+    "nombre": "Angélica Trujillo",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería industrial",
+    "mensaje": "Hay que esforzarnos para cumplir los sueños.",
+    "activo": true
+  },
+  {
+    "id": "70116",
+    "nombre": "Axel Ríos",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Convertirme en ingeniero de sistemas con especialización en programación de software, cloud y ciberseguridad",
+    "activo": true
+  },
+  {
+    "id": "70117",
+    "nombre": "Camilo Rave",
+    "grupo": "11E",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar negocios internacionales y cumplir el sueño de ser futbolista profesional",
+    "mensaje": "Que este año sea excelente y la pasemos muy bien. Que al salir cumplan todo lo que se propongan.",
+    "activo": true
+  },
+  {
+    "id": "70118",
+    "nombre": "Felipe Rodríguez Guerra",
+    "grupo": "11E",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Ser abogado comercial reconocido",
+    "mensaje": "Espero que todos tengan un buen futuro.",
+    "activo": true
+  },
+  {
+    "id": "70119",
+    "nombre": "Isabela Lotero Velásquez",
+    "grupo": "11E",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser empresaria y estudiar mercadeo",
+    "mensaje": "Los amo y que a todos nos vaya bien en la vida.",
+    "activo": true
+  },
+  {
+    "id": "70120",
+    "nombre": "Jerónimo Sánchez Aguirre",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Convertirme en el mejor ingeniero civil de la ciudad y marcar el mundo con hechos",
+    "mensaje": "No somos unos más, somos los que destacamos de los demás.",
+    "activo": true
+  },
+  {
+    "id": "70121",
+    "nombre": "Jerónimo Tabares Paniagua",
+    "grupo": "11E",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser músico solista clarinetista",
+    "activo": true
+  },
+  {
+    "id": "70122",
+    "nombre": "Jhonatan Rivera",
+    "grupo": "11E",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médico y ayudar a la gente en su salud",
+    "mensaje": "No caigamos en la maldad. Seamos la generación que la cura.",
+    "activo": true
+  },
+  {
+    "id": "70123",
+    "nombre": "Juan Daniel Robelto Santos",
+    "grupo": "11E",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Convertirme en traductor de idiomas y viajar por diferentes países a seguir estudiando",
+    "mensaje": "Disfruta este último año al máximo y deja una huella imborrable en el colegio.",
+    "activo": true
+  },
+  {
+    "id": "70124",
+    "nombre": "Julián Herrera Valencia",
+    "grupo": "11E",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Llegar a la NBA como basquetbolista profesional",
+    "mensaje": "Los amo.",
+    "activo": true
+  },
+  {
+    "id": "70125",
+    "nombre": "Luciana Gómez",
+    "grupo": "11E",
+    "categoria": "Artes y Diseño",
+    "sueno": "Convertirme en bailarina profesional y estudiar marketing y mercadeo",
+    "mensaje": "Me encanta esta generación, pero siento que falta más unión entre todos. Los quiero mucho a todos.",
+    "activo": true
+  },
+  {
+    "id": "70126",
+    "nombre": "María Fernanda Sierra",
+    "grupo": "11E",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Publicidad y marketing digital",
+    "activo": true
+  },
+  {
+    "id": "70127",
+    "nombre": "María Isabel López",
+    "grupo": "11E",
+    "categoria": "Artes y Diseño",
+    "sueno": "Estudiar cosmetología y hacer mi propio salón de estética",
+    "activo": true
+  },
+  {
+    "id": "70128",
+    "nombre": "Matías Estrada",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Convertirme en ingeniero mecatrónico",
+    "mensaje": "Vivan cada momento al máximo, que la nostalgia es la peor enfermedad.",
+    "activo": true
+  },
+  {
+    "id": "70129",
+    "nombre": "Oscar Rodríguez",
+    "grupo": "11E",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Ser futbolista profesional, estudiar, saber administrar mi dinero y ayudar a los demás",
+    "mensaje": "Carpe Diem.",
+    "activo": true
+  },
+  {
+    "id": "70130",
+    "nombre": "Salomé Bedoya",
+    "grupo": "11E",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Ser futbolista profesional y modelo profesional",
+    "activo": true
+  },
+  {
+    "id": "70131",
+    "nombre": "Salomé Rodríguez",
+    "grupo": "11E",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Ser bióloga",
+    "mensaje": "Sigan sus sueños.",
+    "activo": true
+  },
+  {
+    "id": "70132",
+    "nombre": "Samantha Robledo",
+    "grupo": "11E",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médica para ayudar a las personas",
+    "mensaje": "Que son lo mejor.",
+    "activo": true
+  },
+  {
+    "id": "70133",
+    "nombre": "Samuel Gómez Rincón",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Volverme programador de software, idealmente en la NASA, y ayudar a mi familia y a todos",
+    "mensaje": "Son tantas cosas por decir que no tengo palabras.",
+    "activo": true
+  },
+  {
+    "id": "70134",
+    "nombre": "Sebastián David Henríquez Deosa",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser ingeniero en sistemas graduado de la UdeA",
+    "mensaje": "Dejemos huella.",
+    "activo": true
+  },
+  {
+    "id": "70135",
+    "nombre": "Sofía González",
+    "grupo": "11E",
+    "categoria": "Artes y Diseño",
+    "sueno": "Convertirme en gran arquitecta y construir mi propia empresa",
+    "mensaje": "Confía en ti.",
+    "activo": true
+  },
+  {
+    "id": "70136",
+    "nombre": "Sofía Rivas",
+    "grupo": "11E",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser médica cirujana e inversionista",
+    "activo": true
+  },
+  {
+    "id": "70137",
+    "nombre": "Susana Pérez",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería aeronáutica",
+    "mensaje": "Aprovechemos este año.",
+    "activo": true
+  },
+  {
+    "id": "70138",
+    "nombre": "Susana Ramírez Gómez",
+    "grupo": "11E",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser negociadora internacional",
+    "mensaje": "Gracias por hacer que cada momento fuera una experiencia inolvidable, siempre recordaré esta etapa como la mejor de mi vida.",
+    "activo": true
+  },
+  {
+    "id": "70139",
+    "nombre": "Alejandro Lombana",
+    "grupo": "11F",
+    "categoria": "Explorando su camino",
+    "sueno": "Tener estabilidad económica y tranquilidad",
+    "mensaje": "Los quiero mucho a todos.",
+    "activo": true
+  },
+  {
+    "id": "70140",
+    "nombre": "Diego Gil",
+    "grupo": "11F",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Convertirme en piloto de automovilismo y estudiar mecánica e idiomas",
+    "mensaje": "Es una generación increíble.",
+    "activo": true
+  },
+  {
+    "id": "70141",
+    "nombre": "Emiliano Daza Vásquez",
+    "grupo": "11F",
+    "categoria": "Explorando su camino",
+    "sueno": "Todavía estoy explorando mis opciones y construyendo mi camino",
+    "activo": true
+  },
+  {
+    "id": "70142",
+    "nombre": "Gabriela Súspez Gómez",
+    "grupo": "11F",
+    "categoria": "Salud y Medicina",
+    "sueno": "Optometría",
+    "mensaje": "Los quiero.",
+    "activo": true
+  },
+  {
+    "id": "70143",
+    "nombre": "Isabella Amézquita Díaz",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser jefa de un grupo de ventas en una empresa internacional y analista de datos",
+    "mensaje": "Muchas gracias por ser tan comprometidos y hacer de mi paso por el colegio algo divertido.",
+    "activo": true
+  },
+  {
+    "id": "70144",
+    "nombre": "Isabella Quiceno Valle",
+    "grupo": "11F",
+    "categoria": "Ciencias Sociales",
+    "sueno": "Estudiar pedagogía infantil",
+    "mensaje": "Crecimos juntos entre tareas, risas y momentos inolvidables. Hoy somos una generación lista para conquistar lo que viene.",
+    "activo": true
+  },
+  {
+    "id": "70145",
+    "nombre": "Jacobo Jaramillo Panesso",
+    "grupo": "11F",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser periodista, escritor y director de cine dedicado a retratar las complejidades de la sociedad colombiana",
+    "mensaje": "Al final seremos todos parte del recuerdo de un año que jamás olvidaremos.",
+    "activo": true
+  },
+  {
+    "id": "70146",
+    "nombre": "Jerónimo Correa",
+    "grupo": "11F",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Trabajar en la NASA",
+    "mensaje": "Hemos sido una generación que nunca para de sorprender, que no se rinde y que pese a las adversidades nunca para.",
+    "activo": true
+  },
+  {
+    "id": "70147",
+    "nombre": "Juan David Ramírez Quintero",
+    "grupo": "11F",
+    "categoria": "Salud y Medicina",
+    "sueno": "Ser nutricionista",
+    "mensaje": "Los quiero mucho.",
+    "activo": true
+  },
+  {
+    "id": "70148",
+    "nombre": "Juan José Cuervo Ramírez",
+    "grupo": "11F",
+    "categoria": "Salud y Medicina",
+    "sueno": "Veterinaria o psicología",
+    "mensaje": "La mejor generación.",
+    "activo": true
+  },
+  {
+    "id": "70149",
+    "nombre": "Juan José Ospina Medina",
+    "grupo": "11F",
+    "categoria": "Artes y Diseño",
+    "sueno": "Estudiar arquitectura y dirigir una película animada en stop motion",
+    "activo": true
+  },
+  {
+    "id": "70150",
+    "nombre": "Juan Manuel Urrego",
+    "grupo": "11F",
+    "categoria": "Explorando su camino",
+    "sueno": "Todavía estoy construyendo mi camino",
+    "activo": true
+  },
+  {
+    "id": "70151",
+    "nombre": "Katherin Betancur Cardona",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Negocios",
+    "mensaje": "Nos vimos crecer y ahora nos toca despedirnos, pero siempre vamos a llevar un pedacito de estos años con nosotros.",
+    "activo": true
+  },
+  {
+    "id": "70152",
+    "nombre": "Luciana López Mesa",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Contaduría pública",
+    "mensaje": "Sigamos dejando una huella como una generación que hace cosas únicas e inolvidables, tanto para nosotros como para las nuevas generaciones.",
+    "activo": true
+  },
+  {
+    "id": "70153",
+    "nombre": "Luciana Vélez",
+    "grupo": "11F",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar psicología forense y especializarme en eso",
+    "activo": true
+  },
+  {
+    "id": "70154",
+    "nombre": "Luisa María Pérez",
+    "grupo": "11F",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ingeniería agronómica",
+    "mensaje": "Unidos por los recuerdos, marcados por los sueños y listos para conquistar el mundo.",
+    "activo": true
+  },
+  {
+    "id": "70155",
+    "nombre": "María Alejandra Tascón Mejía",
+    "grupo": "11F",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser diseñadora de interiores y usar mi creatividad para hacer realidad los sueños de los demás",
+    "mensaje": "Gracias por todo lo vivido, sean felices.",
+    "activo": true
+  },
+  {
+    "id": "70156",
+    "nombre": "María José Hoyos",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Conseguir una buena beca y ser emprendedora y empresaria exitosa",
+    "mensaje": "La vida es una y hay que disfrutar este año al máximo.",
+    "activo": true
+  },
+  {
+    "id": "70157",
+    "nombre": "Samuel Padilla",
+    "grupo": "11F",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser ingeniero y contribuir a la creación de grandes construcciones",
+    "mensaje": "Gracias por los 10 años que más voy a extrañar.",
+    "activo": true
+  },
+  {
+    "id": "70158",
+    "nombre": "Samuel Posada",
+    "grupo": "11F",
+    "categoria": "Ciencias Exactas",
+    "sueno": "Estudiar zootecnia",
+    "mensaje": "Que estuvieron en una linda etapa de la vida.",
+    "activo": true
+  },
+  {
+    "id": "70159",
+    "nombre": "Samuel Toro",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar finanzas",
+    "activo": true
+  },
+  {
+    "id": "70160",
+    "nombre": "Sara Betancur Rodas",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Ser contadora, manejar el dinero de empresas y personas, y escribir un libro",
+    "mensaje": "Que no olviden esta etapa tan linda que estamos viviendo.",
+    "activo": true
+  },
+  {
+    "id": "70161",
+    "nombre": "Sofía Mejía García",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Convertirme en administradora de empresas",
+    "mensaje": "Que soñemos en grande y tengamos unión.",
+    "activo": true
+  },
+  {
+    "id": "70162",
+    "nombre": "Sofía Zapata",
+    "grupo": "11F",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser diseñadora de interiores",
+    "mensaje": "Que disfrutemos al máximo este año.",
+    "activo": true
+  },
+  {
+    "id": "70163",
+    "nombre": "Susana Jaramillo",
+    "grupo": "11F",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar negocios internacionales y conocer el mundo",
+    "mensaje": "Son el mejor momento de vida que no quiero que se termine.",
+    "activo": true
+  },
+  {
+    "id": "70164",
+    "nombre": "Yonathan Cubillos",
+    "grupo": "11F",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Ser futbolista profesional",
+    "mensaje": "Los aprecio.",
+    "activo": true
+  }
+]

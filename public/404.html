@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esta estrella no existe · Gen 70 LSyH</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 2rem 1.25rem; text-align: center;
+      background: #020617; color: #f1f5f9; font-family: 'DM Sans', sans-serif; line-height: 1.6;
+      position: relative; overflow: hidden;
+    }
+    .nebula { position: absolute; border-radius: 50%; filter: blur(110px); pointer-events: none; }
+    .n1 { width: 46vw; height: 46vw; top: -15%; left: -10%; background: rgba(29, 78, 216, 0.28); }
+    .n2 { width: 42vw; height: 42vw; bottom: -12%; right: -10%; background: rgba(161, 87, 8, 0.16); }
+    .n3 { width: 26vw; height: 26vw; top: 38%; left: 44%; background: rgba(109, 40, 217, 0.22); }
+    main { position: relative; z-index: 1; max-width: 32rem; }
+    .eyebrow { font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #facc15; margin-bottom: 1.25rem; }
+    .star { width: 14px; height: 14px; border-radius: 50%; background: #60a5fa; margin: 0 auto 1.5rem; box-shadow: 0 0 18px #60a5fa, 0 0 44px rgba(96,165,250,.45); animation: pulse 2.4s ease-in-out infinite alternate; }
+    @keyframes pulse { from { opacity: .6; transform: scale(.9); } to { opacity: 1; transform: scale(1.15); } }
+    h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 7vw, 3.25rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1rem;
+         background: linear-gradient(130deg, #60a5fa 0%, #e879f9 55%, #facc15 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    p { color: #cbd5e1; font-size: 1.02rem; margin-bottom: 2rem; }
+    a.btn { display: inline-flex; align-items: center; padding: 0.8rem 2rem; border-radius: 2rem; background: linear-gradient(to right, #facc15, #f59e0b); color: #1a0900; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.9rem; text-decoration: none; box-shadow: 0 0 32px rgba(250, 204, 21, 0.22); transition: transform .25s, box-shadow .25s; }
+    a.btn:hover { transform: translateY(-2px); box-shadow: 0 0 44px rgba(250, 204, 21, 0.38); }
+  </style>
+</head>
+<body>
+  <div class="nebula n1" aria-hidden="true"></div>
+  <div class="nebula n2" aria-hidden="true"></div>
+  <div class="nebula n3" aria-hidden="true"></div>
+  <main>
+    <p class="eyebrow">Error 404 · Generación 70</p>
+    <div class="star" aria-hidden="true"></div>
+    <h1>Esta estrella no está en el universo</h1>
+    <p>El enlace que abriste no existe o cambió de lugar. Vuelve a la portada y busca el sueño por nombre.</p>
+    <a class="btn" href="/">Volver al universo</a>
+  </main>
+</body>
+</html>

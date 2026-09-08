@@ -67,3 +67,8 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Salida de build, material viejo y clave de servicio (nunca subirla)
+dist/
+legacy/
+serviceAccountKey.json
