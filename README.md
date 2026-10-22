@@ -19,6 +19,15 @@ reconstruir y publicar.
 
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
+**Última sincronización con la hoja: 22 de octubre de 2026** (171 estudiantes). La hoja sigue abierta,
+así que puede volver a desfasarse. Al comparar hay que tener en cuenta que **una fila no es un
+estudiante**: de las 182 respuestas de ese día, 11 eran segundos envíos. Seis personas llenaron el
+formulario dos veces y otras cinco aparecen con el nombre escrito distinto al del archivo (`Plancha` →
+`Emanuel Velasco (Plancha)`, `Jacobo Gaviria` → `Jacobo Gaviria Jiménez`, `Samuel Pérez` → `Samuel
+Pérez Acosta` y dos que mandaron el nombre completo en el segundo envío). Antes de agregar a alguien
+conviene buscarlo por apellido y por salón, no por el nombre exacto. Ojo también con los dos
+homónimos: Samuel Pérez Acosta es de 11A y Samuel Pérez Arteaga de 11E.
+
 ## Cómo trabajar
 
 ```bash

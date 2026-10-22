@@ -380,7 +380,7 @@
     "nombre": "Juan Felipe Contreras Cruz",
     "grupo": "11B",
     "categoria": "Salud y Medicina",
-    "sueno": "Doctor especialista",
+    "sueno": "Convertirme en médico especialista",
     "mensaje": "Dios los bendiga y les dé éxitos.",
     "activo": true
   },
@@ -656,10 +656,10 @@
   },
   {
     "id": "70076",
-    "nombre": "Luciana Quiñones",
+    "nombre": "Luciana Quiñones Gutiérrez",
     "grupo": "11C",
     "categoria": "Salud y Medicina",
-    "sueno": "Estudiar medicina y especializarme en anestesiología",
+    "sueno": "Estudiar medicina y especializarme en dermatología y estética",
     "mensaje": "Me voy con miles de recuerdos y muy feliz.",
     "activo": true
   },
@@ -798,7 +798,7 @@
   },
   {
     "id": "70092",
-    "nombre": "Ana Isabel Villegas",
+    "nombre": "Ana Isabel Villegas Quintero",
     "grupo": "11D",
     "categoria": "Salud y Medicina",
     "sueno": "Ser veterinaria profesional, tener mi propia clínica veterinaria y ser exitosa",
@@ -1437,6 +1437,68 @@
     "categoria": "Deporte y Atletismo",
     "sueno": "Ser futbolista profesional",
     "mensaje": "Los aprecio.",
+    "activo": true
+  },
+  {
+    "id": "70165",
+    "nombre": "Isabella Gómez Franco",
+    "grupo": "11A",
+    "categoria": "Explorando su camino",
+    "sueno": "Aún no lo sé, pero quiero ser alguien que pueda impactar, ayudar y generar consciencia en la vida de los demás",
+    "activo": true
+  },
+  {
+    "id": "70166",
+    "nombre": "Valeria Ramírez Acevedo",
+    "grupo": "11A",
+    "categoria": "Negocios y Emprendimiento",
+    "sueno": "Estudiar administración",
+    "mensaje": "No solo terminamos una etapa, dejamos atrás años de historias, risas, aprendizajes y momentos que nos hicieron quienes somos. Hoy cerramos un capítulo, pero la generación que fuimos siempre será parte de nosotros. 11° no es un adiós, es el comienzo de todo lo que soñamos.",
+    "activo": true
+  },
+  {
+    "id": "70167",
+    "nombre": "Nicolás Naranjo Idárraga",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Ser cantante como Blessd",
+    "mensaje": "Los amo, papasss.",
+    "activo": true
+  },
+  {
+    "id": "70168",
+    "nombre": "John Andrés Madrid Loaiza",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Convertirme en veterinario o ingeniero de software",
+    "mensaje": "Valoren mucho el tiempo en el colegio, porque se va volando y es probablemente lo que más vamos a extrañar.",
+    "activo": true
+  },
+  {
+    "id": "70169",
+    "nombre": "Shara Camila Cuéllar",
+    "grupo": "11D",
+    "categoria": "Salud y Medicina",
+    "sueno": "Estudiar psicología",
+    "mensaje": "La mejor generación.",
+    "activo": true
+  },
+  {
+    "id": "70170",
+    "nombre": "Samuel Pérez Arteaga",
+    "grupo": "11E",
+    "categoria": "Deporte y Atletismo",
+    "sueno": "Estudiar licenciatura en deportes y ayudar a otros a conseguir sus metas deportivas",
+    "mensaje": "Que luchen por sus metas y no olviden las buenas amistades que formaron en esta hermosa etapa académica.",
+    "activo": true
+  },
+  {
+    "id": "70171",
+    "nombre": "Sebastián Bocanegra Ortiz",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser ingeniero civil y hacerle una casa a mi abuelita",
+    "mensaje": "Que todos sean felices con lo que son y lo que serán.",
     "activo": true
   }
 ]
