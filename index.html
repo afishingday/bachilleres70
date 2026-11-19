@@ -36,6 +36,7 @@
       <ul class="nav-menu">
         <li><a href="#universo">Universo</a></li>
         <li><a href="#galeria">Galería</a></li>
+        <li id="nav-profes" hidden><a href="#profesores">Maestros</a></li>
         <li><a href="#playlist">Playlist</a></li>
       </ul>
       <div class="nav-search-wrap">
@@ -141,6 +142,39 @@
           <div class="galeria-tabs" id="galeria-tabs" role="group" aria-label="Filtrar por grado"></div>
         </div>
         <div class="galeria-grid" id="galeria-grid"></div>
+
+        <!-- Invitación para quien es de la generación y no alcanzó a responder
+             el formulario "La Huella de la Promoción 70". El portal lee el
+             archivo fijo public/datos.json, que se sincroniza a mano con la
+             hoja de respuestas: por eso dice "en unos días" y no "al instante". -->
+        <aside class="suma-huella">
+          <p class="section-eyebrow suma-huella-eyebrow">¿No te encuentras?</p>
+          <h3 class="suma-huella-title">Todavía puedes dejar tu huella</h3>
+          <p class="suma-huella-desc">
+            Si eres de la Generación 70 y no alcanzaste a responder, aún estás a tiempo:
+            cuéntanos tu sueño y tu mensaje para la generación. En unos días vas a verte
+            aquí, con los demás.
+          </p>
+          <a class="suma-huella-cta"
+             href="https://docs.google.com/forms/d/1626B-0UwF-JknkwmDHM-G5twojlN9aY32W8WeO3HpGg/viewform"
+             target="_blank" rel="noopener">Dejar mi huella</a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── PALABRAS DE SUS MAESTROS ────────────────────────
+         Videos en los que los profesores le dejan un mensaje a la generación.
+         La lista se arma a mano en public/maestros.json; si no hay ninguno
+         activo, la sección y su enlace del menú quedan ocultos. Ver profesores.js -->
+    <section class="section-profes" id="profesores" aria-labelledby="profes-title" hidden>
+      <div class="profes-inner">
+        <div class="profes-header">
+          <p class="section-eyebrow">Los que caminaron con ellos</p>
+          <h2 class="profes-title" id="profes-title">Palabras de sus Maestros</h2>
+          <p class="profes-desc">Los profesores que acompañaron a la Generación 70 en su último año les dejan un mensaje en video.</p>
+        </div>
+
+        <div class="profes-lista" id="profes-lista"></div>
       </div>
     </section>
 

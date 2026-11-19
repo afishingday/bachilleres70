@@ -7,6 +7,7 @@ comité de padres de familia. Publicado en https://syhg70.web.app.
 
 - **Universo**: cada estudiante es una estrella agrupada por constelación (área del sueño). Buscador y filtros por constelación y grupo. Modo **Presentación** para proyectar en la ceremonia (pasa cada 5 s; flechas y espacio para controlar; buscador por nombre).
 - **Galería**: tarjeta por estudiante con su sueño; se voltea para leer su mensaje a la generación. Botón para compartir una imagen del sueño (con o sin Leo, la mascota).
+- **Palabras de sus Maestros**: videos en los que los profesores le dejan un mensaje a la generación. Ver abajo.
 - **Playlist**: lista de Spotify con las canciones que eligieron los estudiantes.
 
 ## De dónde salen los datos
@@ -28,6 +29,12 @@ Pérez Acosta` y dos que mandaron el nombre completo en el segundo envío). Ante
 conviene buscarlo por apellido y por salón, no por el nombre exacto. Ojo también con los dos
 homónimos: Samuel Pérez Acosta es de 11A y Samuel Pérez Arteaga de 11E.
 
+Como la hoja sigue abierta, al final de la Galería hay un bloque **"Todavía puedes dejar tu huella"**
+(`.suma-huella` en `index.html`) que lleva al formulario para quien no alcanzó a responder. El texto
+promete que aparecerá "en unos días" **porque nadie lo publica solo**: hay que volver a sincronizar
+`public/datos.json` con la hoja, reconstruir y publicar. Si el formulario se cierra, hay que quitar
+ese bloque; si cambia de enlace, el enlace está escrito directo en el HTML.
+
 ## Cómo trabajar
 
 ```bash
@@ -46,10 +53,38 @@ la base de datos, importar primero los datos (`npm run importar`, requiere `serv
 y cambiar esa llave a `false`. Las reglas (`firestore.rules`, `storage.rules`) solo permiten escribir
 con sesión de administrador.
 
+## Palabras de sus Maestros
+
+Videos en los que los profesores le dejan un mensaje a la generación. Están subidos a YouTube como **no
+listados** (no aparecen en búsquedas ni en el canal, pero cualquiera con el enlace los puede ver) y el
+portal los incrusta. No hay formulario, ni base de datos, ni nada que aprobar: la lista se arma a mano.
+
+- **Cómo agregar un profesor**: subir el video a YouTube, copiar el id del enlace (en
+  `https://youtu.be/ScMzIvxBSi4` el id es `ScMzIvxBSi4`), agregar una entrada en `public/maestros.json`,
+  reconstruir y publicar.
+- **Campos**: `id` (cualquier texto único, solo identifica la entrada), `nombre`, `area`, `youtube` (el id
+  del video) y `activo`. Opcional: `formato: "vertical"` para los videos grabados con el celular en
+  vertical, que cambia la tarjeta a 9:16. Con `activo: false` la tarjeta desaparece del portal sin borrar
+  la entrada.
+- **La sección se muestra sola**: mientras no haya ningún video activo, ni la sección ni su enlace del
+  menú aparecen en el portal.
+- **Se agrupa sola por área**: con menos de 10 videos se ve una sola grilla; a partir de ahí se agrupan
+  por `area`, siempre que haya más de un área y en promedio al menos dos profesores por área (si no,
+  quedaría una pila de títulos sueltos).
+- **El iframe se crea al dar play**: hasta entonces la tarjeta solo muestra la carátula, así que abrir la
+  página no carga nada de YouTube. Los videos se incrustan desde `youtube-nocookie.com`.
+- Código: `profesores.js`.
+
+> `maestros.json` viene con tres entradas de ejemplo que apuntan a videos públicos de prueba, las tres
+> en `activo: false` para que no se publiquen por accidente: la sección queda oculta en el portal aunque
+> se reconstruya y se despliegue. Para verlas funcionando, poner `activo: true` en local. **Hay que
+> borrarlas** cuando entren los videos reales.
+
 ## Otros archivos
 
 - `firebase-config.js`: configuración de Firebase.
 - `solicitudes.js`: formulario del pie para corregir o retirar datos (Ley 1581). Guarda en Firestore
   `solicitudes_borrado`; se atienden en `/admin` → **Solicitudes Ley 1581** (el inicio del panel muestra cuántas hay pendientes).
-- `public/`: `datos.json`, `404.html`, favicon, `og-image.jpg` (vista previa al compartir el enlace).
+- `profesores.js`: grilla de los videos de los profesores (ver sección arriba).
+- `public/`: `datos.json`, `maestros.json`, `404.html`, favicon, `og-image.jpg` (vista previa al compartir el enlace).
 - `legacy/`: material del flujo anterior (formulario de familias, fotos), fuera del build. Ver su README.

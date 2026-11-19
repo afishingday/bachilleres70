@@ -2,6 +2,7 @@
 
 import { db } from './firebase-client.js';
 import { initSolicitudes } from './solicitudes.js';
+import { initProfesores } from './profesores.js';
 import {
   collection, onSnapshot, query, orderBy,
 } from 'firebase/firestore';
@@ -922,6 +923,7 @@ function initPresentacion() {
 initPresentacion();
 initGaleria();
 initSolicitudes();
+initProfesores();
 
 // ─── Carga de datos: Firestore o datos.json ───────────────────────────────────
 // Poner en true mientras Firestore no tenga los datos reales importados.
