@@ -453,7 +453,13 @@ function renderGaleriaCards() {
   });
 
   if (!filtered.length) {
-    grid.innerHTML = '<p class="galeria-empty">No se encontraron sueños.</p>';
+    // Quien busca su nombre y no se encuentra es justo a quien le sirve el
+    // formulario. El enlace se toma del bloque .suma-huella para no repetirlo.
+    const cta = document.querySelector('.suma-huella-cta');
+    const invitacion = cta
+      ? ` ¿Eres de la Generación 70 y no alcanzaste a responder? <a href="${cta.href}" target="_blank" rel="noopener">Déjanos tus datos aquí.</a>`
+      : '';
+    grid.innerHTML = `<p class="galeria-empty">No se encontraron sueños.${invitacion}</p>`;
     return;
   }
 
