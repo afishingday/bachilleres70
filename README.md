@@ -29,8 +29,12 @@ Pérez Acosta` y dos que mandaron el nombre completo en el segundo envío). Ante
 conviene buscarlo por apellido y por salón, no por el nombre exacto. Ojo también con los dos
 homónimos: Samuel Pérez Acosta es de 11A y Samuel Pérez Arteaga de 11E.
 
-Como la hoja sigue abierta, al final de la Galería hay un bloque **"Todavía puedes dejar tu huella"**
-(`.suma-huella` en `index.html`) que lleva al formulario para quien no alcanzó a responder. El texto
+Como la hoja sigue abierta, la Galería lleva un bloque **"Todavía puedes dejar tu huella"**
+(`.suma-huella` en `index.html`) con el enlace al formulario, para quien no alcanzó a responder. Va
+**arriba de la grilla**, entre los filtros y la primera tarjeta: debajo quedaba a 47 pantallas de
+scroll en celular, porque la galería pinta las 171 tarjetas seguidas. Lo que vaya después de
+`#galeria-grid` no lo ve nadie. El mensaje de "No se encontraron sueños" (en `main.js`) ofrece el
+mismo enlace, tomándolo del `href` del bloque para no repetir la URL en dos sitios. El texto
 promete que aparecerá "en unos días" **porque nadie lo publica solo**: hay que volver a sincronizar
 `public/datos.json` con la hoja, reconstruir y publicar. Si el formulario se cierra, hay que quitar
 ese bloque; si cambia de enlace, el enlace está escrito directo en el HTML.
