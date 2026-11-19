@@ -36,6 +36,7 @@
       <ul class="nav-menu">
         <li><a href="#universo">Universo</a></li>
         <li><a href="#galeria">Galería</a></li>
+        <li><a href="#tu-huella">Tu huella</a></li>
         <li id="nav-profes" hidden><a href="#profesores">Maestros</a></li>
         <li><a href="#playlist">Playlist</a></li>
       </ul>
@@ -141,26 +142,29 @@
           </div>
           <div class="galeria-tabs" id="galeria-tabs" role="group" aria-label="Filtrar por grado"></div>
         </div>
-        <!-- Invitación para quien es de la generación y no alcanzó a responder
-             el formulario "La Huella de la Promoción 70". El portal lee el
-             archivo fijo public/datos.json, que se sincroniza a mano con la
-             hoja de respuestas: por eso dice "en unos días" y no "al instante".
-             Va ARRIBA de la grilla a propósito: la galería son 171 tarjetas y
-             abajo quedaba a 47 pantallas de scroll, donde no lo veía nadie. -->
-        <aside class="suma-huella">
-          <p class="section-eyebrow suma-huella-eyebrow">¿No te encuentras?</p>
-          <h3 class="suma-huella-title">Todavía puedes dejar tu huella</h3>
-          <p class="suma-huella-desc">
-            Si eres de la Generación 70 y no alcanzaste a responder, aún estás a tiempo:
-            cuéntanos tu sueño y tu mensaje para la generación. En unos días vas a verte
-            aquí, con los demás.
-          </p>
-          <a class="suma-huella-cta"
-             href="https://docs.google.com/forms/d/1626B-0UwF-JknkwmDHM-G5twojlN9aY32W8WeO3HpGg/viewform"
-             target="_blank" rel="noopener">Dejar mi huella</a>
-        </aside>
-
         <div class="galeria-grid" id="galeria-grid"></div>
+      </div>
+    </section>
+
+    <!-- ── TU HUELLA ───────────────────────────────────────
+         Invitación para quien es de la generación y no alcanzó a responder el
+         formulario "La Huella de la Promoción 70". Tiene sección propia y
+         entrada en el menú: dentro de la galería quedaba o estorbando antes de
+         las tarjetas, o enterrado detrás de las 171. El portal lee el archivo
+         fijo public/datos.json, que se sincroniza a mano con la hoja de
+         respuestas; por eso dice "en unos días" y no "al instante". -->
+    <section class="section-huella" id="tu-huella" aria-labelledby="huella-title">
+      <div class="huella-inner">
+        <p class="section-eyebrow">¿No te encuentras?</p>
+        <h2 class="huella-title" id="huella-title">Todavía puedes dejar tu huella</h2>
+        <p class="huella-desc">
+          Si eres de la Generación 70 y no alcanzaste a responder, aún estás a tiempo:
+          cuéntanos tu sueño y tu mensaje para la generación. En unos días vas a verte
+          en el universo, con los demás.
+        </p>
+        <a class="suma-huella-cta"
+           href="https://docs.google.com/forms/d/1626B-0UwF-JknkwmDHM-G5twojlN9aY32W8WeO3HpGg/viewform"
+           target="_blank" rel="noopener">Dejar mi huella</a>
       </div>
     </section>
 
@@ -214,8 +218,9 @@
         y lo retiramos o corregimos de inmediato (Ley 1581 de 2012).
       </p>
       <p class="footer-aviso">
-        El sitio usa Google Analytics para medir las visitas de forma agregada (cuántas personas entran
-        y desde qué tipo de dispositivo), sin identificar a nadie.
+        El sitio usa Google Analytics para medir el uso de forma agregada: cuántas personas entran,
+        desde qué tipo de dispositivo, hasta qué secciones llegan y cuántas veces se abre, se comparte
+        o se reproduce algo. No identifica a nadie ni registra el nombre de ningún estudiante.
       </p>
       <p class="footer-legal">Hecho con cariño por los padres de familia de la Generación 70 · 2026</p>
     </div>

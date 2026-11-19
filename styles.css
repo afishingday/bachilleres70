@@ -1994,32 +1994,43 @@ button.footer-contacto { background: none; border: none; border-bottom: 1px soli
   .profes-grid { grid-template-columns: 1fr; }
 }
 
-/* ── SUMA TU HUELLA: invitación al formulario ─────────────────── */
-.suma-huella {
-  max-width: 38rem;
-  margin: 1.25rem auto 0;
-  padding: 2.25rem 1.75rem 2.5rem;
+/* ── TU HUELLA: sección con la invitación al formulario ───────── */
+.section-huella {
+  position: relative;
+  padding: 5rem 2rem 4.5rem;
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+.section-huella::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 120%;
+  border-radius: 50%;
+  background: rgba(250, 204, 21, 0.06);
+  filter: blur(140px);
+  pointer-events: none;
+}
+.huella-inner {
+  position: relative;
+  max-width: 34rem;
+  margin: 0 auto;
   text-align: center;
-  background: linear-gradient(180deg, rgba(250, 204, 21, 0.055), rgba(30, 41, 59, 0.45));
-  border: 1px solid rgba(250, 204, 21, 0.18);
-  border-radius: var(--radius);
 }
-.suma-huella-eyebrow {
-  margin: 0 0 0.5rem;
-  letter-spacing: 0.22em;
-}
-.suma-huella-title {
+.huella-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   color: var(--text);
-  margin: 0 0 0.7rem;
+  margin: 0.25rem 0 0.75rem;
 }
-.suma-huella-desc {
-  max-width: 30rem;
-  margin: 0 auto 1.6rem;
+.huella-desc {
+  margin: 0 auto 1.9rem;
   font-size: 0.925rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--text-soft);
 }
 .suma-huella-cta {
@@ -2043,6 +2054,6 @@ button.footer-contacto { background: none; border: none; border-bottom: 1px soli
 }
 
 @media (max-width: 600px) {
-  .suma-huella { padding: 1.75rem 1.15rem 2rem; }
-  .suma-huella-desc { margin-bottom: 1.35rem; }
+  .section-huella { padding: 3.5rem 1.25rem 3rem; }
+  .huella-desc { margin-bottom: 1.6rem; }
 }

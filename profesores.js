@@ -15,6 +15,8 @@
  * YouTube (ni cookies ni scripts) por el solo hecho de abrirla.
  */
 
+import { medir } from './firebase-client.js';
+
 /** Desde cuántos videos vale la pena agrupar por área en vez de una sola grilla. */
 const MINIMO_PARA_AGRUPAR = 10;
 
@@ -96,7 +98,7 @@ function renderTarjeta(v) {
   return `
     <article class="profe-card${vertical}">
       <div class="profe-card-media">
-        <button type="button" class="profe-card-play" data-youtube="${id}"
+        <button type="button" class="profe-card-play" data-youtube="${id}" data-nombre="${nombre}"
                 aria-label="Reproducir el mensaje de ${nombre}">
           <img class="profe-card-poster" loading="lazy" alt=""
                src="https://i.ytimg.com/vi/${id}/maxresdefault.jpg"
@@ -121,6 +123,8 @@ function activarPlay(lista) {
 
     const id = boton.dataset.youtube;
     if (!id) return;
+
+    medir('ver_video_profesor', { profesor: boton.dataset.nombre || id });
 
     const media = boton.closest('.profe-card-media');
     const src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}`

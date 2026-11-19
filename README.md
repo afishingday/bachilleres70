@@ -79,10 +79,30 @@ portal los incrusta. No hay formulario, ni base de datos, ni nada que aprobar: l
   página no carga nada de YouTube. Los videos se incrustan desde `youtube-nocookie.com`.
 - Código: `profesores.js`.
 
-> `maestros.json` viene con tres entradas de ejemplo que apuntan a videos públicos de prueba, las tres
-> en `activo: false` para que no se publiquen por accidente: la sección queda oculta en el portal aunque
-> se reconstruya y se despliegue. Para verlas funcionando, poner `activo: true` en local. **Hay que
-> borrarlas** cuando entren los videos reales.
+Hoy hay **13 profesores**, todos sin `area`, así que se ven en una sola grilla. Los videos están en el
+canal personal de YouTube de Luis: si ese canal desaparece o cambia de cuenta, la sección se queda sin
+videos.
+
+## Qué se mide
+
+Google Analytics (vía Firebase, `G-R5PKWZT9CH`; propiedad GA4 `p525865313`). Además de las visitas que
+mide solo, el portal registra estos eventos con `medir()`, el ayudante que exporta `firebase-client.js`:
+
+| Evento | Cuándo | Parámetros |
+|---|---|---|
+| `ver_seccion` | alguien llega a una sección, una vez por visita | `seccion` |
+| `abrir_estudiante` | se abre una tarjeta, en el mapa o en la galería | `origen`, `grupo` |
+| `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo` (con o sin Leo) |
+| `ver_video_profesor` | se le da play al video de un profesor | `profesor` |
+| `clic_formulario` | se pulsa el enlace del formulario | `origen` |
+| `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
+| `abrir_presentacion` | se abre el modo presentación | — |
+
+Dos cosas que conviene no olvidar. **No se registra el nombre de ningún estudiante**, solo su salón: el
+portal es sobre menores y una lista de "los más vistos" no es algo que haga falta. Y para ver los
+parámetros desglosados en Analytics hay que **registrarlos como dimensiones personalizadas** (Admin →
+Definiciones personalizadas); sin eso solo se ven los totales de cada evento, y el registro **no es
+retroactivo**.
 
 ## Otros archivos
 

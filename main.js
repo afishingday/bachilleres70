@@ -1,6 +1,6 @@
 // main.js — Universo de los Sueños · Gen 70 LSyH
 
-import { db } from './firebase-client.js';
+import { db, medir } from './firebase-client.js';
 import { initSolicitudes } from './solicitudes.js';
 import { initProfesores } from './profesores.js';
 import {
@@ -118,6 +118,7 @@ tooltipEl.addEventListener('click', e => {
 
 function showTooltip(student, xPct, yPct) {
   tooltipStudent = student;
+  medir('abrir_estudiante', { origen: 'mapa', grupo: student.grupo || 'sin_grupo' });
   const cat   = CATEGORIES[student.category];
   const below = yPct < 38;
   const touch = isTouch();
@@ -440,6 +441,8 @@ if (mapaSearchEl) mapaSearchEl.addEventListener('input', () => handleSearch(mapa
 })();
 
 // ─── Galería de tarjetas ──────────────────────────────────────────────────────
+let temporizadorBusquedaVacia = null;
+
 function renderGaleriaCards() {
   const grid = document.getElementById('galeria-grid');
   if (!grid) return;
@@ -453,8 +456,14 @@ function renderGaleriaCards() {
   });
 
   if (!filtered.length) {
+    // Se mide un rato después de dejar de escribir: si no, cada letra de una
+    // búsqueda que todavía no termina contaría como una búsqueda fallida.
+    clearTimeout(temporizadorBusquedaVacia);
+    temporizadorBusquedaVacia = setTimeout(
+      () => medir('busqueda_sin_resultados', { donde: 'galeria' }), 1200,
+    );
     // Quien busca su nombre y no se encuentra es justo a quien le sirve el
-    // formulario. El enlace se toma del bloque .suma-huella para no repetirlo.
+    // formulario. El enlace se toma de la sección "Tu huella" para no repetirlo.
     const cta = document.querySelector('.suma-huella-cta');
     const invitacion = cta
       ? ` ¿Eres de la Generación 70 y no alcanzaste a responder? <a href="${cta.href}" target="_blank" rel="noopener">Déjanos tus datos aquí.</a>`
@@ -462,6 +471,8 @@ function renderGaleriaCards() {
     grid.innerHTML = `<p class="galeria-empty">No se encontraron sueños.${invitacion}</p>`;
     return;
   }
+
+  clearTimeout(temporizadorBusquedaVacia);
 
   grid.innerHTML = '';
   filtered.forEach(s => {
@@ -547,7 +558,13 @@ function initGaleria() {
       return;
     }
     const card = e.target.closest('.galeria-card');
-    if (card && !card.classList.contains('galeria-card--sin-mensaje')) card.classList.toggle('is-flipped');
+    if (card && !card.classList.contains('galeria-card--sin-mensaje')) {
+      card.classList.toggle('is-flipped');
+      if (card.classList.contains('is-flipped')) {
+        const s = currentStudents.find(x => String(x.id || x.nombre) === card.dataset.sid);
+        medir('abrir_estudiante', { origen: 'galeria', grupo: (s && s.grupo) || 'sin_grupo' });
+      }
+    }
   });
 }
 
@@ -583,8 +600,14 @@ function askShareChoice(student) {
   };
 }
 
-shareConLeoBtn?.addEventListener('click', () => _shareChoiceResolve?.(true));
-shareSinLeoBtn?.addEventListener('click', () => _shareChoiceResolve?.(false));
+shareConLeoBtn?.addEventListener('click', () => {
+  medir('compartir_tarjeta', { tipo: 'con_leo' });
+  _shareChoiceResolve?.(true);
+});
+shareSinLeoBtn?.addEventListener('click', () => {
+  medir('compartir_tarjeta', { tipo: 'sin_leo' });
+  _shareChoiceResolve?.(false);
+});
 shareCancelBtn?.addEventListener('click', () => {
   shareChoiceOverlay.hidden = true;
   _shareChoiceResolve = null;
@@ -908,7 +931,7 @@ function initPresentacion() {
     presSearchEl.addEventListener('keydown', e => { if (e.key === 'Escape') { presSearchEl.value = ''; showSlide(0); e.stopPropagation(); } });
   }
 
-  btnOpen.addEventListener('click', open);
+  btnOpen.addEventListener('click', () => { medir('abrir_presentacion'); open(); });
   btnClose.addEventListener('click', close);
   btnPrev.addEventListener('click', () => { showSlide(idx - 1); startAuto(); });
   btnNext.addEventListener('click', () => { showSlide(idx + 1); startAuto(); });
@@ -930,6 +953,43 @@ initPresentacion();
 initGaleria();
 initSolicitudes();
 initProfesores();
+medirUso();
+
+// ─── Medición de uso ──────────────────────────────────────────────────────────
+// Qué secciones alcanza la gente y si llegan a pulsar el enlace del formulario.
+// Lo demás (abrir una tarjeta, compartirla, ver un video) se mide donde ocurre.
+function medirUso() {
+  // El enlace del formulario aparece en dos sitios: la sección "Tu huella" y el
+  // mensaje de búsqueda sin resultados. Un solo oyente cubre los dos.
+  document.addEventListener('click', e => {
+    const enlace = e.target.closest('a[href*="docs.google.com/forms"]');
+    if (!enlace) return;
+    medir('clic_formulario', {
+      origen: enlace.closest('.galeria-empty') ? 'busqueda_vacia' : 'seccion',
+    });
+  });
+
+  if (!('IntersectionObserver' in window)) return;
+
+  // Umbral 0: la galería mide decenas de miles de píxeles, así que pedir un
+  // porcentaje visible nunca se cumpliría. Interesa "llegó hasta aquí".
+  const vistas = new Set();
+  const observador = new IntersectionObserver(entradas => {
+    entradas.forEach(entrada => {
+      if (!entrada.isIntersecting) return;
+      const seccion = entrada.target.id;
+      if (!vistas.has(seccion)) {
+        vistas.add(seccion);
+        medir('ver_seccion', { seccion });
+      }
+      observador.unobserve(entrada.target);
+    });
+  }, { threshold: 0 });
+
+  // Maestros empieza oculta y se muestra sola: observarla igual es correcto,
+  // porque mientras esté oculta no puede intersectar.
+  document.querySelectorAll('main section[id]').forEach(s => observador.observe(s));
+}
 
 // ─── Carga de datos: Firestore o datos.json ───────────────────────────────────
 // Poner en true mientras Firestore no tenga los datos reales importados.
