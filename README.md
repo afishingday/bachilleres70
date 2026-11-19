@@ -104,6 +104,11 @@ parámetros desglosados en Analytics hay que **registrarlos como dimensiones per
 Definiciones personalizadas); sin eso solo se ven los totales de cada evento, y el registro **no es
 retroactivo**.
 
+Las seis ya están registradas (19 de noviembre de 2026), todas de ámbito *Event*: Sección → `seccion`,
+Salón → `grupo`, Origen → `origen`, Profesor → `profesor`, Tipo de tarjeta → `tipo`, Dónde se buscó →
+`donde`. **Si se agrega un parámetro nuevo a un evento, hay que registrarlo ahí el mismo día**, o esos
+datos quedan sin desglosar para siempre.
+
 ## Otros archivos
 
 - `firebase-config.js`: configuración de Firebase.
