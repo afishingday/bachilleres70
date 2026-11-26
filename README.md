@@ -91,14 +91,21 @@ Spotify:
 - **Spotify**: `2wO4X5OPppFjR6AbbxpZ7k`, incrustada tal cual con el iframe que da Spotify.
 - **YouTube**: la playlist `PLLthgw-G26Uo` del canal de Luis (56 canciones a 26 de noviembre de 2026).
 
-El bloque de YouTube **no es un iframe hasta que alguien lo pulsa**, igual que los videos de los
-profesores: hasta entonces es solo un botón, así que abrir el portal no le pide cookies ni scripts a
-Google por una playlist que mucha gente ni va a abrir. Al pulsarlo, el botón se reemplaza por el
-reproductor de `youtube-nocookie.com` en 16:9, ya sonando.
+El bloque de YouTube da **dos salidas**, porque el reproductor incrustado deja la lista de canciones
+muy apretada y en celular casi no se ve:
 
-Las dos cosas están escritas a mano en `index.html`: el id de la playlist en el `data-lista` del botón
-y **el número de canciones en el texto** (`Las 56 canciones, en video`). Si se agregan canciones a la
-lista en YouTube, hay que corregir ese número aquí. Código: `initPlaylistYouTube()` en `main.js`.
+- **Reproducir aquí mismo**: el botón. **No es un iframe hasta que alguien lo pulsa**, igual que los
+  videos de los profesores, así que abrir el portal no le pide cookies ni scripts a Google por una
+  playlist que mucha gente ni va a abrir. Al pulsarlo, el botón se reemplaza por el reproductor de
+  `youtube-nocookie.com` en 16:9, ya sonando.
+- **Abrir la lista completa en YouTube**: el enlace de abajo, que abre otra pestaña. Va **fuera** de la
+  tarjeta a propósito: la tarjeta se reemplaza por el reproductor, y así la salida a YouTube sigue
+  disponible mientras alguien está viendo los videos.
+
+Tres cosas están escritas a mano en `index.html`: el id de la playlist en el `data-lista` del botón, el
+mismo id otra vez en el `href` del enlace, y **el número de canciones en el texto** (`Reproducir las 56
+canciones`). Si se agregan canciones a la lista en YouTube, hay que corregir ese número aquí. Código:
+`initPlaylistYouTube()` en `main.js`.
 
 ## Qué se mide
 
@@ -114,7 +121,8 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | `clic_formulario` | se pulsa el enlace del formulario | `origen` |
 | `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
 | `abrir_presentacion` | se abre el modo presentación | — |
-| `ver_playlist_youtube` | se le da play a la playlist de YouTube | — |
+| `ver_playlist_youtube` | se le da play a la playlist de YouTube dentro del portal | — |
+| `abrir_playlist_youtube` | se pulsa el enlace para ver la lista completa en YouTube | — |
 
 Dos cosas que conviene no olvidar. **No se registra el nombre de ningún estudiante**, solo su salón: el
 portal es sobre menores y una lista de "los más vistos" no es algo que haga falta. Y para ver los

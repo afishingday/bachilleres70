@@ -961,6 +961,9 @@ medirUso();
 // hasta que alguien le da play, así abrir el portal no carga sus cookies ni sus
 // scripts. El id de la lista está escrito en el HTML (`data-lista`).
 function initPlaylistYouTube() {
+  const enlace = document.getElementById('playlist-yt-enlace');
+  if (enlace) enlace.addEventListener('click', () => medir('abrir_playlist_youtube'));
+
   const caja = document.getElementById('playlist-youtube');
   if (!caja) return;
 

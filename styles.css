@@ -815,6 +815,30 @@ body {
   font-size: 0.78rem;
   color: var(--text-muted);
 }
+/* El enlace va fuera de la tarjeta a propósito: al dar play la tarjeta se
+   reemplaza por el reproductor, y así la salida a YouTube sigue ahí. */
+.playlist-yt-pie {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+}
+.playlist-yt-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(250, 204, 21, 0.35);
+  /* Padding generoso: en celular el enlace es el área que se toca con el dedo. */
+  padding: 0.55em 0.4em 0.35em;
+  transition: border-color var(--trans);
+}
+.playlist-yt-enlace:hover,
+.playlist-yt-enlace:focus-visible { border-bottom-color: var(--gold); }
+.playlist-yt-enlace svg {
+  width: 0.9em;
+  height: 0.9em;
+  flex: 0 0 auto;
+}
 /* Al dar play la tarjeta se convierte en el reproductor. */
 .playlist-embed--yt:has(iframe) {
   position: relative;
