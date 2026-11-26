@@ -20,24 +20,28 @@ reconstruir y publicar.
 
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
-**Última sincronización con la hoja: 22 de octubre de 2026** (171 estudiantes). La hoja sigue abierta,
-así que puede volver a desfasarse. Al comparar hay que tener en cuenta que **una fila no es un
-estudiante**: de las 182 respuestas de ese día, 11 eran segundos envíos. Seis personas llenaron el
+**Última sincronización con la hoja: 26 de noviembre de 2026** (201 estudiantes, de 216 respuestas).
+En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
+semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
+revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
+**una fila no es un estudiante**: en la sincronización del 22 de octubre, de 182 respuestas 11 eran
+segundos envíos. Seis personas llenaron el
 formulario dos veces y otras cinco aparecen con el nombre escrito distinto al del archivo (`Plancha` →
 `Emanuel Velasco (Plancha)`, `Jacobo Gaviria` → `Jacobo Gaviria Jiménez`, `Samuel Pérez` → `Samuel
 Pérez Acosta` y dos que mandaron el nombre completo en el segundo envío). Antes de agregar a alguien
 conviene buscarlo por apellido y por salón, no por el nombre exacto. Ojo también con los dos
 homónimos: Samuel Pérez Acosta es de 11A y Samuel Pérez Arteaga de 11E.
 
-Como la hoja sigue abierta, la Galería lleva un bloque **"Todavía puedes dejar tu huella"**
-(`.suma-huella` en `index.html`) con el enlace al formulario, para quien no alcanzó a responder. Va
-**arriba de la grilla**, entre los filtros y la primera tarjeta: debajo quedaba a 47 pantallas de
-scroll en celular, porque la galería pinta las 171 tarjetas seguidas. Lo que vaya después de
-`#galeria-grid` no lo ve nadie. El mensaje de "No se encontraron sueños" (en `main.js`) ofrece el
-mismo enlace, tomándolo del `href` del bloque para no repetir la URL en dos sitios. El texto
-promete que aparecerá "en unos días" **porque nadie lo publica solo**: hay que volver a sincronizar
-`public/datos.json` con la hoja, reconstruir y publicar. Si el formulario se cierra, hay que quitar
-ese bloque; si cambia de enlace, el enlace está escrito directo en el HTML.
+Como la hoja sigue abierta, hay una sección **"Todavía puedes dejar tu huella"** (`#tu-huella` en
+`index.html`) con el enlace al formulario, para quien no alcanzó a responder. Tiene **sección propia
+después de la galería y entrada en el menú**: dentro de la galería quedaba o estorbando antes de las
+tarjetas, o enterrada detrás de las 201. Como queda lejos por scroll, el enlace del menú es la forma
+real de llegar: si alguna vez se quita del menú, la sección deja de existir en la práctica. El
+mensaje de "No se encontraron sueños" (en `main.js`) ofrece el mismo enlace, tomándolo del `href` de
+la sección para no repetir la URL en dos sitios. El texto **no promete plazo a propósito**, porque
+nadie lo publica solo: hay que volver a sincronizar `public/datos.json` con la hoja, reconstruir y
+publicar. Si el formulario se cierra, hay que quitar esa sección; si cambia de enlace, el enlace está
+escrito directo en el HTML.
 
 ## Cómo trabajar
 
