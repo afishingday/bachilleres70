@@ -192,8 +192,27 @@
           <h2 class="playlist-title" id="playlist-title">El Soundtrack de la<br>Generación&nbsp;70&nbsp;LSyH</h2>
         </div>
         <div class="playlist-embed-wrap">
-          <div class="playlist-embed" id="playlist-spotify">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2wO4X5OPppFjR6AbbxpZ7k?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="playlist-fuente">
+            <p class="playlist-fuente-label">En Spotify</p>
+            <div class="playlist-embed" id="playlist-spotify">
+              <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2wO4X5OPppFjR6AbbxpZ7k?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <div class="playlist-fuente">
+            <p class="playlist-fuente-label">En YouTube</p>
+            <div class="playlist-embed playlist-embed--yt" id="playlist-youtube">
+              <button type="button" class="playlist-yt-play" data-lista="PLLthgw-G26Uo"
+                      aria-label="Reproducir en YouTube las 56 canciones de la Generación 70">
+                <span class="playlist-yt-icono" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+                <span class="playlist-yt-texto">
+                  <span class="playlist-yt-titulo">Las 56 canciones, en video</span>
+                  <span class="playlist-yt-hint">Se abre aquí mismo, sin salir del portal</span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

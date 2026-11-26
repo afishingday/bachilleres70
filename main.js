@@ -953,7 +953,35 @@ initPresentacion();
 initGaleria();
 initSolicitudes();
 initProfesores();
+initPlaylistYouTube();
 medirUso();
+
+// ─── La playlist en YouTube ───────────────────────────────────────────────────
+// Igual que los videos de los profesores: la tarjeta no le pide nada a YouTube
+// hasta que alguien le da play, así abrir el portal no carga sus cookies ni sus
+// scripts. El id de la lista está escrito en el HTML (`data-lista`).
+function initPlaylistYouTube() {
+  const caja = document.getElementById('playlist-youtube');
+  if (!caja) return;
+
+  caja.addEventListener('click', e => {
+    const boton = e.target.closest('.playlist-yt-play');
+    if (!boton) return;
+
+    const lista = boton.dataset.lista;
+    if (!lista) return;
+
+    medir('ver_playlist_youtube');
+
+    const src = `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(lista)}`
+      + '&autoplay=1&rel=0&modestbranding=1&playsinline=1';
+
+    caja.innerHTML = `<iframe class="playlist-yt-iframe" src="${src}"
+      title="El Soundtrack de la Generación 70 LSyH en YouTube"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  });
+}
 
 // ─── Medición de uso ──────────────────────────────────────────────────────────
 // Qué secciones alcanza la gente y si llegan a pulsar el enlace del formulario.

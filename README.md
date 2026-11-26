@@ -8,7 +8,7 @@ comité de padres de familia. Publicado en https://syhg70.web.app.
 - **Universo**: cada estudiante es una estrella agrupada por constelación (área del sueño). Buscador y filtros por constelación y grupo. Modo **Presentación** para proyectar en la ceremonia (pasa cada 5 s; flechas y espacio para controlar; buscador por nombre).
 - **Galería**: tarjeta por estudiante con su sueño; se voltea para leer su mensaje a la generación. Botón para compartir una imagen del sueño (con o sin Leo, la mascota).
 - **Palabras de sus Maestros**: videos en los que los profesores le dejan un mensaje a la generación. Ver abajo.
-- **Playlist**: lista de Spotify con las canciones que eligieron los estudiantes.
+- **Playlist**: las canciones que eligieron los estudiantes, en Spotify y en YouTube. Ver abajo.
 
 ## De dónde salen los datos
 
@@ -83,6 +83,23 @@ Hoy hay **13 profesores**, todos sin `area`, así que se ven en una sola grilla.
 canal personal de YouTube de Luis: si ese canal desaparece o cambia de cuenta, la sección se queda sin
 videos.
 
+## El Soundtrack
+
+La misma lista de canciones está en dos sitios, uno debajo del otro, porque no todo el mundo tiene
+Spotify:
+
+- **Spotify**: `2wO4X5OPppFjR6AbbxpZ7k`, incrustada tal cual con el iframe que da Spotify.
+- **YouTube**: la playlist `PLLthgw-G26Uo` del canal de Luis (56 canciones a 26 de noviembre de 2026).
+
+El bloque de YouTube **no es un iframe hasta que alguien lo pulsa**, igual que los videos de los
+profesores: hasta entonces es solo un botón, así que abrir el portal no le pide cookies ni scripts a
+Google por una playlist que mucha gente ni va a abrir. Al pulsarlo, el botón se reemplaza por el
+reproductor de `youtube-nocookie.com` en 16:9, ya sonando.
+
+Las dos cosas están escritas a mano en `index.html`: el id de la playlist en el `data-lista` del botón
+y **el número de canciones en el texto** (`Las 56 canciones, en video`). Si se agregan canciones a la
+lista en YouTube, hay que corregir ese número aquí. Código: `initPlaylistYouTube()` en `main.js`.
+
 ## Qué se mide
 
 Google Analytics (vía Firebase, `G-R5PKWZT9CH`; propiedad GA4 `p525865313`). Además de las visitas que
@@ -97,6 +114,7 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | `clic_formulario` | se pulsa el enlace del formulario | `origen` |
 | `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
 | `abrir_presentacion` | se abre el modo presentación | — |
+| `ver_playlist_youtube` | se le da play a la playlist de YouTube | — |
 
 Dos cosas que conviene no olvidar. **No se registra el nombre de ningún estudiante**, solo su salón: el
 portal es sobre menores y una lista de "los más vistos" no es algo que haga falta. Y para ver los
