@@ -347,8 +347,11 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 
 ### Dónde se miran
 
-Las tres pantallas que hacen falta, con la cuenta `afishingday@gmail.com`. Abren directo en la
-propiedad del portal, sin pasar por los menús de Analytics (que cambian de sitio cada tanto):
+Las tres pantallas que hacen falta. Abren directo en la propiedad del portal, sin pasar por los
+menús de Analytics (que cambian de sitio cada tanto). Entran **`afishingday@gmail.com`** y
+**`luistyle@gmail.com`**, las dos como administradoras: así el enlace sirve con cualquiera de las dos
+sesiones de Google abiertas, que antes era el problema (con la cuenta sin permiso, Analytics no dice
+"cambia de cuenta", dice que falta acceso, y parece culpa del enlace).
 
 - **Ahora mismo** — <https://analytics.google.com/analytics/web/#/a370149017p525865313/realtime/overview>
   Últimos 30 minutos, se actualiza solo. Es la única que sirve para el día de hoy.
