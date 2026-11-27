@@ -1767,5 +1767,13 @@
     "categoria": "Tecnología e Ingeniería",
     "sueno": "Estudiar ingeniería de sistemas",
     "activo": true
+  },
+  {
+    "id": "70203",
+    "nombre": "Isabela Serrano",
+    "grupo": "11C",
+    "categoria": "Artes y Diseño",
+    "sueno": "Maquillaje profesional",
+    "activo": true
   }
 ]

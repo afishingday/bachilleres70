@@ -21,8 +21,9 @@ reconstruir y publicar.
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
 **Última sincronización con la hoja: 26 de noviembre de 2026** (201 estudiantes, de 216 respuestas).
-Ese mismo día entró **Cristian García (11D)** a mano, porque lo pidió Luis y no venía en la hoja:
-son 202. Si se vuelve a sincronizar contra la hoja sin tenerlo en cuenta, desaparece.
+Ese mismo día entraron a mano **Cristian García (11D)** e **Isabela Serrano (11C)**, que los pidió
+Luis: son 203. Isabela además iba a quedar en el formulario, así que a la próxima sincronización
+viene sola; **Cristian no**, y una sincronización que no lo tenga en cuenta lo borra.
 En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
 semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
 revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
@@ -256,10 +257,10 @@ encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
 ## Dos tarjetas para compartir: el sueño y el mensaje
 
-153 de los 202 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
+153 de los 203 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
 solo vivía en el reverso de su tarjeta de la galería: no se podía compartir. Ahora el diálogo de
 compartir abre con un selector de dos pestañas —**Su sueño** / **Su mensaje**— y el resto del
-diálogo (con Leo o sin Leo) sigue igual. A los 49 sin mensaje no les aparece el selector y el
+diálogo (con Leo o sin Leo) sigue igual. A los 50 sin mensaje no les aparece el selector y el
 diálogo se ve exactamente como antes.
 
 Las dos tarjetas comparten marco. La diferencia está en el reparto del alto: `generateShareCard()`
