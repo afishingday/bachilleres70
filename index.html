@@ -343,8 +343,16 @@
       <button class="share-choice-close" id="share-choice-cancel" aria-label="Cancelar">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
-      <p class="share-choice-label">Compartir sueño</p>
+      <p class="share-choice-label" id="share-choice-label">Compartir sueño</p>
       <h2 class="share-choice-title">¿Cómo quieres la tarjeta?</h2>
+
+      <!-- Solo aparece cuando esta persona dejó mensaje a la generación: 153 de
+           los 201 lo hicieron. Sin mensaje no hay nada que elegir. -->
+      <div class="share-que" id="share-que" role="group" aria-label="Qué compartir" hidden>
+        <button type="button" class="share-que-tab is-active" id="share-que-sueno" aria-pressed="true">Su sueño</button>
+        <button type="button" class="share-que-tab" id="share-que-mensaje" aria-pressed="false">Su mensaje</button>
+      </div>
+
       <div class="share-choice-btns">
         <button id="share-con-leo" class="share-choice-btn share-choice-leo">
           <div class="share-choice-visual share-choice-visual-leo">
@@ -364,7 +372,7 @@
             <span class="sc-star sc-s6"></span>
           </div>
           <span class="share-choice-btn-name">Sin Leo</span>
-          <span class="share-choice-btn-desc">Solo el sueño y las estrellas</span>
+          <span class="share-choice-btn-desc" id="share-sin-leo-desc">Solo el sueño y las estrellas</span>
         </button>
       </div>
     </div>

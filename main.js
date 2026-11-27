@@ -470,6 +470,13 @@ if (mapaSearchEl) mapaSearchEl.addEventListener('input', () => handleSearch(mapa
 // ─── Galería de tarjetas ──────────────────────────────────────────────────────
 let temporizadorBusquedaVacia = null;
 
+// Los dos iconos de las tarjetas, en una sola copia: salen hasta cuatro veces
+// por tarjeta y son 201 tarjetas.
+const ICONO_VOLTEAR =
+  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v6h6"/><path d="M3 13a9 9 0 1 0 3-7.7L3 8"/></svg>';
+const ICONO_COMPARTIR =
+  '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>';
+
 function renderGaleriaCards() {
   const grid = document.getElementById('galeria-grid');
   if (!grid) return;
@@ -520,9 +527,14 @@ function renderGaleriaCards() {
           <h3 class="galeria-card-nombre">${escapar(s.nombre || '')}</h3>
           <p class="galeria-card-sueno">"${escapar(s.sueno || 'Sueño por revelar…')}"</p>
           <div class="galeria-card-footer">
-            ${hasMensaje ? `<span class="galeria-card-flip-hint">Mensaje ↩</span>` : '<span></span>'}
+            ${hasMensaje
+              ? `<button class="galeria-card-flip" aria-label="Ver el mensaje de ${escapar(s.nombre || '')} a la generación">
+                   ${ICONO_VOLTEAR}
+                   Ver mensaje
+                 </button>`
+              : '<span></span>'}
             <button class="galeria-card-share" aria-label="Compartir sueño de ${escapar(s.nombre || '')}">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              ${ICONO_COMPARTIR}
               Compartir
             </button>
           </div>
@@ -533,6 +545,18 @@ function renderGaleriaCards() {
             ? `<p class="galeria-back-mensaje">"${escapar(s.mensaje)}"</p>`
             : `<p class="galeria-back-empty">Su sueño habla por sí solo.</p>`}
           <p class="galeria-back-firma">— ${escapar(s.nombre || '')}, ${escapar(s.grupo || '')}</p>
+          ${hasMensaje
+            ? `<div class="galeria-card-footer galeria-back-footer">
+                 <button class="galeria-card-flip galeria-card-volver" aria-label="Volver al sueño de ${escapar(s.nombre || '')}">
+                   ${ICONO_VOLTEAR}
+                   Volver
+                 </button>
+                 <button class="galeria-card-share galeria-share-mensaje" aria-label="Compartir el mensaje de ${escapar(s.nombre || '')}">
+                   ${ICONO_COMPARTIR}
+                   Compartir
+                 </button>
+               </div>`
+            : ''}
         </div>
       </div>`;
     grid.appendChild(card);
@@ -575,20 +599,30 @@ function initGaleria() {
   }
 
   // Delegación: compartir o voltear tarjeta
+  const dueno = el => {
+    const sid = el.closest('.galeria-card')?.dataset.sid;
+    return currentStudents.find(s => String(s.id || s.nombre) === sid);
+  };
+
   grid.addEventListener('click', e => {
+    // El de atrás comparte el mensaje; el de adelante, el sueño. Los dos se ven
+    // igual porque los dos dicen "Compartir" sobre la cara que ya se está
+    // mirando: lo que cambia es qué hay en esa cara.
     const shareBtn = e.target.closest('.galeria-card-share');
     if (shareBtn) {
       e.stopPropagation();
-      const sid = shareBtn.closest('.galeria-card')?.dataset.sid;
-      const student = currentStudents.find(s => String(s.id || s.nombre) === sid);
-      if (student) askShareChoice(student);
+      const student = dueno(shareBtn);
+      if (student) {
+        askShareChoice(student, shareBtn.classList.contains('galeria-share-mensaje') ? 'mensaje' : 'sueno');
+      }
       return;
     }
+
     const card = e.target.closest('.galeria-card');
     if (card && !card.classList.contains('galeria-card--sin-mensaje')) {
       card.classList.toggle('is-flipped');
       if (card.classList.contains('is-flipped')) {
-        const s = currentStudents.find(x => String(x.id || x.nombre) === card.dataset.sid);
+        const s = dueno(card);
         medir('abrir_estudiante', { origen: 'galeria', grupo: (s && s.grupo) || 'sin_grupo' });
       }
     }
@@ -615,22 +649,50 @@ let leoPreviewImg = null;
   leoPreviewImg = img;
 })();
 
+// Las dos pestañas de "qué compartir" y los textos que cambian con ellas.
+const shareQueWrap   = document.getElementById('share-que');
+const shareQueSueno  = document.getElementById('share-que-sueno');
+const shareQueMsj    = document.getElementById('share-que-mensaje');
+const shareLabelEl   = document.getElementById('share-choice-label');
+const shareSinLeoDesc = document.getElementById('share-sin-leo-desc');
+
 let _shareChoiceResolve = null;
 let _shareChoiceStudent = null;
+let _shareQue = 'sueno';
 
-function askShareChoice(student) {
+function pintarQue(que) {
+  _shareQue = que;
+  const esMsj = que === 'mensaje';
+  shareQueSueno?.classList.toggle('is-active', !esMsj);
+  shareQueMsj?.classList.toggle('is-active', esMsj);
+  shareQueSueno?.setAttribute('aria-pressed', String(!esMsj));
+  shareQueMsj?.setAttribute('aria-pressed', String(esMsj));
+  if (shareLabelEl)    shareLabelEl.textContent = esMsj ? 'Compartir mensaje' : 'Compartir sueño';
+  if (shareSinLeoDesc) shareSinLeoDesc.textContent = esMsj
+    ? 'Solo el mensaje y las estrellas'
+    : 'Solo el sueño y las estrellas';
+}
+
+shareQueSueno?.addEventListener('click', () => pintarQue('sueno'));
+shareQueMsj?.addEventListener('click', () => pintarQue('mensaje'));
+
+function askShareChoice(student, que = 'sueno') {
   _shareChoiceStudent = student;
-  if (!shareChoiceOverlay) { generateShareCard(student, true); return; }
+  const tieneMensaje = !!student.mensaje;
+  const queInicial = tieneMensaje && que === 'mensaje' ? 'mensaje' : 'sueno';
+  if (!shareChoiceOverlay) { generateShareCard(student, true, queInicial); return; }
   // El botón muestra el Leo que de verdad va a salir en la tarjeta: el del sueño
   // de esta persona si su grupo ya tiene uno, y si no el de siempre (ver leos.js).
   if (leoPreviewImg) {
     leoPreviewImg.src = urlLeo(student) || leoGenerico;
   }
+  if (shareQueWrap) shareQueWrap.hidden = !tieneMensaje;
+  pintarQue(queInicial);
   shareChoiceOverlay.hidden = false;
   _shareChoiceResolve = withMascot => {
     shareChoiceOverlay.hidden = true;
     _shareChoiceResolve = null;
-    generateShareCard(student, withMascot);
+    generateShareCard(student, withMascot, _shareQue);
   };
 }
 
@@ -639,15 +701,21 @@ shareConLeoBtn?.addEventListener('click', () => {
   // Leo de esa persona y la del Leo de siempre, que es la que les toca a los
   // grupos que todavía no tienen el suyo. Se distinguen dentro del mismo
   // parámetro `tipo` a propósito: ya está registrado en Analytics como "Tipo de
-  // tarjeta", así que no hay que registrar nada nuevo para poder verlo.
+  // tarjeta", así que no hay que registrar nada nuevo para poder verlo. Lo
+  // mismo con el prefijo "mensaje_": así se ve qué se comparte más sin abrir
+  // una dimensión nueva, que además no sería retroactiva.
   const propio = _shareChoiceStudent && urlLeo(_shareChoiceStudent);
-  medir('compartir_tarjeta', { tipo: propio ? 'con_leo_propio' : 'con_leo_generico' });
+  medir('compartir_tarjeta', { tipo: tipoTarjeta(propio ? 'con_leo_propio' : 'con_leo_generico') });
   _shareChoiceResolve?.(true);
 });
 shareSinLeoBtn?.addEventListener('click', () => {
-  medir('compartir_tarjeta', { tipo: 'sin_leo' });
+  medir('compartir_tarjeta', { tipo: tipoTarjeta('sin_leo') });
   _shareChoiceResolve?.(false);
 });
+
+function tipoTarjeta(base) {
+  return _shareQue === 'mensaje' ? 'mensaje_' + base : base;
+}
 shareCancelBtn?.addEventListener('click', () => {
   shareChoiceOverlay.hidden = true;
   _shareChoiceResolve = null;
@@ -666,23 +734,49 @@ document.addEventListener('keydown', e => {
 });
 
 // ─── Tarjeta compartible (Canvas) ────────────────────────────────────────────
-function wrapTextCanvas(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
-  const words = text.split(' ');
-  let line = '';
-  let count = 0;
-  for (let i = 0; i < words.length; i++) {
-    const test = line + (line ? ' ' : '') + words[i];
-    if (ctx.measureText(test).width > maxWidth && line) {
-      const isLast = count === maxLines - 1;
-      const hasMore = i < words.length - 1;
-      ctx.fillText(isLast && hasMore ? line + '…' : line, x, y + count * lineHeight);
-      if (++count >= maxLines) return;
-      line = words[i];
+// Parte un texto en renglones con la tipografía que ya tenga puesta el lienzo.
+function partirEnLineas(ctx, texto, anchoMax) {
+  const lineas = [];
+  let linea = '';
+  for (const palabra of texto.split(' ')) {
+    const prueba = linea + (linea ? ' ' : '') + palabra;
+    if (ctx.measureText(prueba).width > anchoMax && linea) {
+      lineas.push(linea);
+      linea = palabra;
     } else {
-      line = test;
+      linea = prueba;
     }
   }
-  if (line && count < maxLines) ctx.fillText(line, x, y + count * lineHeight);
+  if (linea) lineas.push(linea);
+  return lineas;
+}
+
+function wrapTextCanvas(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
+  const lineas = partirEnLineas(ctx, text, maxWidth);
+  const visibles = lineas.slice(0, maxLines);
+  if (lineas.length > maxLines) visibles[visibles.length - 1] += '…';
+  visibles.forEach((l, i) => ctx.fillText(l, x, y + i * lineHeight));
+  return visibles.length;
+}
+
+// Los mensajes a la generación van de siete caracteres a cuatrocientos: no hay
+// un tamaño de letra que le sirva a los dos. Se prueba de mayor a menor y se
+// usa el primero que quepa entero en la banda disponible; si ni el más chico
+// alcanza, se corta con puntos suspensivos antes que desbordar la tarjeta.
+function ajustarTexto(ctx, texto, anchoMax, altoDisponible, tamanos, fuente) {
+  for (const sz of tamanos) {
+    ctx.font = fuente(sz);
+    const lineas = partirEnLineas(ctx, texto, anchoMax);
+    const interlinea = Math.round(sz * 1.42);
+    if (lineas.length * interlinea <= altoDisponible) return { sz, lineas, interlinea };
+  }
+  const sz = tamanos[tamanos.length - 1];
+  ctx.font = fuente(sz);
+  const interlinea = Math.round(sz * 1.42);
+  const caben = Math.max(1, Math.floor(altoDisponible / interlinea));
+  const lineas = partirEnLineas(ctx, texto, anchoMax).slice(0, caben);
+  lineas[lineas.length - 1] += '…';
+  return { sz, lineas, interlinea };
 }
 
 // Primero el Leo del sueño de esta persona; si ese grupo todavía no tiene el
@@ -711,10 +805,16 @@ function downloadCanvas(canvas, fileName) {
   requestAnimationFrame(() => document.body.removeChild(a));
 }
 
-async function generateShareCard(student, withMascot = true) {
+async function generateShareCard(student, withMascot = true, que = 'sueno') {
   try {
     await document.fonts.ready;
     const mascot = withMascot ? await loadMascotImg(student) : null;
+
+    // Dos tarjetas con el mismo marco. La del sueño es una frase corta y el
+    // Leo manda; la del mensaje a la generación puede ser una carta de despedida
+    // de cuatrocientos caracteres, así que el Leo cede altura para que quepa.
+    const esMensaje = que === 'mensaje' && !!student.mensaje;
+    const textoMsj  = esMensaje ? String(student.mensaje) : '';
 
     const W = 1080, H = 1080;
     const canvas = document.createElement('canvas');
@@ -737,8 +837,14 @@ async function generateShareCard(student, withMascot = true) {
       ctx.fillStyle = `rgba(255,255,255,${sa.toFixed(2)})`; ctx.fill();
     }
 
+    // Alto reservado al Leo. Todo lo de abajo se coloca a partir de aquí, así
+    // que achicarlo en la tarjeta de un mensaje largo le regala esos píxeles al
+    // texto sin descuadrar nada.
+    const altoMax  = esMensaje ? (textoMsj.length > 150 ? 210 : 255) : 290;
+    const baseY    = 30 + altoMax;
+
     // Nebulosa de categoría detrás de la mascota
-    const nebY = mascot ? 210 : 255;
+    const nebY = mascot ? baseY - 110 : baseY - 65;
     const neb = ctx.createRadialGradient(W / 2, nebY, 0, W / 2, nebY, 380);
     neb.addColorStop(0, cat.color + '50'); neb.addColorStop(1, 'transparent');
     ctx.fillStyle = neb; ctx.fillRect(0, 0, W, H);
@@ -749,7 +855,7 @@ async function generateShareCard(student, withMascot = true) {
       // genera una IA y pueden venir cuadrados o apaisados. Se limitan los dos
       // lados y se apoyan por abajo, así el espacio hasta el nombre de la
       // constelación es el mismo salga la proporción que salga.
-      const altoMax = 290, anchoMax = 420;
+      const anchoMax = 420;
       let mH = altoMax;
       let mW = (mascot.naturalWidth / mascot.naturalHeight) * mH;
       if (mW > anchoMax) {
@@ -766,7 +872,9 @@ async function generateShareCard(student, withMascot = true) {
       // Sin Leo, quien acompaña es el símbolo del sueño: el disco es la luz de su
       // estrella, apagada a propósito para que el trazo se lea encima en vez de
       // perderse en el resplandor (ver simbolos.js).
-      const R = 150;
+      // En la tarjeta de un mensaje el símbolo cede lo mismo que cedería el
+      // Leo, o su resplandor se le monta al nombre de la constelación.
+      const R = esMensaje ? 118 : 150;
       ctx.save();
       ctx.shadowColor = cat.color; ctx.shadowBlur = 80;
       const sg = ctx.createRadialGradient(W / 2, nebY, 0, W / 2, nebY, R);
@@ -779,18 +887,18 @@ async function generateShareCard(student, withMascot = true) {
 
       ctx.save();
       ctx.shadowColor = cat.color; ctx.shadowBlur = 36;
-      dibujarSimbolo(ctx, nombreSimbolo(student), W / 2, nebY, 172, '#eaf2fb');
+      dibujarSimbolo(ctx, nombreSimbolo(student), W / 2, nebY, esMensaje ? 136 : 172, '#eaf2fb');
       ctx.restore();
     }
 
     // Categoría
     ctx.font = '700 26px "Outfit", sans-serif';
     ctx.fillStyle = cat.color; ctx.textAlign = 'center';
-    ctx.fillText(student.category.toUpperCase(), W / 2, 380);
+    ctx.fillText(student.category.toUpperCase(), W / 2, baseY + 60);
 
     // Separador
     ctx.strokeStyle = cat.color + '35'; ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(W / 2 - 200, 400); ctx.lineTo(W / 2 + 200, 400); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W / 2 - 200, baseY + 80); ctx.lineTo(W / 2 + 200, baseY + 80); ctx.stroke();
 
     // Nombre (tamaño adaptable)
     let nameSz = 76;
@@ -800,21 +908,45 @@ async function generateShareCard(student, withMascot = true) {
       ctx.font = `800 ${nameSz}px "Outfit", sans-serif`;
     }
     ctx.fillStyle = '#f1f5f9';
-    ctx.fillText(student.nombre || '', W / 2, 490);
+    ctx.fillText(student.nombre || '', W / 2, baseY + 170);
 
     // Grupo
     ctx.font = '500 28px "DM Sans", sans-serif';
     ctx.fillStyle = '#64748b';
-    ctx.fillText(student.grupo || '', W / 2, 540);
+    ctx.fillText(student.grupo || '', W / 2, baseY + 220);
 
     // Separador
     ctx.strokeStyle = cat.color + '30';
-    ctx.beginPath(); ctx.moveTo(W / 2 - 260, 572); ctx.lineTo(W / 2 + 260, 572); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(W / 2 - 260, baseY + 252); ctx.lineTo(W / 2 + 260, baseY + 252); ctx.stroke();
 
-    // Sueño
-    ctx.font = 'italic 400 34px "DM Sans", sans-serif';
-    ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
-    wrapTextCanvas(ctx, `"${student.sueno || 'Sueño por revelar…'}"`, W / 2, 628, 860, 52, 4);
+    if (esMensaje) {
+      // Quién habla y a quién: sin este rótulo la tarjeta se confunde con la
+      // del sueño, que tiene exactamente el mismo marco.
+      ctx.font = '700 22px "Outfit", sans-serif';
+      ctx.fillStyle = cat.color + 'cc';
+      ctx.letterSpacing = '3px';
+      ctx.fillText('MENSAJE A LA GENERACIÓN 70', W / 2, baseY + 300);
+      ctx.letterSpacing = '0px';
+
+      const arriba = baseY + 348;
+      const abajo  = 860;
+      const { lineas, interlinea } = ajustarTexto(
+        ctx, `"${textoMsj}"`, 880, abajo - arriba,
+        [56, 48, 42, 38, 34, 30, 27, 24, 22],
+        sz => `italic 400 ${sz}px "DM Sans", sans-serif`,
+      );
+      // Centrado vertical dentro de la banda: un mensaje de una línea no debe
+      // quedar pegado al rótulo con un hueco enorme debajo.
+      const alto = lineas.length * interlinea;
+      const y0 = arriba + (abajo - arriba - alto) / 2 + interlinea * 0.75;
+      ctx.fillStyle = '#cbd5e1';
+      lineas.forEach((l, i) => ctx.fillText(l, W / 2, y0 + i * interlinea));
+    } else {
+      // Sueño
+      ctx.font = 'italic 400 34px "DM Sans", sans-serif';
+      ctx.fillStyle = '#94a3b8'; ctx.textAlign = 'center';
+      wrapTextCanvas(ctx, `"${student.sueno || 'Sueño por revelar…'}"`, W / 2, baseY + 308, 860, 52, 4);
+    }
 
     // Branding
     ctx.font = '500 22px "Outfit", sans-serif';
@@ -824,7 +956,7 @@ async function generateShareCard(student, withMascot = true) {
     ctx.fillStyle = cat.color + 'bb';
     ctx.fillText('syhg70.web.app', W / 2, 940);
 
-    const fileName = `sueno-${(student.nombre || 'gen70').replace(/\s+/g, '-').toLowerCase()}.png`;
+    const fileName = `${esMensaje ? 'mensaje' : 'sueno'}-${(student.nombre || 'gen70').replace(/\s+/g, '-').toLowerCase()}.png`;
 
     // Mobile con HTTPS: diálogo nativo de compartir
     if (location.protocol === 'https:' && navigator.share) {
@@ -832,7 +964,10 @@ async function generateShareCard(student, withMascot = true) {
         const file = new File([blob], fileName, { type: 'image/png' });
         try {
           if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            await navigator.share({ files: [file], title: `Sueño de ${student.nombre}` });
+            await navigator.share({
+              files: [file],
+              title: esMensaje ? `Mensaje de ${student.nombre}` : `Sueño de ${student.nombre}`,
+            });
             return;
           }
         } catch { /* cancelado por usuario */ }

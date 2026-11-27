@@ -252,6 +252,46 @@ pueden** sacar el Leo genérico del `<img>` del encabezado, porque ese `<img>` v
 importan `assets/mascota-lsyh.webp` directamente (`import leoGenerico from ...`). Volver a leer el
 encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
+## Dos tarjetas para compartir: el sueño y el mensaje
+
+153 de los 201 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
+solo vivía en el reverso de su tarjeta de la galería: no se podía compartir. Ahora el diálogo de
+compartir abre con un selector de dos pestañas —**Su sueño** / **Su mensaje**— y el resto del
+diálogo (con Leo o sin Leo) sigue igual. A los 48 sin mensaje no les aparece el selector y el
+diálogo se ve exactamente como antes.
+
+Las dos tarjetas comparten marco. La diferencia está en el reparto del alto: `generateShareCard()`
+ya no tiene las posiciones escritas a mano, sino un `baseY` del que cuelga todo lo demás, y la
+tarjeta de un mensaje largo le quita alto al Leo para dárselo al texto (290 px de Leo en la del
+sueño; 255, o 210 si el mensaje pasa de 150 caracteres, en la del mensaje).
+
+El tamaño de la letra del mensaje **se mide, no se adivina**: `ajustarTexto()` prueba de 56 px hacia
+abajo y usa el primero que quepa entero en la banda disponible. Hacía falta porque los mensajes van
+de 7 a 425 caracteres —"Gracias" y una carta de despedida de siete renglones— y ningún tamaño fijo
+les sirve a los dos. Si ni el más chico alcanzara, corta con puntos suspensivos antes que desbordar.
+
+En Analytics no se abrió una dimensión nueva: el `tipo` de `compartir_tarjeta` lleva el prefijo
+`mensaje_` (`mensaje_con_leo_propio`, `mensaje_sin_leo`…). Una dimensión nueva no sería retroactiva
+y habría que registrarla a mano el mismo día; el prefijo se ve en el informe que ya existe.
+
+## Voltear la tarjeta ahora se ve
+
+En la galería, la invitación a ver el mensaje era el texto suelto "Mensaje ↩" al lado del botón
+Compartir. Se leía como un pie de foto, no como algo que se pueda tocar. Ahora es un botón con la
+misma forma que Compartir pero teñido del color de la constelación, que dice **Ver mensaje**; el
+reverso tiene su propio par, **Volver** y **Compartir** (ese comparte el mensaje, no el sueño).
+Tocar cualquier parte de la tarjeta sigue volteándola, como antes.
+
+Con el dedo los dos botones miden 36 px de alto en vez de 25: en la galería son *el* modo de usar la
+página, y 25 px no se aciertan bien. Por eso la tarjeta pasó de 12,5 a 13,5 rem de alto.
+
+## El botón de Presentación
+
+Estaba en `--text-muted` (#64748b, 4,24:1 — el contraste bajo que anotó la auditoría de noviembre)
+sobre fondo casi negro, a 0,72 rem y en una esquina del mapa: casi nadie lo encontraba. Ahora va en
+el dorado de la marca, a 0,82 rem, y late tres veces unos segundos después de cargar para que el ojo
+lo pesque al llegar al mapa. El latido respeta `prefers-reduced-motion` y se corta al pasar el mouse.
+
 ## Los créditos del pie
 
 Al final del pie, después de la línea de los padres y separados por una raya, van los créditos:
@@ -276,7 +316,7 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 |---|---|---|
 | `ver_seccion` | alguien llega a una sección, una vez por visita | `seccion` |
 | `abrir_estudiante` | se abre una tarjeta, en el mapa o en la galería | `origen`, `grupo` |
-| `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo`: `con_leo_propio`, `con_leo_generico` o `sin_leo` |
+| `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo`: `con_leo_propio`, `con_leo_generico` o `sin_leo`, con prefijo `mensaje_` si lo que se comparte es el mensaje |
 | `ver_video_profesor` | se le da play al video de un profesor | `profesor` |
 | `clic_formulario` | se pulsa el enlace del formulario | `origen` |
 | `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
@@ -294,6 +334,10 @@ Desde que hay un Leo por sueño, `compartir_tarjeta` distingue **`con_leo_propio
 **`con_leo_generico`** (ver sección de los Leos). Van dentro del mismo parámetro `tipo`, que ya está
 registrado como "Tipo de tarjeta", así que no hubo que registrar ninguna dimensión nueva. Para el
 total de "con Leo" de antes hay que sumar los dos valores; el corte es el 26 de noviembre de 2026.
+
+Lo mismo con el prefijo **`mensaje_`** desde que se puede compartir el mensaje a la generación
+(`mensaje_con_leo_propio`, `mensaje_sin_leo`…): mismo parámetro, ninguna dimensión nueva. El total
+de tarjetas compartidas es la suma de todos los valores; los que no llevan prefijo son del sueño.
 
 Ahora que están los 41, **`con_leo_generico` no debería aparecer nunca**. Si aparece, no es un dato
 de uso: significa que a alguien le faltó su archivo de Leo en lo publicado. Vale la pena dejarlo
