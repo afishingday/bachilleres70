@@ -21,9 +21,11 @@ reconstruir y publicar.
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
 **Última sincronización con la hoja: 26 de noviembre de 2026** (201 estudiantes, de 216 respuestas).
-Ese mismo día entraron a mano **Cristian García (11D)** e **Isabela Serrano (11C)**, que los pidió
-Luis: son 203. Isabela además iba a quedar en el formulario, así que a la próxima sincronización
-viene sola; **Cristian no**, y una sincronización que no lo tenga en cuenta lo borra.
+Después entraron a mano **Cristian García (11D)** e **Isabela Serrano (11C)**, y **María José Hoyos
+(11F)** cambió de sueño: son 203. **Los tres quedaron también en la hoja**, comprobado el 27 de
+noviembre de 2026: la hoja pasó de 216 a 218 respuestas y la fila de María José está editada en su
+sitio, con su mismo sello de tiempo de mayo, así que no se duplicó. Portal y hoja dicen lo mismo y la
+próxima sincronización no pisa nada.
 En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
 semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
 revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
