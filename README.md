@@ -158,7 +158,52 @@ trazos y, abajo, qué símbolo le quedó a cada uno de los 201. Mover una regla 
 el dibujo a varias personas a la vez, y ahí se ve a quiénes antes de publicar. Esa página no entra
 al sitio publicado: `vite.config.js` solo construye `index.html`.
 
-La tarjeta **con Leo no cambió**: la mascota sigue siendo la mascota.
+## Un Leo por cada sueño
+
+Además del Leo de siempre hay **una versión suya por tipo de sueño** —Leo con bata y estetoscopio,
+Leo con balón, Leo con casco de obra—, usando los mismos 41 grupos de los símbolos.
+
+Desde el 26 de noviembre de 2026 **están los 41**: los 201 estudiantes tienen su propio Leo y
+ningún grupo quedó sin usar. Se comprobó recorriendo las 201 tarjetas una por una.
+
+**Para agregar uno**: dejar el archivo en `assets/leos/` con el nombre exacto del grupo
+(`assets/leos/pulso.webp`) y reconstruir. Eso es todo — no hay lista que actualizar ni código que
+tocar, porque `leos.js` recoge con `import.meta.glob` lo que encuentre en esa carpeta. La lista de
+los 41 nombres, con qué sueños agrupa cada uno y qué debería llevar Leo, está en
+`herramientas/leos-por-sueno.md`, y un resumen en `assets/leos/LEEME.txt`.
+
+Los que genera la IA salen en PNG de 700 px de alto y pesan unos 400 KB cada uno. **Hay que pasarlos
+a WebP antes de meterlos**, o los 41 serían 16,5 MB. Con Pillow, calidad 82, quedaron entre 55 y
+107 KB sin que se note la diferencia: **16,5 MB → 3,0 MB** en total.
+
+Eso no se descarga al entrar al portal: al abrirlo no se pide ni un Leo, y cada uno llega solo
+cuando a alguien le toca esa tarjeta o esa diapositiva. Quien comparte una tarjeta baja unos 70 KB.
+Una proyección completa sí termina pidiéndolos casi todos, pero repartidos a lo largo de las 201
+diapositivas y cada uno una sola vez —`leos.js` guarda la promesa, así que dos diapositivas
+seguidas del mismo grupo comparten la descarga—.
+
+Se hizo así a propósito: el número de canciones de la playlist estaba escrito a mano en el HTML y se
+quedó viejo sin que nadie lo notara. Con 41 archivos posibles, una lista a mano se desactualiza
+seguro.
+
+Cuando un grupo ya tiene su Leo:
+
+- La **tarjeta con Leo** sale con el suyo en lugar del genérico, y el botón "Con Leo" del diálogo
+  muestra en la miniatura el que de verdad va a salir.
+- La **diapositiva** lo pone en lugar del símbolo de línea, con el disco de color detrás haciendo de
+  resplandor.
+
+Mientras no lo tenga, todo queda como estaba antes: Leo de siempre en la tarjeta, símbolo de línea
+en la presentación. Los dos caminos conviven en la misma pasada de la presentación sin saltos, y eso
+está probado recorriendo diapositivas seguidas de los dos tipos.
+
+Dos detalles que no son evidentes. Los archivos van en `assets/` y no en `public/` justamente para
+que Vite los recoja y les ponga nombre con huella, así nadie se queda con una versión vieja en
+caché. Y la tarjeta **limita el Leo por los dos lados** (290 px de alto, 420 de ancho) y lo apoya por
+abajo, porque los genera una IA y pueden venir cuadrados o apaisados: el Leo de siempre es más alto
+que ancho y sin ese límite uno apaisado se comería el nombre de la constelación.
+
+La tarjeta **sin Leo** no cambia nunca: ahí siempre va el símbolo de línea.
 
 ## Qué se mide
 
@@ -169,7 +214,7 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 |---|---|---|
 | `ver_seccion` | alguien llega a una sección, una vez por visita | `seccion` |
 | `abrir_estudiante` | se abre una tarjeta, en el mapa o en la galería | `origen`, `grupo` |
-| `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo` (con o sin Leo) |
+| `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo`: `con_leo_propio`, `con_leo_generico` o `sin_leo` |
 | `ver_video_profesor` | se le da play al video de un profesor | `profesor` |
 | `clic_formulario` | se pulsa el enlace del formulario | `origen` |
 | `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
@@ -177,8 +222,26 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | `ver_playlist_youtube` | se le da play a la playlist de YouTube dentro del portal | — |
 | `abrir_playlist_youtube` | se pulsa el enlace para ver la lista completa en YouTube | — |
 
+**En local no se mide nada.** `firebase-client.js` apaga Analytics cuando el sitio se abre en
+`localhost`, `127.0.0.1` o `file:`. Antes no era así, y una tarde probando el botón de compartir
+dejaba en la propiedad tarjetas compartidas que nadie compartió; después esos números ya no se
+pueden separar de los de las familias. Filtrar la IP desde el panel haría lo mismo, pero hay que
+acordarse en cada computador y cada vez que cambie la IP.
+
+Desde que hay un Leo por sueño, `compartir_tarjeta` distingue **`con_leo_propio`** de
+**`con_leo_generico`** (ver sección de los Leos). Van dentro del mismo parámetro `tipo`, que ya está
+registrado como "Tipo de tarjeta", así que no hubo que registrar ninguna dimensión nueva. Para el
+total de "con Leo" de antes hay que sumar los dos valores; el corte es el 26 de noviembre de 2026.
+
+Ahora que están los 41, **`con_leo_generico` no debería aparecer nunca**. Si aparece, no es un dato
+de uso: significa que a alguien le faltó su archivo de Leo en lo publicado. Vale la pena dejarlo
+así, como aviso.
+
 Dos cosas que conviene no olvidar. **No se registra el nombre de ningún estudiante**, solo su salón: el
-portal es sobre menores y una lista de "los más vistos" no es algo que haga falta. Y para ver los
+portal es sobre menores y una lista de "los más vistos" no es algo que haga falta. Por lo mismo
+**no se registra el grupo de símbolo** de la tarjeta compartida, aunque sería interesante: 21 de los
+41 grupos tienen una o dos personas, así que un evento con `grupo_simbolo: bandera` señalaría al
+único estudiante que puso automovilismo. Y para ver los
 parámetros desglosados en Analytics hay que **registrarlos como dimensiones personalizadas** (Admin →
 Definiciones personalizadas); sin eso solo se ven los totales de cada evento, y el registro **no es
 retroactivo**.
@@ -198,5 +261,9 @@ datos quedan sin desglosar para siempre.
   arriba). Lo usan la tarjeta para compartir y el modo presentación, los dos desde el mismo archivo.
 - `herramientas/simbolos.html`: hoja de contacto para revisar esos dibujos y sus reglas. Herramienta
   de trabajo, fuera del sitio publicado.
+- `leos.js`: encuentra el Leo que le toca a cada sueño entre los que haya en `assets/leos/` (ver
+  sección arriba). No hay lista que mantener: lee la carpeta.
+- `herramientas/leos-por-sueno.md`: los 41 grupos con qué sueños agrupa cada uno, cuántos estudiantes
+  cubre y qué debería llevar Leo, más el prompt base. Material de trabajo para irlos generando.
 - `public/`: `datos.json`, `maestros.json`, `404.html`, favicon, `og-image.jpg` (vista previa al compartir el enlace).
 - `legacy/`: material del flujo anterior (formulario de familias, fotos), fuera del build. Ver su README.

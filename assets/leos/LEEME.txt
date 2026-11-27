@@ -1,0 +1,41 @@
+AQUÍ VAN LOS LEOS DE CADA SUEÑO
+===============================
+
+Deja aquí un archivo por grupo de sueño, con el nombre exacto del grupo:
+
+    assets/leos/pulso.webp          <- Leo con bata y estetoscopio (medicina)
+    assets/leos/balon.webp          <- Leo con balón (fútbol)
+    assets/leos/casa.webp           <- Leo con la casita en las manos
+    ...
+
+La lista completa de los 41 nombres, con qué sueños agrupa cada uno y qué
+debería llevar Leo en cada caso, está en:
+
+    herramientas/leos-por-sueno.md
+
+No hay que tocar código ni anotar el archivo en ninguna lista: basta con
+dejarlo aquí y reconstruir el sitio. Lo que haya en esta carpeta se recoge
+solo (ver leos.js).
+
+Mientras un grupo no tenga su archivo, el portal se comporta como antes:
+la tarjeta sale con el Leo de siempre y la presentación muestra el símbolo
+de línea. Por eso se pueden ir agregando de a uno.
+
+Qué conviene de cada archivo:
+  - Fondo transparente (WebP o PNG). Si el fondo va pintado, se ve el
+    recuadro encima del degradado de la tarjeta.
+  - Unos 700 px de alto. Más grande solo pesa.
+  - Hasta unos 200 KB. En la presentación las diapositivas pasan cada
+    5 segundos, así que el peso se nota.
+  - Si el mismo Leo está en .webp y en .png, el código usa el .webp.
+
+Los PNG que salen del generador pesan unos 400 KB cada uno: hay que
+pasarlos a WebP antes de dejarlos aquí. Con calidad 82 quedan alrededor
+de 70 KB y no se nota la diferencia.
+
+Al 26 de noviembre de 2026 están los 41: los 201 estudiantes tienen su
+Leo. Esta carpeta solo vuelve a moverse si entra alguien con un sueño
+que abra un grupo nuevo, o si hay que regenerar alguno.
+
+Este archivo de texto no entra al sitio publicado: solo está aquí para que
+la carpeta no quede vacía y para no tener que buscar las instrucciones.

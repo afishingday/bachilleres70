@@ -4,6 +4,7 @@ import { db, medir } from './firebase-client.js';
 import { initSolicitudes } from './solicitudes.js';
 import { initProfesores } from './profesores.js';
 import { nombreSimbolo, simboloSVG, dibujarSimbolo } from './simbolos.js';
+import { urlLeo, cargarLeo } from './leos.js';
 import {
   collection, onSnapshot, query, orderBy,
 } from 'firebase/firestore';
@@ -576,23 +577,39 @@ const shareSinLeoBtn     = document.getElementById('share-sin-leo');
 const shareCancelBtn     = document.getElementById('share-choice-cancel');
 
 // Inyecta la img de Leo en el preview del botón (src con hash ya cargado en el DOM)
+let leoPreviewImg = null;
+let leoGenericoSrc = '';
 (function injectLeoPreview() {
   const preview = document.getElementById('share-choice-leo-preview');
   const heroImg = document.querySelector('.hero-mascot img');
   if (!preview || !heroImg) return;
   const img = new Image();
-  const usarFuenteCargada = () => { img.src = heroImg.currentSrc || heroImg.src; };
+  const usarFuenteCargada = () => {
+    leoGenericoSrc = heroImg.currentSrc || heroImg.src;
+    // Si alguien ya abrió el diálogo antes de que cargara el hero, el Leo de su
+    // sueño ya está puesto y no hay que pisarlo con el genérico.
+    if (!img.src) img.src = leoGenericoSrc;
+  };
   if (heroImg.complete) usarFuenteCargada();
   else heroImg.addEventListener('load', usarFuenteCargada, { once: true });
   img.alt = 'Leo';
   img.style.cssText = 'width:100%;height:100%;object-fit:contain;display:block;';
   preview.appendChild(img);
+  leoPreviewImg = img;
 })();
 
 let _shareChoiceResolve = null;
+let _shareChoiceStudent = null;
 
 function askShareChoice(student) {
+  _shareChoiceStudent = student;
   if (!shareChoiceOverlay) { generateShareCard(student, true); return; }
+  // El botón muestra el Leo que de verdad va a salir en la tarjeta: el del sueño
+  // de esta persona si su grupo ya tiene uno, y si no el de siempre (ver leos.js).
+  if (leoPreviewImg) {
+    const fuente = urlLeo(student) || leoGenericoSrc;
+    if (fuente) leoPreviewImg.src = fuente;
+  }
   shareChoiceOverlay.hidden = false;
   _shareChoiceResolve = withMascot => {
     shareChoiceOverlay.hidden = true;
@@ -602,7 +619,13 @@ function askShareChoice(student) {
 }
 
 shareConLeoBtn?.addEventListener('click', () => {
-  medir('compartir_tarjeta', { tipo: 'con_leo' });
+  // Desde que hay un Leo por sueño, "con Leo" son dos tarjetas distintas: la del
+  // Leo de esa persona y la del Leo de siempre, que es la que les toca a los
+  // grupos que todavía no tienen el suyo. Se distinguen dentro del mismo
+  // parámetro `tipo` a propósito: ya está registrado en Analytics como "Tipo de
+  // tarjeta", así que no hay que registrar nada nuevo para poder verlo.
+  const propio = _shareChoiceStudent && urlLeo(_shareChoiceStudent);
+  medir('compartir_tarjeta', { tipo: propio ? 'con_leo_propio' : 'con_leo_generico' });
   _shareChoiceResolve?.(true);
 });
 shareSinLeoBtn?.addEventListener('click', () => {
@@ -646,7 +669,12 @@ function wrapTextCanvas(ctx, text, x, y, maxWidth, lineHeight, maxLines) {
   if (line && count < maxLines) ctx.fillText(line, x, y + count * lineHeight);
 }
 
-function loadMascotImg() {
+// Primero el Leo del sueño de esta persona; si ese grupo todavía no tiene el
+// suyo, el Leo de siempre, que además ya está cargado en el DOM por el hero.
+async function loadMascotImg(student) {
+  const propio = student ? await cargarLeo(student) : null;
+  if (propio) return propio;
+
   return new Promise(resolve => {
     const existing = document.querySelector('.hero-mascot img');
     if (existing?.complete && existing.naturalWidth) { resolve(existing); return; }
@@ -670,7 +698,7 @@ function downloadCanvas(canvas, fileName) {
 async function generateShareCard(student, withMascot = true) {
   try {
     await document.fonts.ready;
-    const mascot = withMascot ? await loadMascotImg() : null;
+    const mascot = withMascot ? await loadMascotImg(student) : null;
 
     const W = 1080, H = 1080;
     const canvas = document.createElement('canvas');
@@ -701,10 +729,19 @@ async function generateShareCard(student, withMascot = true) {
 
     // Mascota (o estrella de fallback)
     if (mascot) {
-      const mH = 290;
-      const mW = (mascot.naturalWidth / mascot.naturalHeight) * mH;
+      // El Leo de siempre es más alto que ancho, pero los Leos por sueño los
+      // genera una IA y pueden venir cuadrados o apaisados. Se limitan los dos
+      // lados y se apoyan por abajo, así el espacio hasta el nombre de la
+      // constelación es el mismo salga la proporción que salga.
+      const altoMax = 290, anchoMax = 420;
+      let mH = altoMax;
+      let mW = (mascot.naturalWidth / mascot.naturalHeight) * mH;
+      if (mW > anchoMax) {
+        mW = anchoMax;
+        mH = (mascot.naturalHeight / mascot.naturalWidth) * mW;
+      }
       const mX = W / 2 - mW / 2;
-      const mY = 30;
+      const mY = 30 + (altoMax - mH);
       ctx.save();
       ctx.shadowColor = cat.color; ctx.shadowBlur = 60;
       ctx.drawImage(mascot, mX, mY, mW, mH);
@@ -804,7 +841,9 @@ function initPresentacion() {
   const btnPlay   = document.getElementById('pres-play');
   const nebulaEl  = document.getElementById('pres-nebula');
   const starEl    = document.getElementById('pres-star');
+  const starWrapEl = document.getElementById('pres-star-wrap');
   const simboloEl = document.getElementById('pres-simbolo');
+  const leoEl     = document.getElementById('pres-leo');
   const catEl     = document.getElementById('pres-cat');
   const nombreEl  = document.getElementById('pres-nombre');
   const grupoEl   = document.getElementById('pres-grupo');
@@ -879,6 +918,19 @@ function initPresentacion() {
       if (simboloEl) {
         simboloEl.innerHTML = simboloSVG(nombreSimbolo(s));
         simboloEl.style.filter = `drop-shadow(0 0 9px ${cat.color})`;
+      }
+      // Si el sueño de esta persona ya tiene su propio Leo, Leo va en lugar del
+      // trazo (ver leos.js). Mientras ese grupo no tenga el suyo, esto no hace
+      // nada y la diapositiva queda con el símbolo de línea, como hasta ahora.
+      const leo = urlLeo(s);
+      if (leoEl && starWrapEl) {
+        starWrapEl.classList.toggle('con-leo', Boolean(leo));
+        if (leo) {
+          leoEl.src = leo;
+          leoEl.style.filter = `drop-shadow(0 0 14px ${cat.color})`;
+        } else {
+          leoEl.removeAttribute('src');
+        }
       }
       catEl.textContent   = s.category;
       catEl.style.color   = cat.color;

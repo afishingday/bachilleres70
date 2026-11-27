@@ -1222,6 +1222,26 @@ body {
   height: 58px;
   color: #eaf2fb;
 }
+/* Cuando el sueño de esta persona ya tiene su propio Leo (ver leos.js), Leo entra
+   en lugar del trazo: el disco se queda atrás haciendo de resplandor y el marco
+   crece para que quepa sin empujar el nombre hacia abajo. Mientras no exista
+   ningún Leo, nada toma esta clase y la diapositiva se ve igual que siempre. */
+.pres-leo {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+.pres-star-wrap.con-leo { width: 210px; height: 210px; }
+.pres-star-wrap.con-leo .pres-star { width: 132px; height: 132px; opacity: 0.6; }
+.pres-star-wrap.con-leo .pres-simbolo { display: none; }
+.pres-star-wrap.con-leo .pres-leo { display: block; }
 @keyframes pres-pulse {
   from { box-shadow: 0 0 30px var(--sc, #60a5fa), 0 0 70px var(--sc, #60a5fa)60; }
   to   { box-shadow: 0 0 55px var(--sc, #60a5fa), 0 0 130px var(--sc, #60a5fa)50, 0 0 220px var(--sc, #60a5fa)20; }
