@@ -328,6 +328,7 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | `abrir_presentacion` | se abre el modo presentación | — |
 | `ver_playlist_youtube` | se le da play a la playlist de YouTube dentro del portal | — |
 | `abrir_playlist_youtube` | se pulsa el enlace para ver la lista completa en YouTube | — |
+| `ver_mas_galeria` | se pide otro lote de tarjetas en la galería | — |
 
 **En local no se mide nada.** `firebase-client.js` apaga Analytics cuando el sitio se abre en
 `localhost`, `127.0.0.1` o `file:`. Antes no era así, y una tarde probando el botón de compartir
@@ -343,6 +344,29 @@ total de "con Leo" de antes hay que sumar los dos valores; el corte es el 26 de 
 Lo mismo con el prefijo **`mensaje_`** desde que se puede compartir el mensaje a la generación
 (`mensaje_con_leo_propio`, `mensaje_sin_leo`…): mismo parámetro, ninguna dimensión nueva. El total
 de tarjetas compartidas es la suma de todos los valores; los que no llevan prefijo son del sueño.
+
+**La galería se pinta de a 24 porque el muro se comía medio portal.** Lo dijeron los números del
+27 de noviembre de 2026: de 84 personas, 79 llegaron a la galería, 47 a Tu huella, 41 a los videos
+de los maestros y 35 a la playlist. No era falta de interés, era distancia: con las 203 tarjetas
+pintadas de una sola vez, en un celular de 390 px la página medía **64,8 pantallas** y Tu huella
+empezaba en la **58**. Nadie baja 58 pantallas. Se subieron 13 videos de profesores y cuatro de cada
+diez visitantes no se enteraban de que existían.
+
+Ahora se pintan `PASO_GALERIA = 24` y el resto entra con un botón que dice cuántas faltan. La página
+pasó a **15,7 pantallas**, Tu huella a la **8,9**, Maestros a la **9,4** y la playlist a la **13,8**;
+en escritorio, de 17 a 8,3. Pedir todas las tarjetas sigue siendo posible —siete toques— y entonces
+la página vuelve a medir lo que medía, pero eso ya lo decide quien está mirando.
+
+24 no es un número redondo cualquiera: esa misma semana cada persona abrió unas cinco tarjetas, así
+que al que solo pasa a mirar le sobran, y al que busca a alguien en concreto no le hacen falta
+porque tiene el buscador y las pestañas de salón. El botón **lleva el número de las que faltan** a
+propósito: "Ver más" a secas no dice si quedan tres o ciento setenta y nueve, y de eso depende si
+uno sigue pulsando o se va al buscador.
+
+Dos detalles que hay que respetar al tocar esto: el lote se reinicia cuando cambia el buscador o la
+pestaña de salón (si no, una búsqueda nueva heredaría el tope de la anterior), y el botón **añade**
+tarjetas en vez de repintar la grilla, para que una tarjeta que alguien dejó volteada no se dé la
+vuelta sola. El `ver_mas_galeria` del botón dirá si 24 se quedó corto.
 
 **Los tres buscadores miden, no solo el de la galería.** El portal tiene cuatro cajas de búsqueda y
 `busqueda_sin_resultados` nacía solo en la de la galería. La del encabezado —la que se ve en toda la

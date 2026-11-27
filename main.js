@@ -91,6 +91,19 @@ let currentStudents = []; // actualizado en renderGalaxy, leído por presentaci�
 let galeriaGroup  = null;
 let galeriaSearch = '';
 
+// Las 203 tarjetas de una sola vez median 56 pantallas en celular, y Tu huella,
+// Maestros y la playlist empezaban pasada la pantalla 58. Medido en Analytics el
+// 27-nov-2026: de 84 personas, 79 llegaban a la galería, 41 a los videos de los
+// maestros y 35 a la playlist. O sea que el muro de tarjetas se estaba comiendo
+// la mitad del portal. Así que se pinta de a lotes.
+//
+// 24 alcanza de sobra para quien solo pasa a mirar: esa misma semana cada
+// persona abrió unas cinco tarjetas. Y quien busca a alguien en concreto no
+// depende de desplazarse, tiene el buscador y las pestañas de salón.
+const PASO_GALERIA = 24;
+let galeriaFiltrados = [];
+let galeriaVisibles  = 0;
+
 // Devuelve cuántas estrellas quedaron encendidas. En el mapa nada se esconde,
 // solo se apaga, así que una búsqueda que no encuentra a nadie no se ve en el
 // DOM como una lista vacía: hay que contarlo aquí, donde ya se decide quién pasa.
@@ -530,13 +543,27 @@ function renderGaleriaCards() {
       ? ` ¿Eres de la Generación 70 y no alcanzaste a responder? <a href="${cta.href}" target="_blank" rel="noopener">Déjanos tus datos aquí.</a>`
       : '';
     grid.innerHTML = `<p class="galeria-empty">No se encontraron sueños.${invitacion}</p>`;
+    galeriaFiltrados = filtered;
+    galeriaVisibles  = 0;
+    actualizarVerMas();
     return;
   }
 
   clearTimeout(temporizadorBusquedaVacia);
 
-  grid.innerHTML = '';
-  filtered.forEach(s => {
+  galeriaFiltrados = filtered;
+  galeriaVisibles  = 0;
+  grid.innerHTML   = '';
+  pintarLoteGaleria();
+}
+
+/** Pinta el siguiente lote al final de la grilla, sin tocar lo que ya está. */
+function pintarLoteGaleria() {
+  const grid = document.getElementById('galeria-grid');
+  if (!grid) return;
+  const hasta = Math.min(galeriaVisibles + PASO_GALERIA, galeriaFiltrados.length);
+
+  galeriaFiltrados.slice(galeriaVisibles, hasta).forEach(s => {
     const cat  = CATEGORIES[s.category] || Object.values(CATEGORIES)[0];
     const hasMensaje = !!s.mensaje;
     const card = document.createElement('div');
@@ -588,6 +615,28 @@ function renderGaleriaCards() {
       </div>`;
     grid.appendChild(card);
   });
+
+  galeriaVisibles = hasta;
+  actualizarVerMas();
+}
+
+/**
+ * El botón dice cuántas faltan y se va cuando no falta ninguna. Lleva el número
+ * a propósito: "Ver más" a secas no dice si lo que falta son tres tarjetas o
+ * ciento setenta y nueve, y de eso depende si vale la pena seguir pulsando o
+ * mejor usar el buscador.
+ */
+function actualizarVerMas() {
+  const btn = document.getElementById('galeria-ver-mas');
+  if (!btn) return;
+
+  const faltan = galeriaFiltrados.length - galeriaVisibles;
+  btn.hidden = faltan <= 0;
+  if (faltan > 0) {
+    btn.textContent = faltan === 1
+      ? 'Ver el sueño que falta'
+      : `Ver más sueños · faltan ${faltan}`;
+  }
 }
 
 function initGaleria() {
@@ -622,6 +671,17 @@ function initGaleria() {
       btn.textContent = g;
       btn.addEventListener('click', () => setGaleriaGroup(g, btn));
       tabsEl.appendChild(btn);
+    });
+  }
+
+  const btnMas = document.getElementById('galeria-ver-mas');
+  if (btnMas) {
+    btnMas.addEventListener('click', () => {
+      // Sin parámetros: así no hay ninguna dimensión nueva que registrar, y con
+      // el conteo del evento ya se sabe si la gente quiere más tarjetas de las
+      // que se le dan o si el primer lote le basta.
+      medir('ver_mas_galeria');
+      pintarLoteGaleria();
     });
   }
 

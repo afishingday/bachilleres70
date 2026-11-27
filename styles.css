@@ -1572,6 +1572,35 @@ body {
   text-underline-offset: 3px;
 }
 
+/* ── Ver más tarjetas (ver PASO_GALERIA en main.js) ── */
+.galeria-mas-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+.galeria-ver-mas {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  /* Es el único camino para seguir viendo tarjetas, así que se ve como un botón
+     de verdad y no como una pestaña más de las de arriba. */
+  padding: 0.75em 1.6em;
+  min-height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s;
+}
+.galeria-ver-mas:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.45);
+}
+.galeria-ver-mas:active { transform: scale(0.97); }
+.galeria-ver-mas[hidden] { display: none; }
+
 /* ── Flip container ── */
 .galeria-card {
   perspective: 1200px;
