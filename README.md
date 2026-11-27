@@ -205,6 +205,32 @@ que ancho y sin ese límite uno apaisado se comería el nombre de la constelaci�
 
 La tarjeta **sin Leo** no cambia nunca: ahí siempre va el símbolo de línea.
 
+### El Leo del encabezado va cambiando
+
+El Leo de la portada rota entre los 41, en orden distinto cada visita
+(`iniciarLeoPortada()` en `main.js`). Tres cosas que no son evidentes y que
+conviene no deshacer:
+
+- **La primera imagen sigue siendo el Leo de siempre.** Es la que viene en el HTML con
+  `fetchpriority="high"`, y la rotación no arranca hasta los 7 segundos. Si el primer Leo se
+  eligiera en JavaScript, la portada esperaría a que bajara una imagen que el navegador no sabe
+  que necesita.
+- **Solo rota mientras el encabezado está a la vista y la pestaña al frente.** Eso es lo que acota
+  cuánto se descarga: cada cambio son unos 75 KB. Quien baja al universo deja de pedir imágenes;
+  quien se queda mirando baja más, pero es porque lo está mirando. Y cada archivo se pide una vez,
+  así que el tope de una visita entera son los 3,0 MB de los 41, y en una segunda visita, cero.
+- **La caja de la imagen está fija en la proporción del Leo de siempre** (`aspect-ratio: 408/612`,
+  `object-fit: contain`, apoyado abajo). Las 41 versiones vienen con anchos distintos —de 368 a
+  602 px— y sin esa caja el título se correría de sitio en cada cambio. Está medido: el `<h1>` no
+  se mueve ni un píxel, en celular tampoco.
+
+Con `prefers-reduced-motion` no rota: muestra uno solo, al azar, y se queda quieto.
+
+**Importante para quien toque esto:** la tarjeta para compartir y la miniatura del diálogo **ya no
+pueden** sacar el Leo genérico del `<img>` del encabezado, porque ese `<img>` va cambiando. Los dos
+importan `assets/mascota-lsyh.webp` directamente (`import leoGenerico from ...`). Volver a leer el
+encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
+
 ## Qué se mide
 
 Google Analytics (vía Firebase, `G-R5PKWZT9CH`; propiedad GA4 `p525865313`). Además de las visitas que

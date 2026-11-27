@@ -238,6 +238,15 @@ body {
   height: auto;
   filter: drop-shadow(0 0 44px rgba(96, 165, 250, 0.32));
   animation: mascot-float 7s ease-in-out infinite;
+  /* El Leo de aquí va cambiando entre los 41 (ver iniciarLeoPortada en main.js) y
+     cada versión viene con un ancho distinto. La caja se fija en la proporción
+     del Leo de siempre —con lo que para él no cambia nada— y cada versión se
+     acomoda dentro apoyada abajo: así cambian de disfraz sin mover el título de
+     sitio y sin quedar flotando a alturas distintas. */
+  aspect-ratio: 408 / 612;
+  object-fit: contain;
+  object-position: center bottom;
+  transition: opacity 0.42s ease;
 }
 @keyframes mascot-float {
   0%, 100% { transform: translateY(0) rotate(-1deg); }

@@ -4,7 +4,11 @@ import { db, medir } from './firebase-client.js';
 import { initSolicitudes } from './solicitudes.js';
 import { initProfesores } from './profesores.js';
 import { nombreSimbolo, simboloSVG, dibujarSimbolo } from './simbolos.js';
-import { urlLeo, cargarLeo } from './leos.js';
+import { urlLeo, cargarLeo, leosBarajados } from './leos.js';
+// El Leo de siempre, importado para que Vite le ponga su nombre con huella. Antes
+// la tarjeta y el diálogo sacaban esta imagen del <img> del encabezado, pero ese
+// <img> ahora va cambiando de Leo, así que ya no sirve como fuente del genérico.
+import leoGenerico from './assets/mascota-lsyh.webp';
 import {
   collection, onSnapshot, query, orderBy,
 } from 'firebase/firestore';
@@ -576,22 +580,14 @@ const shareConLeoBtn     = document.getElementById('share-con-leo');
 const shareSinLeoBtn     = document.getElementById('share-sin-leo');
 const shareCancelBtn     = document.getElementById('share-choice-cancel');
 
-// Inyecta la img de Leo en el preview del botón (src con hash ya cargado en el DOM)
+// La miniatura del botón "Con Leo". Arranca con el Leo de siempre y en cada
+// apertura del diálogo pasa al del sueño de esa persona (ver askShareChoice).
 let leoPreviewImg = null;
-let leoGenericoSrc = '';
 (function injectLeoPreview() {
   const preview = document.getElementById('share-choice-leo-preview');
-  const heroImg = document.querySelector('.hero-mascot img');
-  if (!preview || !heroImg) return;
+  if (!preview) return;
   const img = new Image();
-  const usarFuenteCargada = () => {
-    leoGenericoSrc = heroImg.currentSrc || heroImg.src;
-    // Si alguien ya abrió el diálogo antes de que cargara el hero, el Leo de su
-    // sueño ya está puesto y no hay que pisarlo con el genérico.
-    if (!img.src) img.src = leoGenericoSrc;
-  };
-  if (heroImg.complete) usarFuenteCargada();
-  else heroImg.addEventListener('load', usarFuenteCargada, { once: true });
+  img.src = leoGenerico;
   img.alt = 'Leo';
   img.style.cssText = 'width:100%;height:100%;object-fit:contain;display:block;';
   preview.appendChild(img);
@@ -607,8 +603,7 @@ function askShareChoice(student) {
   // El botón muestra el Leo que de verdad va a salir en la tarjeta: el del sueño
   // de esta persona si su grupo ya tiene uno, y si no el de siempre (ver leos.js).
   if (leoPreviewImg) {
-    const fuente = urlLeo(student) || leoGenericoSrc;
-    if (fuente) leoPreviewImg.src = fuente;
+    leoPreviewImg.src = urlLeo(student) || leoGenerico;
   }
   shareChoiceOverlay.hidden = false;
   _shareChoiceResolve = withMascot => {
@@ -675,14 +670,14 @@ async function loadMascotImg(student) {
   const propio = student ? await cargarLeo(student) : null;
   if (propio) return propio;
 
+  // El genérico se pide aparte y no se toma del encabezado: allá el Leo va
+  // cambiando, y la tarjeta de respaldo tiene que salir siempre igual.
   return new Promise(resolve => {
-    const existing = document.querySelector('.hero-mascot img');
-    if (existing?.complete && existing.naturalWidth) { resolve(existing); return; }
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload  = () => resolve(img);
     img.onerror = () => resolve(null);
-    img.src = existing?.currentSrc || existing?.src || './assets/mascota-lsyh.png';
+    img.src = leoGenerico;
   });
 }
 
@@ -1020,6 +1015,74 @@ function initPresentacion() {
   });
 }
 
+// ─── El Leo del encabezado va cambiando ──────────────────────────────────────
+//
+// Quien abre el portal ve primero el Leo de siempre, que es el que viene en el
+// HTML con prioridad alta: la portada no se retrasa ni un milisegundo por esto.
+// Recién después empieza a pasar por los 41 Leos de los sueños, en orden
+// distinto cada visita.
+//
+// **Solo rota mientras el encabezado está a la vista y la pestaña al frente.**
+// Eso es lo que acota cuánto se descarga: cada Leo pesa unos 75 KB y se pide una
+// sola vez, así que quien se queda viéndolo baja más, pero es porque lo está
+// viendo. En cuanto se baja al universo, deja de pedir imágenes.
+//
+// Con `prefers-reduced-motion` no rota: muestra uno solo, al azar, y se queda
+// quieto. La idea es que cambie de disfraz, no que parpadee encima de alguien
+// que pidió menos movimiento.
+function iniciarLeoPortada() {
+  const caja = document.querySelector('.hero-mascot');
+  const img = caja?.querySelector('img');
+  const fuente = caja?.querySelector('source');
+  const urls = leosBarajados();
+  if (!caja || !img || !urls.length) return;
+
+  const CADA_MS = 7000;
+  const FUNDIDO_MS = 420;
+  let i = -1, timer = null, aLaVista = false;
+
+  function mostrar(url) {
+    img.style.opacity = '0';
+    setTimeout(() => {
+      // El <source> del <picture> le gana al src del <img>, así que hay que
+      // cambiar los dos o no pasa nada.
+      if (fuente) fuente.srcset = url;
+      img.src = url;
+      img.style.opacity = '1';
+    }, FUNDIDO_MS);
+  }
+
+  function siguiente() {
+    i = (i + 1) % urls.length;
+    const url = urls[i];
+    // Se precarga antes de fundir: si se cambiara el src en seco, el encabezado
+    // quedaría vacío el rato que tarde en llegar la imagen.
+    const previa = new Image();
+    previa.onload = () => mostrar(url);
+    previa.onerror = () => {};   // si uno falla, se queda el que está puesto
+    previa.src = url;
+  }
+
+  function arrancar() { if (!timer) timer = setInterval(siguiente, CADA_MS); }
+  function parar() { clearInterval(timer); timer = null; }
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    siguiente();
+    return;
+  }
+
+  new IntersectionObserver(([e]) => {
+    aLaVista = e.isIntersecting;
+    if (aLaVista && !document.hidden) arrancar(); else parar();
+  }, { threshold: 0.25 }).observe(caja);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) parar();
+    else if (aLaVista) arrancar();
+  });
+}
+
+iniciarLeoPortada();
 initPresentacion();
 initGaleria();
 initSolicitudes();

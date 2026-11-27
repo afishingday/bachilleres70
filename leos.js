@@ -48,6 +48,20 @@ export function cuantosLeos() {
   return Object.keys(LEOS).length;
 }
 
+/**
+ * Todos los Leos en orden distinto cada vez. Lo usa el Leo del encabezado, que
+ * va cambiando: barajar en vez de recorrer la carpeta en orden evita que las
+ * primeras visitas vean siempre los mismos tres.
+ */
+export function leosBarajados() {
+  const urls = Object.values(LEOS);
+  for (let i = urls.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [urls[i], urls[j]] = [urls[j], urls[i]];
+  }
+  return urls;
+}
+
 // Las diapositivas pasan cada 5 segundos y los estudiantes son 201, así que la
 // misma imagen se pide muchas veces. Se guarda la promesa, no la imagen: así dos
 // diapositivas seguidas del mismo grupo comparten una sola descarga.
