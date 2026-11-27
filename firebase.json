@@ -17,11 +17,6 @@
     ],
     "redirects": [
       {
-        "source": "/admin",
-        "destination": "/admin/",
-        "type": 302
-      },
-      {
         "source": "/subir",
         "destination": "/",
         "type": 301
