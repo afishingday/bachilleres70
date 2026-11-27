@@ -91,19 +91,27 @@ let currentStudents = []; // actualizado en renderGalaxy, leído por presentaci�
 let galeriaGroup  = null;
 let galeriaSearch = '';
 
+// Devuelve cuántas estrellas quedaron encendidas. En el mapa nada se esconde,
+// solo se apaga, así que una búsqueda que no encuentra a nadie no se ve en el
+// DOM como una lista vacía: hay que contarlo aquí, donde ya se decide quién pasa.
 function applyFilters() {
+  let encendidas = 0;
   document.querySelectorAll('.estrella-wrap').forEach(wrap => {
     const catOk    = !activeCategory || wrap.dataset.cat === activeCategory;
     const groupOk  = !activeGroup    || wrap.dataset.grupo === activeGroup;
     const searchOk = !searchText
       || wrap.dataset.nombre.includes(searchText)
       || wrap.dataset.sueno.includes(searchText);
-    wrap.classList.toggle('is-dimmed', !(catOk && groupOk && searchOk));
+    const pasa = catOk && groupOk && searchOk;
+    wrap.classList.toggle('is-dimmed', !pasa);
+    if (pasa) encendidas++;
   });
 
   document.querySelectorAll('.mapa-nebula-blob, .mapa-cat-label').forEach(el => {
     el.classList.toggle('is-faded', !(!activeCategory || el.dataset.cat === activeCategory));
   });
+
+  return encendidas;
 }
 
 // ─── Tooltip ──────────────────────────────────────────────────────────────────
@@ -402,9 +410,28 @@ document.addEventListener('click', e => {
 const navSearchEl  = document.getElementById('busqueda-global');
 const mapaSearchEl = document.getElementById('mapa-search');
 
+let temporizadorMapaVacio = null;
+
 function handleSearch(value, source) {
   searchText = normalize(value.trim());
-  applyFilters();
+  const encendidas = applyFilters();
+
+  // Quien busca su nombre en el encabezado y no aparece es el mismo caso que
+  // ya se medía en la galería, y es el dato que diría si vale la pena reabrir
+  // el formulario. Se anota dónde escribió, porque el buscador del encabezado
+  // se ve en toda la página y el de la barra solo con el mapa ya abierto.
+  // Tres cautelas: se espera a que deje de escribir, como en la galería; un
+  // filtro de salón o de constelación que no deja a nadie no cuenta, porque eso
+  // no es una búsqueda; y si todavía no han cargado las estrellas no hay nada
+  // que encontrar, así que quien escriba antes no hizo una búsqueda fallida.
+  clearTimeout(temporizadorMapaVacio);
+  if (searchText && !encendidas && currentStudents.length) {
+    temporizadorMapaVacio = setTimeout(
+      () => medir('busqueda_sin_resultados', { donde: source === 'nav' ? 'encabezado' : 'mapa' }),
+      1200,
+    );
+  }
+
   if (navSearchEl  && source !== 'nav')   navSearchEl.value  = value;
   if (mapaSearchEl && source !== 'mapa')  mapaSearchEl.value = value;
 }

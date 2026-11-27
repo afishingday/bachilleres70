@@ -320,11 +320,11 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | Evento | Cuándo | Parámetros |
 |---|---|---|
 | `ver_seccion` | alguien llega a una sección, una vez por visita | `seccion` |
-| `abrir_estudiante` | se abre una tarjeta, en el mapa o en la galería | `origen`, `grupo` |
+| `abrir_estudiante` | se abre una tarjeta: en el mapa al tocar la estrella, en la galería al voltearla para leer el mensaje | `origen`, `grupo` |
 | `compartir_tarjeta` | se genera la tarjeta para compartir | `tipo`: `con_leo_propio`, `con_leo_generico` o `sin_leo`, con prefijo `mensaje_` si lo que se comparte es el mensaje |
 | `ver_video_profesor` | se le da play al video de un profesor | `profesor` |
 | `clic_formulario` | se pulsa el enlace del formulario | `origen` |
-| `busqueda_sin_resultados` | una búsqueda en la galería no encuentra nada | `donde` |
+| `busqueda_sin_resultados` | una búsqueda no encuentra a nadie | `donde`: `encabezado`, `mapa` o `galeria` |
 | `abrir_presentacion` | se abre el modo presentación | — |
 | `ver_playlist_youtube` | se le da play a la playlist de YouTube dentro del portal | — |
 | `abrir_playlist_youtube` | se pulsa el enlace para ver la lista completa en YouTube | — |
@@ -343,6 +343,27 @@ total de "con Leo" de antes hay que sumar los dos valores; el corte es el 26 de 
 Lo mismo con el prefijo **`mensaje_`** desde que se puede compartir el mensaje a la generación
 (`mensaje_con_leo_propio`, `mensaje_sin_leo`…): mismo parámetro, ninguna dimensión nueva. El total
 de tarjetas compartidas es la suma de todos los valores; los que no llevan prefijo son del sueño.
+
+**Los tres buscadores miden, no solo el de la galería.** El portal tiene cuatro cajas de búsqueda y
+`busqueda_sin_resultados` nacía solo en la de la galería. La del encabezado —la que se ve en toda la
+página, la que más gente va a usar— no dejaba rastro: quien buscaba su nombre ahí y no aparecía no
+quedaba contado en ninguna parte, y ese es justo el dato que diría si vale la pena reabrir el
+formulario. Desde el 27 de noviembre de 2026 miden las tres, cada una con su `donde` (`encabezado`,
+`mapa`, `galeria`). El parámetro ya estaba registrado como "Dónde se buscó", así que los dos valores
+nuevos entran sin registrar nada, igual que el prefijo `mensaje_`.
+
+En el mapa nada se esconde, solo se apaga, así que "no encontré a nadie" no se ve como una lista
+vacía: `applyFilters()` devuelve cuántas estrellas quedaron encendidas y de ahí sale la cuenta. Tres
+casos no cuentan como búsqueda fallida, a propósito: filtrar por salón o por constelación hasta que
+no quede nadie (eso no es buscar), escribir mal y corregir antes de que pasen 1,2 segundos, y
+escribir antes de que carguen las estrellas, cuando todavía no hay nada que encontrar. El buscador
+del modo presentación tampoco mide: lo usa quien proyecta en el evento, y que no encuentre a alguien
+ahí no dice nada sobre las familias.
+
+**El número de la galería no es comparable con el del mapa.** En el mapa `abrir_estudiante` salta al
+tocar la estrella, y están las 203. En la galería salta al voltear la tarjeta, y solo las 153 que
+dejaron mensaje tienen reverso que voltear. Así que `origen: galeria` es "leyeron un mensaje", no
+"abrieron una tarjeta": puestos lado a lado sin saber esto, la galería se ve más floja de lo que es.
 
 Ahora que están los 41, **`con_leo_generico` no debería aparecer nunca**. Si aparece, no es un dato
 de uso: significa que a alguien le faltó su archivo de Leo en lo publicado. Vale la pena dejarlo
