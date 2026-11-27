@@ -5,8 +5,8 @@ comité de padres de familia. Publicado en https://syhg70.web.app.
 
 ## Qué tiene
 
-- **Universo**: cada estudiante es una estrella agrupada por constelación (área del sueño). Buscador y filtros por constelación y grupo. Modo **Presentación** para proyectar en la ceremonia (pasa cada 5 s; flechas y espacio para controlar; buscador por nombre).
-- **Galería**: tarjeta por estudiante con su sueño; se voltea para leer su mensaje a la generación. Botón para compartir una imagen del sueño (con o sin Leo, la mascota).
+- **Universo**: cada estudiante es una estrella agrupada por constelación (área del sueño). Buscador y filtros por constelación y grupo. Modo **Presentación** para proyectar en la ceremonia (pasa cada 5 s; flechas y espacio para controlar; buscador por nombre), con el símbolo del sueño de cada quien. Ver abajo.
+- **Galería**: tarjeta por estudiante con su sueño; se voltea para leer su mensaje a la generación. Botón para compartir una imagen del sueño (con Leo, la mascota, o con el símbolo de su sueño). Ver abajo.
 - **Palabras de sus Maestros**: videos en los que los profesores le dejan un mensaje a la generación. Ver abajo.
 - **Playlist**: las canciones que eligieron los estudiantes, en Spotify y en YouTube. Ver abajo.
 
@@ -93,7 +93,14 @@ La misma lista de canciones está en dos sitios, uno debajo del otro, porque no 
 Spotify:
 
 - **Spotify**: `2wO4X5OPppFjR6AbbxpZ7k`, incrustada tal cual con el iframe que da Spotify.
-- **YouTube**: la playlist `PLLthgw-G26Uo` del canal de Luis (56 canciones a 26 de noviembre de 2026).
+- **YouTube**: la playlist `PLLthgw-G26Uo` del canal de Luis.
+
+**A 26 de noviembre de 2026: YouTube tiene 70 canciones y Spotify 69.** La que está en YouTube y no
+en Spotify es *Riendo Para No Llorar*, de Kendo Kaponi. No son las mismas listas automáticamente: hay
+que agregar cada canción en los dos lados, y es fácil que una se quede por fuera. Al compararlas, ojo
+con dos falsas alarmas: *Condenado al Éxito* I y II parecen repetidas pero son dos canciones
+distintas, y *Cheers to youth* de SEVENTEEN está en YouTube con el título en coreano
+(`'청춘찬가' Official MV`), así que una búsqueda por nombre no la encuentra.
 
 El bloque de YouTube da **dos salidas**, porque el reproductor incrustado deja la lista de canciones
 muy apretada y en celular casi no se ve:
@@ -107,9 +114,51 @@ muy apretada y en celular casi no se ve:
   disponible mientras alguien está viendo los videos.
 
 Tres cosas están escritas a mano en `index.html`: el id de la playlist en el `data-lista` del botón, el
-mismo id otra vez en el `href` del enlace, y **el número de canciones en el texto** (`Reproducir las 56
-canciones`). Si se agregan canciones a la lista en YouTube, hay que corregir ese número aquí. Código:
+mismo id otra vez en el `href` del enlace, y **el número de canciones en el texto** (`Reproducir las 70
+canciones`, y el mismo número otra vez en el `aria-label` del botón, que es fácil de olvidar). Código:
 `initPlaylistYouTube()` en `main.js`.
+
+**Los dos reproductores se actualizan solos; ese número no.** Si se agregan canciones a cualquiera de
+las dos listas, lo que la gente ve y escucha ya queda al día sin tocar nada, porque los dos son
+incrustados en vivo. Lo único que se queda viejo es el texto del botón. Ya pasó una vez: la lista
+creció de 56 a 70 canciones y el portal siguió diciendo 56 durante días. Si vuelve a molestar, la
+salida es quitar el número del texto (`Reproducir la lista completa`), que no puede desactualizarse.
+
+## El símbolo de cada sueño
+
+Cada estudiante tiene un dibujo que sale de **lo que escribió**, no de su constelación: una casa
+para quien quiere construirle una casa a su abuelita, una huella para los veterinarios, una balanza
+para los abogados, un cohete para los dos que nombraron la NASA. Aparece en dos lugares:
+
+- En la **tarjeta para compartir**, en la versión sin Leo, donde antes había un círculo de luz igual
+  para todos.
+- En el **modo presentación**, dentro del disco de color de su constelación.
+
+Todo está en `simbolos.js`, en tres piezas:
+
+- **`SIMBOLOS`**: los 41 dibujos, cada uno como un puñado de líneas en una caja de 24×24. Son trazos,
+  no ilustraciones: un balón son seis líneas. Así los 41 se ven de la misma familia y pesan unos
+  pocos kilobytes en total, que importa porque el portal se abre desde el celular de las familias.
+- **`REGLAS`**: qué palabras llevan a qué dibujo. **El orden es el diseño**: un sueño suele mencionar
+  varias cosas y gana la primera regla que coincide. Arriba va lo personal y concreto, abajo lo
+  genérico. Por eso "Ser arquitecta para diseñarle una casa a mi mamá" recibe la casa y no el arco
+  de arquitectura, y "Ser arquero profesional y estudiar ingeniería civil" recibe el balón.
+- **`POR_CONSTELACION`**: el dibujo de respaldo cuando el sueño no cae en ninguna regla.
+
+El sueño se compara **sin tildes y en minúscula**, así que las reglas se escriben sin tildes
+(`aviacion`, no `aviación`). Cuidado con las subcadenas: "g**astronom**ía" caía en astronomía y
+"co**cine**ro" caería en cine, por eso esas dos reglas llevan `\b`.
+
+A 26 de noviembre de 2026 los 41 dibujos están en uso y el grupo más grande son 18 estudiantes de
+201 (los médicos), así que las tarjetas sí se diferencian entre sí.
+
+**Antes de mover una regla o agregar un dibujo**, abrir `herramientas/simbolos.html` con
+`npm run dev:portal` corriendo (http://127.0.0.1:5173/herramientas/simbolos.html): muestra los 41
+trazos y, abajo, qué símbolo le quedó a cada uno de los 201. Mover una regla una posición le cambia
+el dibujo a varias personas a la vez, y ahí se ve a quiénes antes de publicar. Esa página no entra
+al sitio publicado: `vite.config.js` solo construye `index.html`.
+
+La tarjeta **con Leo no cambió**: la mascota sigue siendo la mascota.
 
 ## Qué se mide
 
@@ -145,5 +194,9 @@ datos quedan sin desglosar para siempre.
 - `solicitudes.js`: formulario del pie para corregir o retirar datos (Ley 1581). Guarda en Firestore
   `solicitudes_borrado`; se atienden en `/admin` → **Solicitudes Ley 1581** (el inicio del panel muestra cuántas hay pendientes).
 - `profesores.js`: grilla de los videos de los profesores (ver sección arriba).
+- `simbolos.js`: los dibujos de los sueños y las reglas que deciden cuál le toca a quién (ver sección
+  arriba). Lo usan la tarjeta para compartir y el modo presentación, los dos desde el mismo archivo.
+- `herramientas/simbolos.html`: hoja de contacto para revisar esos dibujos y sus reglas. Herramienta
+  de trabajo, fuera del sitio publicado.
 - `public/`: `datos.json`, `maestros.json`, `404.html`, favicon, `og-image.jpg` (vista previa al compartir el enlace).
 - `legacy/`: material del flujo anterior (formulario de familias, fotos), fuera del build. Ver su README.

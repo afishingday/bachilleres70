@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+  Hoja de contacto de los símbolos de los sueños.
+
+  Para qué sirve: ver de un golpe los dibujos de `simbolos.js` y, sobre todo, qué
+  símbolo le quedó a cada uno de los estudiantes de `public/datos.json`. Cambiar
+  el orden de una regla cambia el dibujo de varias personas a la vez, y aquí se
+  ve a quiénes antes de publicar nada.
+
+  Cómo abrirla: con `npm run dev:portal` corriendo, entrar a
+  http://127.0.0.1:5173/herramientas/simbolos.html
+
+  No entra al sitio publicado: `vite.config.js` solo construye `index.html`.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Hoja de contacto de símbolos</title>
+<style>
+  body { background:#020617; color:#f1f5f9; font-family:system-ui,sans-serif; margin:0; padding:32px; }
+  h2 { font-weight:700; margin:40px 0 16px; font-size:18px; color:#facc15; }
+  h2:first-child { margin-top:0; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:18px; }
+  .celda { text-align:center; }
+  .disco { width:112px; height:112px; margin:0 auto 6px;
+           display:flex; align-items:center; justify-content:center; border-radius:50%;
+           background:#38bdf82e; box-shadow:0 0 34px #38bdf8, 0 0 80px #38bdf860; }
+  .disco svg { width:62px; height:62px; color:#eaf2fb; filter:drop-shadow(0 0 6px #38bdf8); }
+  .celda span { font-size:11px; color:#94a3b8; font-family:ui-monospace,monospace; }
+  canvas { background:#020617; }
+  table { border-collapse:collapse; width:100%; font-size:12px; }
+  td { padding:3px 8px; border-bottom:1px solid rgba(255,255,255,.07); vertical-align:middle; }
+  td.sim { width:40px; }
+  td.sim svg { width:26px; height:26px; color:#60a5fa; }
+  td.nom { width:150px; color:#cbd5e1; font-family:ui-monospace,monospace; font-size:11px; }
+  td.cat { width:170px; color:#64748b; font-size:11px; }
+  .cuenta { color:#94a3b8; font-size:12px; margin-bottom:10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<h2>1 · Los trazos como se ven en el modo presentación (SVG)</h2>
+<div class="grid" id="g-svg"></div>
+
+<h2>2 · Los mismos como se ven en la tarjeta para compartir (canvas)</h2>
+<p class="cuenta">Los dos dibujos salen del mismo archivo. Si alguno se ve distinto aquí, hay un error en
+<code>dibujarSimbolo()</code> o en <code>simboloSVG()</code>.</p>
+<div id="g-canvas" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+
+<h2>3 · Qué símbolo le quedó a cada estudiante</h2>
+<div class="cuenta" id="cuenta"></div>
+<table id="tabla"></table>
+
+<script type="module">
+import { SIMBOLOS, nombreSimbolo, simboloSVG, dibujarSimbolo } from '../simbolos.js';
+
+const nombres = Object.keys(SIMBOLOS);
+
+document.getElementById('g-svg').innerHTML = nombres.map(n =>
+  `<div class="celda"><div class="disco">${simboloSVG(n)}</div><span>${n}</span></div>`).join('');
+
+const cont = document.getElementById('g-canvas');
+nombres.forEach(n => {
+  const cv = document.createElement('canvas');
+  cv.width = 120; cv.height = 120;
+  const ctx = cv.getContext('2d');
+  ctx.shadowColor = '#38bdf8'; ctx.shadowBlur = 14;
+  dibujarSimbolo(ctx, n, 60, 60, 74, '#eaf2fb');
+  cont.appendChild(cv);
+});
+
+// Vite sirve `public/` en la raíz (/datos.json); cualquier otro servidor estático
+// lo deja donde está (../public/datos.json). Se intentan los dos para que la
+// página funcione igual con `npm run dev:portal` que abriendo la carpeta servida.
+const resp = await fetch('/datos.json').then(r => r.ok ? r : fetch('../public/datos.json'));
+const datos = await resp.json();
+const conSim = datos.map(d => ({ ...d, sim: nombreSimbolo(d) }));
+const cuenta = {};
+conSim.forEach(d => { cuenta[d.sim] = (cuenta[d.sim] || 0) + 1; });
+const sinUsar = nombres.filter(n => !cuenta[n]);
+
+document.getElementById('cuenta').innerHTML =
+  `<b>${datos.length}</b> estudiantes · <b>${Object.keys(cuenta).length}</b> símbolos en uso de ${nombres.length}`
+  + `<br>sin usar: ${sinUsar.length ? sinUsar.join(', ') : 'ninguno'}`
+  + `<br>${Object.entries(cuenta).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k}:${v}`).join(' · ')}`;
+
+document.getElementById('tabla').innerHTML = conSim
+  .sort((a, b) => a.sim.localeCompare(b.sim) || a.sueno.localeCompare(b.sueno))
+  .map(d => `<tr><td class="sim">${simboloSVG(d.sim)}</td><td class="nom">${d.sim}</td>`
+    + `<td class="cat">${d.categoria}</td><td>${d.sueno}</td></tr>`).join('');
+</script>
+</body>
+</html>

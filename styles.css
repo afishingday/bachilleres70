@@ -1196,23 +1196,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   margin-bottom: 0.5rem;
 }
 .pres-star {
-  width: 64px;
-  height: 64px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   position: relative;
   animation: pres-pulse 2.4s ease-in-out infinite alternate;
 }
-.pres-star::after {
-  content: '';
+/* El símbolo del sueño, encima del disco (ver simbolos.js). El disco ya va
+   translúcido desde main.js, así que el trazo claro se lee sin competir con él. */
+.pres-simbolo {
   position: absolute;
-  inset: 30%;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.95);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.pres-simbolo svg {
+  width: 58px;
+  height: 58px;
+  color: #eaf2fb;
 }
 @keyframes pres-pulse {
   from { box-shadow: 0 0 30px var(--sc, #60a5fa), 0 0 70px var(--sc, #60a5fa)60; }

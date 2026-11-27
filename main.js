@@ -3,6 +3,7 @@
 import { db, medir } from './firebase-client.js';
 import { initSolicitudes } from './solicitudes.js';
 import { initProfesores } from './profesores.js';
+import { nombreSimbolo, simboloSVG, dibujarSimbolo } from './simbolos.js';
 import {
   collection, onSnapshot, query, orderBy,
 } from 'firebase/firestore';
@@ -693,7 +694,7 @@ async function generateShareCard(student, withMascot = true) {
     }
 
     // Nebulosa de categoría detrás de la mascota
-    const nebY = mascot ? 210 : 300;
+    const nebY = mascot ? 210 : 255;
     const neb = ctx.createRadialGradient(W / 2, nebY, 0, W / 2, nebY, 380);
     neb.addColorStop(0, cat.color + '50'); neb.addColorStop(1, 'transparent');
     ctx.fillStyle = neb; ctx.fillRect(0, 0, W, H);
@@ -709,12 +710,23 @@ async function generateShareCard(student, withMascot = true) {
       ctx.drawImage(mascot, mX, mY, mW, mH);
       ctx.restore();
     } else {
+      // Sin Leo, quien acompaña es el símbolo del sueño: el disco es la luz de su
+      // estrella, apagada a propósito para que el trazo se lea encima en vez de
+      // perderse en el resplandor (ver simbolos.js).
+      const R = 150;
       ctx.save();
-      ctx.shadowColor = cat.color; ctx.shadowBlur = 90;
-      const sg = ctx.createRadialGradient(W / 2, nebY, 0, W / 2, nebY, 90);
-      sg.addColorStop(0, '#ffffff'); sg.addColorStop(0.25, cat.color); sg.addColorStop(1, cat.color + '00');
+      ctx.shadowColor = cat.color; ctx.shadowBlur = 80;
+      const sg = ctx.createRadialGradient(W / 2, nebY, 0, W / 2, nebY, R);
+      sg.addColorStop(0, cat.color + '4d');
+      sg.addColorStop(0.7, cat.color + '20');
+      sg.addColorStop(1, cat.color + '00');
       ctx.fillStyle = sg;
-      ctx.beginPath(); ctx.arc(W / 2, nebY, 90, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(W / 2, nebY, R, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+
+      ctx.save();
+      ctx.shadowColor = cat.color; ctx.shadowBlur = 36;
+      dibujarSimbolo(ctx, nombreSimbolo(student), W / 2, nebY, 172, '#eaf2fb');
       ctx.restore();
     }
 
@@ -792,6 +804,7 @@ function initPresentacion() {
   const btnPlay   = document.getElementById('pres-play');
   const nebulaEl  = document.getElementById('pres-nebula');
   const starEl    = document.getElementById('pres-star');
+  const simboloEl = document.getElementById('pres-simbolo');
   const catEl     = document.getElementById('pres-cat');
   const nombreEl  = document.getElementById('pres-nombre');
   const grupoEl   = document.getElementById('pres-grupo');
@@ -859,8 +872,14 @@ function initPresentacion() {
     contentEl.classList.add('is-fading');
     setTimeout(() => {
       nebulaEl.style.background = cat.color;
-      starEl.style.background   = cat.color;
+      // El disco va translúcido (los dos últimos dígitos son la opacidad) para que
+      // el símbolo del sueño se lea encima; el resplandor sí va a color entero.
+      starEl.style.background   = cat.color + '33';
       starEl.style.setProperty('--sc', cat.color);
+      if (simboloEl) {
+        simboloEl.innerHTML = simboloSVG(nombreSimbolo(s));
+        simboloEl.style.filter = `drop-shadow(0 0 9px ${cat.color})`;
+      }
       catEl.textContent   = s.category;
       catEl.style.color   = cat.color;
       nombreEl.textContent = s.nombre || '';
