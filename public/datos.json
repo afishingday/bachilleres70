@@ -214,8 +214,8 @@
     "id": "70025",
     "nombre": "Santiago Barrera Gutiérrez",
     "grupo": "11A",
-    "categoria": "Explorando su camino",
-    "sueno": "Convertirme en alguien famoso y amado por mucha gente",
+    "categoria": "Artes y Diseño",
+    "sueno": "Seguir cantando por todo el mundo en varios escenarios",
     "mensaje": "Gracias por todos los momentos que pasamos y todas las experiencias que vivimos.",
     "activo": true
   },
@@ -1109,8 +1109,8 @@
     "id": "70127",
     "nombre": "María Isabel López",
     "grupo": "11E",
-    "categoria": "Artes y Diseño",
-    "sueno": "Estudiar cosmetología y hacer mi propio salón de estética",
+    "categoria": "Salud y Medicina",
+    "sueno": "Medicina veterinaria con silvestres",
     "activo": true
   },
   {
@@ -1774,6 +1774,15 @@
     "grupo": "11C",
     "categoria": "Artes y Diseño",
     "sueno": "Maquillaje profesional",
+    "activo": true
+  },
+  {
+    "id": "70204",
+    "nombre": "Camilo Andrés Díaz Jaramillo",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ingeniero mecánico automotriz",
+    "mensaje": "Nunca dejemos de soñar, y siempre acerquemonos a Dios",
     "activo": true
   }
 ]

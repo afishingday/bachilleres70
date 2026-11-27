@@ -139,7 +139,9 @@ export const REGLAS = [
   // \bcine\b a propósito: sin él, "cocinero" cae aquí antes de llegar al gorro.
   [/\bcine\b|animacion|stop motion|pelicula|audiovisual/, 'cine'],
   [/traduc|idiomas/, 'idiomas'],
-  [/music|cantante|trompetis|clarinetis|solista/, 'nota'],
+  // El \b de cant… es obligatorio: sin él, "me encantaría estudiar medicina"
+  // acaba con una nota musical. Solo las formas del verbo, no "cantidad".
+  [/music|\bcant(ante|ar|ando|o)\b|cancion|trompetis|clarinetis|solista/, 'nota'],
   [/chef|gastronom|cocin|restaurante/, 'gorro'],
   [/modas|moda|modelo|fashion/, 'percha'],
   [/actriz|\bactor|teatro/, 'mascara'],

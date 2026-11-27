@@ -20,12 +20,26 @@ reconstruir y publicar.
 
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
-**Última sincronización con la hoja: 26 de noviembre de 2026** (201 estudiantes, de 216 respuestas).
-Después entraron a mano **Cristian García (11D)** e **Isabela Serrano (11C)**, y **María José Hoyos
-(11F)** cambió de sueño: son 203. **Los tres quedaron también en la hoja**, comprobado el 27 de
-noviembre de 2026: la hoja pasó de 216 a 218 respuestas y la fila de María José está editada en su
-sitio, con su mismo sello de tiempo de mayo, así que no se duplicó. Portal y hoja dicen lo mismo y la
-próxima sincronización no pisa nada.
+**Si cambia un sueño, hay que revisar su `categoria` a mano.** El portal hace
+`s.categoria || categorizarSueno(s.sueno)`: lo que diga `categoria` en el archivo le gana siempre al
+clasificador, así que un sueño nuevo con la constelación vieja se queda donde estaba. Y al revés,
+borrar `categoria` para que el clasificador decida tampoco es seguro: "Seguir cantando por todo el
+mundo en varios escenarios" no cae en ninguna regla de `CAT_PATTERNS` y habría acabado en *Explorando
+su camino*. Lo rápido es escribir la constelación a mano y comprobar en el portal que la estrella
+quedó del color que debe.
+
+**Última sincronización con la hoja: 27 de noviembre de 2026** (204 estudiantes, de 222 respuestas).
+La del 26 de noviembre dejó 201 de 216 respuestas; después entraron a mano **Cristian García (11D)**
+e **Isabela Serrano (11C)**, y **María José Hoyos (11F)** cambió de sueño: 203. **Los tres quedaron
+también en la hoja**, comprobado al día siguiente: la fila de María José está editada en su sitio,
+con su mismo sello de tiempo de mayo, así que no se duplicó.
+
+El 27 de noviembre la hoja llegó a 222 y de las cinco respuestas nuevas **solo tres eran trabajo**:
+Isabela y Cristian volvieron a llenar el formulario con el sueño que ya tenían puesto. Entró
+**Camilo Andrés Díaz Jaramillo (11E)**, y **María Isabel López (11E)** y **Santiago Barrera
+Gutiérrez (11A)** cambiaron de sueño —y con él de constelación—, así que son 204. A los dos que
+cambiaron **no se les tocó el mensaje**: el formulario no lo vuelve a pedir, y el que ya habían
+dejado sigue siendo suyo.
 En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
 semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
 revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
@@ -151,8 +165,9 @@ Todo está en `simbolos.js`, en tres piezas:
 - **`POR_CONSTELACION`**: el dibujo de respaldo cuando el sueño no cae en ninguna regla.
 
 El sueño se compara **sin tildes y en minúscula**, así que las reglas se escriben sin tildes
-(`aviacion`, no `aviación`). Cuidado con las subcadenas: "g**astronom**ía" caía en astronomía y
-"co**cine**ro" caería en cine, por eso esas dos reglas llevan `\b`.
+(`aviacion`, no `aviación`). Cuidado con las subcadenas: "g**astronom**ía" caía en astronomía,
+"co**cine**ro" caería en cine y "me en**cant**aría estudiar medicina" se habría llevado la nota
+musical, por eso esas reglas llevan `\b`.
 
 A 26 de noviembre de 2026 los 41 dibujos están en uso y el grupo más grande son 18 estudiantes
 (los médicos) de poco más de doscientos, así que las tarjetas sí se diferencian entre sí.
@@ -259,7 +274,7 @@ encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
 ## Dos tarjetas para compartir: el sueño y el mensaje
 
-153 de los 203 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
+154 de los 204 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
 solo vivía en el reverso de su tarjeta de la galería: no se podía compartir. Ahora el diálogo de
 compartir abre con un selector de dos pestañas —**Su sueño** / **Su mensaje**— y el resto del
 diálogo (con Leo o sin Leo) sigue igual. A los 50 sin mensaje no les aparece el selector y el
@@ -385,7 +400,7 @@ del modo presentación tampoco mide: lo usa quien proyecta en el evento, y que n
 ahí no dice nada sobre las familias.
 
 **El número de la galería no es comparable con el del mapa.** En el mapa `abrir_estudiante` salta al
-tocar la estrella, y están las 203. En la galería salta al voltear la tarjeta, y solo las 153 que
+tocar la estrella, y están las 204. En la galería salta al voltear la tarjeta, y solo las 154 que
 dejaron mensaje tienen reverso que voltear. Así que `origen: galeria` es "leyeron un mensaje", no
 "abrieron una tarjeta": puestos lado a lado sin saber esto, la galería se ve más floja de lo que es.
 
