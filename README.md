@@ -28,7 +28,7 @@ mundo en varios escenarios" no cae en ninguna regla de `CAT_PATTERNS` y habría 
 su camino*. Lo rápido es escribir la constelación a mano y comprobar en el portal que la estrella
 quedó del color que debe.
 
-**Última sincronización con la hoja: 27 de noviembre de 2026** (204 estudiantes, de 222 respuestas).
+**Última sincronización con la hoja: 27 de noviembre de 2026** (205 estudiantes, de 223 respuestas).
 La del 26 de noviembre dejó 201 de 216 respuestas; después entraron a mano **Cristian García (11D)**
 e **Isabela Serrano (11C)**, y **María José Hoyos (11F)** cambió de sueño: 203. **Los tres quedaron
 también en la hoja**, comprobado al día siguiente: la fila de María José está editada en su sitio,
@@ -39,7 +39,9 @@ Isabela y Cristian volvieron a llenar el formulario con el sueño que ya tenían
 **Camilo Andrés Díaz Jaramillo (11E)**, y **María Isabel López (11E)** y **Santiago Barrera
 Gutiérrez (11A)** cambiaron de sueño —y con él de constelación—, así que son 204. A los dos que
 cambiaron **no se les tocó el mensaje**: el formulario no lo vuelve a pedir, y el que ya habían
-dejado sigue siendo suyo.
+dejado sigue siendo suyo. Por la tarde llegó una respuesta más y entró **Luciana Cardona Londoño
+(11E)**: 205. Ojo con ella, que en 11E ya había una **Luciana Gómez**; son dos personas distintas,
+confirmado con Luis.
 En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
 semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
 revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
@@ -274,7 +276,7 @@ encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
 ## Dos tarjetas para compartir: el sueño y el mensaje
 
-154 de los 204 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
+155 de los 205 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
 solo vivía en el reverso de su tarjeta de la galería: no se podía compartir. Ahora el diálogo de
 compartir abre con un selector de dos pestañas —**Su sueño** / **Su mensaje**— y el resto del
 diálogo (con Leo o sin Leo) sigue igual. A los 50 sin mensaje no les aparece el selector y el
@@ -420,7 +422,7 @@ del modo presentación tampoco mide: lo usa quien proyecta en el evento, y que n
 ahí no dice nada sobre las familias.
 
 **El número de la galería no es comparable con el del mapa.** En el mapa `abrir_estudiante` salta al
-tocar la estrella, y están las 204. En la galería salta al voltear la tarjeta, y solo las 154 que
+tocar la estrella, y están las 205. En la galería salta al voltear la tarjeta, y solo las 155 que
 dejaron mensaje tienen reverso que voltear. Así que `origen: galeria` es "leyeron un mensaje", no
 "abrieron una tarjeta": puestos lado a lado sin saber esto, la galería se ve más floja de lo que es.
 

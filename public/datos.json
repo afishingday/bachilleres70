@@ -1784,5 +1784,14 @@
     "sueno": "Ingeniero mecánico automotriz",
     "mensaje": "Nunca dejemos de soñar, y siempre acerquemonos a Dios",
     "activo": true
+  },
+  {
+    "id": "70205",
+    "nombre": "Luciana Cardona Londoño",
+    "grupo": "11E",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Ser una ingeniera aeroespacial y poder ayudar a alguien a ir al espacio",
+    "mensaje": "Gracias por hacer de este año uno de los mejores de mi vida",
+    "activo": true
   }
 ]
