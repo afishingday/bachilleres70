@@ -345,6 +345,23 @@ mide solo, el portal registra estos eventos con `medir()`, el ayudante que expor
 | `abrir_playlist_youtube` | se pulsa el enlace para ver la lista completa en YouTube | — |
 | `ver_mas_galeria` | se pide otro lote de tarjetas en la galería | — |
 
+### Dónde se miran
+
+Las tres pantallas que hacen falta, con la cuenta `afishingday@gmail.com`. Abren directo en la
+propiedad del portal, sin pasar por los menús de Analytics (que cambian de sitio cada tanto):
+
+- **Ahora mismo** — <https://analytics.google.com/analytics/web/#/a370149017p525865313/realtime/overview>
+  Últimos 30 minutos, se actualiza solo. Es la única que sirve para el día de hoy.
+- **Día a día, evento por evento** — <https://analytics.google.com/analytics/web/#/a370149017p525865313/reports/explorer?r=top-events>
+  Los eventos de la tabla de arriba, con una línea por día. Al hacer clic en el nombre de un evento
+  se abre su ficha desglosada por las seis dimensiones registradas (salón, sección, origen…).
+- **Resumen de personas** — <https://analytics.google.com/analytics/web/#/a370149017p525865313/reports/dashboard?r=business-objectives-examine-user-behavior-overview>
+  Cuánta gente, cuántos nuevos, de dónde llegan y en qué dispositivo.
+
+Las dos últimas abren en "Últimos 28 días" y **ese rango termina ayer**: Google procesa el día
+completo con horas de retraso, así que el dato de hoy siempre va corto en el informe estándar y
+completo en Tiempo real. Por eso un número del día en curso se da como provisional.
+
 **En local no se mide nada.** `firebase-client.js` apaga Analytics cuando el sitio se abre en
 `localhost`, `127.0.0.1` o `file:`. Antes no era así, y una tarde probando el botón de compartir
 dejaba en la propiedad tarjetas compartidas que nadie compartió; después esos números ya no se
