@@ -126,19 +126,27 @@ function showTooltip(student, xPct, yPct) {
   tooltipStudent = student;
   medir('abrir_estudiante', { origen: 'mapa', grupo: student.grupo || 'sin_grupo' });
   const cat   = CATEGORIES[student.category];
-  const below = yPct < 38;
   const touch = isTouch();
+  // El Leo del sueño de esta persona va dentro de la caja del sueño, en lugar de
+  // la estrellita que era igual para los 201 (ver leos.js). Si el grupo no
+  // tuviera archivo, vuelve la estrellita y no se nota.
+  const leoDelSueno = urlLeo(student);
 
+  // Las dos puntas van siempre en el HTML, cada una en su extremo; el CSS
+  // muestra solo la que corresponde según dónde quedó la tarjeta. Se decide
+  // más abajo, porque para eso hay que medir la tarjeta ya armada.
   tooltipEl.innerHTML =
-    (!touch && !below ? '<div class="tooltip-arrow-down" aria-hidden="true"></div>' : '') +
+    '<div class="tooltip-punta-arriba" aria-hidden="true"></div>' +
     `<div class="tooltip-card">
       <div class="tooltip-header">
         <span class="tooltip-cat" style="color:${cat.color};background:${cat.color}18;border-color:${cat.color}40">${escapar(student.category)}</span>
         <span class="tooltip-grupo">${escapar(student.grupo || '')}</span>
       </div>
       <h4 class="tooltip-name">${escapar(student.nombre || '')}</h4>
-      <div class="tooltip-dream-box">
-        <svg class="tooltip-dream-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="${cat.color}" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <div class="tooltip-dream-box${leoDelSueno ? ' con-leo' : ''}">
+        ${leoDelSueno
+          ? `<img class="tooltip-leo" src="${leoDelSueno}" alt="" aria-hidden="true">`
+          : `<svg class="tooltip-dream-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="${cat.color}" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`}
         <span class="tooltip-dream-text">"${escapar(student.sueno || 'Sueño por revelar…')}"</span>
       </div>
       <button class="tooltip-share-btn" id="tooltip-share-btn">
@@ -146,8 +154,9 @@ function showTooltip(student, xPct, yPct) {
         Compartir sueño
       </button>
     </div>` +
-    (!touch && below ? '<div class="tooltip-arrow-up" aria-hidden="true"></div>' : '');
+    '<div class="tooltip-punta-abajo" aria-hidden="true"></div>';
 
+  tooltipEl.classList.remove('abre-arriba', 'abre-abajo');
   tooltipEl.hidden = false;
 
   if (touch) {
@@ -156,10 +165,22 @@ function showTooltip(student, xPct, yPct) {
     tooltipEl.style.top       = '';
     tooltipEl.style.transform = '';
   } else {
-    // En desktop: flotante cerca de la estrella, clampeado a los bordes
-    const x = Math.max(12, Math.min(88, xPct));
+    // En desktop: flotante cerca de la estrella, sin salirse del mapa ni de la
+    // pantalla. Los dos márgenes se calculan midiendo la tarjeta ya armada, en
+    // vez de los porcentajes fijos de antes (12–88 % y 38 %), que estaban
+    // hechos a la medida de una tarjeta de ~250 px: con el Leo adentro llega a
+    // 330 px de alto y el encabezado de varias quedaba fuera de la vista.
+    const mapa = mapaEl.getBoundingClientRect();
+
+    const mitad  = (tooltipEl.offsetWidth / 2 + 10) / mapa.width * 100;
+    const x      = Math.max(mitad, Math.min(100 - mitad, xPct));
     tooltipEl.style.left = x + '%';
-    if (below) {
+
+    const estrellaY = mapa.top + (yPct / 100) * mapa.height;
+    const abajo     = estrellaY - tooltipEl.offsetHeight - 18 < 8;
+
+    tooltipEl.classList.add(abajo ? 'abre-abajo' : 'abre-arriba');
+    if (abajo) {
       tooltipEl.style.top       = (yPct + 4) + '%';
       tooltipEl.style.transform = 'translate(-50%, 0)';
     } else {

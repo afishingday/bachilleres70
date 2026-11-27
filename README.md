@@ -192,9 +192,13 @@ Cuando un grupo ya tiene su Leo:
   muestra en la miniatura el que de verdad va a salir.
 - La **diapositiva** lo pone en lugar del símbolo de línea, con el disco de color detrás haciendo de
   resplandor.
+- La **tarjeta que se abre al tocar una estrella** en el mapa lo pone dentro de la caja del sueño,
+  donde antes iba una estrellita que era igual para los 201 (74 px en escritorio, 96 en celular).
+  Era la queja de que los Leos quedaban escondidos: antes solo se veían en la presentación y en la
+  tarjeta para compartir, que es justo lo que casi nadie abre.
 
 Mientras no lo tenga, todo queda como estaba antes: Leo de siempre en la tarjeta, símbolo de línea
-en la presentación. Los dos caminos conviven en la misma pasada de la presentación sin saltos, y eso
+en la presentación, estrellita en la tarjeta del mapa. Los dos caminos conviven en la misma pasada de la presentación sin saltos, y eso
 está probado recorriendo diapositivas seguidas de los dos tipos.
 
 Dos detalles que no son evidentes. Los archivos van en `assets/` y no en `public/` justamente para
@@ -204,6 +208,23 @@ abajo, porque los genera una IA y pueden venir cuadrados o apaisados: el Leo de 
 que ancho y sin ese límite uno apaisado se comería el nombre de la constelación.
 
 La tarjeta **sin Leo** no cambia nunca: ahí siempre va el símbolo de línea.
+
+### La tarjeta del mapa se mide, ya no se adivina
+
+Meter el Leo en esa tarjeta la hizo ~80 px más alta, y eso destapó dos números escritos a mano en
+`showTooltip()` que estaban hechos a la medida de la tarjeta vieja:
+
+- **Arriba o abajo de la estrella** se decidía con un corte fijo (si la estrella estaba en el 38 %
+  superior del mapa). Con la tarjeta más alta, varias quedaban con el encabezado por encima del
+  borde de la pantalla. Ahora se mide la tarjeta ya armada y se compara contra el espacio real;
+  comprobado abriendo las 201, ninguna se sale.
+- **El ancho** lo decidía el navegador según el hueco que quedara a la derecha de la estrella, así
+  que las de la orilla salían de 240 px y el sueño caía en una columna de dos palabras por renglón.
+  Ahora son 20 rem siempre, y el margen lateral también se calcula midiendo.
+
+De paso: las dos puntas de la tarjeta estaban cambiadas de lado (la que apunta hacia abajo salía
+cuando la tarjeta abría hacia abajo). Se renombraron a `tooltip-punta-arriba` / `tooltip-punta-abajo`
+por lo que se ve, no por dónde va la tarjeta, y ahora el CSS enciende la que toca.
 
 ### El Leo del encabezado va cambiando
 

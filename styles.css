@@ -574,8 +574,11 @@ body {
   position: absolute;
   z-index: 100;
   pointer-events: auto;
-  min-width: 15rem;
-  max-width: 18.5rem;
+  /* Ancho fijo a proposito. Antes la tarjeta se encogia sola segun el espacio
+     que quedara a la derecha de la estrella, asi que las del borde salian de
+     240 px y el sueno caia en una columna de dos palabras por renglon. */
+  width: 20rem;
+  max-width: calc(100% - 1.5rem);
 }
 .tooltip-card {
   background: rgba(12, 20, 40, 0.97);
@@ -586,26 +589,32 @@ body {
   padding: 1rem 1.1rem;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
 }
-.tooltip-arrow-up {
+/* Las dos puntas de la tarjeta. El nombre dice hacia donde apunta cada una:
+   la de arriba va pegada al borde superior y senala la estrella cuando la
+   tarjeta abre hacia abajo, y al contrario. Las dos estan siempre en el HTML
+   y apagadas; main.js pone abre-arriba / abre-abajo y aqui se enciende la que
+   corresponde, porque el lado se decide midiendo la tarjeta ya armada. */
+.tooltip-punta-arriba,
+.tooltip-punta-abajo {
+  display: none;
   width: 12px;
   height: 12px;
   background: rgba(12, 20, 40, 0.97);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transform: rotate(45deg) translateX(-50%);
   margin-left: 50%;
-  margin-top: -6px;
 }
-.tooltip-arrow-down {
-  width: 12px;
-  height: 12px;
-  background: rgba(12, 20, 40, 0.97);
+.tooltip-punta-arriba {
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  transform: rotate(45deg) translateX(-50%);
-  margin-left: 50%;
   margin-bottom: -6px;
 }
+.tooltip-punta-abajo {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: -6px;
+}
+.mapa-tooltip.abre-abajo .tooltip-punta-arriba { display: block; }
+.mapa-tooltip.abre-arriba .tooltip-punta-abajo { display: block; }
 .tooltip-header {
   display: flex;
   align-items: center;
@@ -662,6 +671,24 @@ body {
   color: var(--text-soft);
   font-style: italic;
   line-height: 1.45;
+}
+
+/* El Leo del sueno de esta persona, dentro de la caja del sueno y en lugar de
+   la estrellita (que era la misma para los 201). Caja de alto fijo con
+   object-fit: contain, porque los 41 archivos no comparten proporcion:
+   asi la tarjeta mide igual para todos y no salta al abrir otra estrella. */
+.tooltip-leo {
+  flex-shrink: 0;
+  width: 74px;
+  height: 92px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+.tooltip-dream-box.con-leo {
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem 0.6rem 0.5rem;
 }
 
 /* ── PLAYLIST ──────────────────────────────────────────────────────── */
@@ -912,8 +939,12 @@ body {
     box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.5);
   }
   .tooltip-card { max-height: 60vh; overflow-y: auto; }
-  .tooltip-arrow-up,
-  .tooltip-arrow-down { display: none; }
+  /* En celular la tarjeta ocupa todo el ancho, asi que el Leo puede verse
+     mas grande sin apretar el texto del sueno. */
+  .tooltip-leo { width: 96px; height: 118px; }
+  /* En celular la tarjeta esta anclada al fondo del mapa: no apunta a nada. */
+  .mapa-tooltip.abre-abajo .tooltip-punta-arriba,
+  .mapa-tooltip.abre-arriba .tooltip-punta-abajo { display: none; }
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────── */
