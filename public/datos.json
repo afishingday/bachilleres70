@@ -1363,8 +1363,8 @@
     "id": "70156",
     "nombre": "María José Hoyos",
     "grupo": "11F",
-    "categoria": "Negocios y Emprendimiento",
-    "sueno": "Conseguir una buena beca y ser emprendedora y empresaria exitosa",
+    "categoria": "Salud y Medicina",
+    "sueno": "Odontóloga con especialización en Odontopediatría",
     "mensaje": "La vida es una y hay que disfrutar este año al máximo.",
     "activo": true
   },
@@ -1759,5 +1759,13 @@
     "sueno": "Ser mi propio jefe en una empresa pequeña",
     "activo": true,
     "mensaje": "Que muchas gracias a todas las personas que conocí fue mi mejor año"
+  },
+  {
+    "id": "70202",
+    "nombre": "Cristian García",
+    "grupo": "11D",
+    "categoria": "Tecnología e Ingeniería",
+    "sueno": "Estudiar ingeniería de sistemas",
+    "activo": true
   }
 ]

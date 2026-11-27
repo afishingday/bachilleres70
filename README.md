@@ -21,6 +21,8 @@ reconstruir y publicar.
 Las constelaciones posibles están en `CATEGORIES` dentro de `main.js`.
 
 **Última sincronización con la hoja: 26 de noviembre de 2026** (201 estudiantes, de 216 respuestas).
+Ese mismo día entró **Cristian García (11D)** a mano, porque lo pidió Luis y no venía en la hoja:
+son 202. Si se vuelve a sincronizar contra la hoja sin tenerlo en cuenta, desaparece.
 En esa sincronización entraron 30 estudiantes que habían respondido el 12 de noviembre y llevaban dos
 semanas sin aparecer en el portal. La hoja sigue abierta, así que puede volver a desfasarse: conviene
 revisarla con una fecha fija, no cuando alguien se acuerde. Al comparar hay que tener en cuenta que
@@ -35,7 +37,7 @@ homónimos: Samuel Pérez Acosta es de 11A y Samuel Pérez Arteaga de 11E.
 Como la hoja sigue abierta, hay una sección **"Todavía puedes dejar tu huella"** (`#tu-huella` en
 `index.html`) con el enlace al formulario, para quien no alcanzó a responder. Tiene **sección propia
 después de la galería y entrada en el menú**: dentro de la galería quedaba o estorbando antes de las
-tarjetas, o enterrada detrás de las 201. Como queda lejos por scroll, el enlace del menú es la forma
+tarjetas, o enterrada detrás de todas ellas. Como queda lejos por scroll, el enlace del menú es la forma
 real de llegar: si alguna vez se quita del menú, la sección deja de existir en la práctica. El
 mensaje de "No se encontraron sueños" (en `main.js`) ofrece el mismo enlace, tomándolo del `href` de
 la sección para no repetir la URL en dos sitios. El texto **no promete plazo a propósito**, porque
@@ -149,12 +151,12 @@ El sueño se compara **sin tildes y en minúscula**, así que las reglas se escr
 (`aviacion`, no `aviación`). Cuidado con las subcadenas: "g**astronom**ía" caía en astronomía y
 "co**cine**ro" caería en cine, por eso esas dos reglas llevan `\b`.
 
-A 26 de noviembre de 2026 los 41 dibujos están en uso y el grupo más grande son 18 estudiantes de
-201 (los médicos), así que las tarjetas sí se diferencian entre sí.
+A 26 de noviembre de 2026 los 41 dibujos están en uso y el grupo más grande son 18 estudiantes
+(los médicos) de poco más de doscientos, así que las tarjetas sí se diferencian entre sí.
 
 **Antes de mover una regla o agregar un dibujo**, abrir `herramientas/simbolos.html` con
 `npm run dev:portal` corriendo (http://127.0.0.1:5173/herramientas/simbolos.html): muestra los 41
-trazos y, abajo, qué símbolo le quedó a cada uno de los 201. Mover una regla una posición le cambia
+trazos y, abajo, qué símbolo le quedó a cada quien. Mover una regla una posición le cambia
 el dibujo a varias personas a la vez, y ahí se ve a quiénes antes de publicar. Esa página no entra
 al sitio publicado: `vite.config.js` solo construye `index.html`.
 
@@ -163,8 +165,8 @@ al sitio publicado: `vite.config.js` solo construye `index.html`.
 Además del Leo de siempre hay **una versión suya por tipo de sueño** —Leo con bata y estetoscopio,
 Leo con balón, Leo con casco de obra—, usando los mismos 41 grupos de los símbolos.
 
-Desde el 26 de noviembre de 2026 **están los 41**: los 201 estudiantes tienen su propio Leo y
-ningún grupo quedó sin usar. Se comprobó recorriendo las 201 tarjetas una por una.
+Desde el 26 de noviembre de 2026 **están los 41**: todos los estudiantes tienen su propio Leo y
+ningún grupo quedó sin usar. Se comprobó recorriendo las tarjetas una por una.
 
 **Para agregar uno**: dejar el archivo en `assets/leos/` con el nombre exacto del grupo
 (`assets/leos/pulso.webp`) y reconstruir. Eso es todo — no hay lista que actualizar ni código que
@@ -178,7 +180,7 @@ a WebP antes de meterlos**, o los 41 serían 16,5 MB. Con Pillow, calidad 82, qu
 
 Eso no se descarga al entrar al portal: al abrirlo no se pide ni un Leo, y cada uno llega solo
 cuando a alguien le toca esa tarjeta o esa diapositiva. Quien comparte una tarjeta baja unos 70 KB.
-Una proyección completa sí termina pidiéndolos casi todos, pero repartidos a lo largo de las 201
+Una proyección completa sí termina pidiéndolos casi todos, pero repartidos a lo largo de las
 diapositivas y cada uno una sola vez —`leos.js` guarda la promesa, así que dos diapositivas
 seguidas del mismo grupo comparten la descarga—.
 
@@ -193,7 +195,7 @@ Cuando un grupo ya tiene su Leo:
 - La **diapositiva** lo pone en lugar del símbolo de línea, con el disco de color detrás haciendo de
   resplandor.
 - La **tarjeta que se abre al tocar una estrella** en el mapa lo pone dentro de la caja del sueño,
-  donde antes iba una estrellita que era igual para los 201 (74 px en escritorio, 96 en celular).
+  donde antes iba una estrellita que era igual para todos (74 px en escritorio, 96 en celular).
   Era la queja de que los Leos quedaban escondidos: antes solo se veían en la presentación y en la
   tarjeta para compartir, que es justo lo que casi nadie abre.
 
@@ -217,7 +219,7 @@ Meter el Leo en esa tarjeta la hizo ~80 px más alta, y eso destapó dos número
 - **Arriba o abajo de la estrella** se decidía con un corte fijo (si la estrella estaba en el 38 %
   superior del mapa). Con la tarjeta más alta, varias quedaban con el encabezado por encima del
   borde de la pantalla. Ahora se mide la tarjeta ya armada y se compara contra el espacio real;
-  comprobado abriendo las 201, ninguna se sale.
+  comprobado abriendo todas, ninguna se sale.
 - **El ancho** lo decidía el navegador según el hueco que quedara a la derecha de la estrella, así
   que las de la orilla salían de 240 px y el sueño caía en una columna de dos palabras por renglón.
   Ahora son 20 rem siempre, y el margen lateral también se calcula midiendo.
@@ -254,10 +256,10 @@ encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
 ## Dos tarjetas para compartir: el sueño y el mensaje
 
-153 de los 201 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
+153 de los 202 dejaron un mensaje a la Generación 70, y hasta el 26 de noviembre de 2026 ese mensaje
 solo vivía en el reverso de su tarjeta de la galería: no se podía compartir. Ahora el diálogo de
 compartir abre con un selector de dos pestañas —**Su sueño** / **Su mensaje**— y el resto del
-diálogo (con Leo o sin Leo) sigue igual. A los 48 sin mensaje no les aparece el selector y el
+diálogo (con Leo o sin Leo) sigue igual. A los 49 sin mensaje no les aparece el selector y el
 diálogo se ve exactamente como antes.
 
 Las dos tarjetas comparten marco. La diferencia está en el reparto del alto: `generateShareCard()`

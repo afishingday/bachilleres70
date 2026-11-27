@@ -128,7 +128,7 @@ function showTooltip(student, xPct, yPct) {
   const cat   = CATEGORIES[student.category];
   const touch = isTouch();
   // El Leo del sueño de esta persona va dentro de la caja del sueño, en lugar de
-  // la estrellita que era igual para los 201 (ver leos.js). Si el grupo no
+  // la estrellita que era igual para todos (ver leos.js). Si el grupo no
   // tuviera archivo, vuelve la estrellita y no se nota.
   const leoDelSueno = urlLeo(student);
 
@@ -471,7 +471,7 @@ if (mapaSearchEl) mapaSearchEl.addEventListener('input', () => handleSearch(mapa
 let temporizadorBusquedaVacia = null;
 
 // Los dos iconos de las tarjetas, en una sola copia: salen hasta cuatro veces
-// por tarjeta y son 201 tarjetas.
+// por tarjeta y las tarjetas son más de doscientas.
 const ICONO_VOLTEAR =
   '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v6h6"/><path d="M3 13a9 9 0 1 0 3-7.7L3 8"/></svg>';
 const ICONO_COMPARTIR =

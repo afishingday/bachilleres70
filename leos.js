@@ -62,7 +62,8 @@ export function leosBarajados() {
   return urls;
 }
 
-// Las diapositivas pasan cada 5 segundos y los estudiantes son 201, así que la
+// Las diapositivas pasan cada 5 segundos y los estudiantes son más de
+// doscientos, así que la
 // misma imagen se pide muchas veces. Se guarda la promesa, no la imagen: así dos
 // diapositivas seguidas del mismo grupo comparten una sola descarga.
 const cache = new Map();

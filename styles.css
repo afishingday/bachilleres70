@@ -674,7 +674,7 @@ body {
 }
 
 /* El Leo del sueno de esta persona, dentro de la caja del sueno y en lugar de
-   la estrellita (que era la misma para los 201). Caja de alto fijo con
+   la estrellita (que era la misma para todos). Caja de alto fijo con
    object-fit: contain, porque los 41 archivos no comparten proporcion:
    asi la tarjeta mide igual para todos y no salta al abrir otra estrella. */
 .tooltip-leo {
@@ -1879,8 +1879,8 @@ body {
 
 /* Que se comparte: el sueno o el mensaje a la generacion. Va antes de "con o
    sin Leo" porque es la decision de contenido; la otra es de estilo. Solo
-   aparece si esta persona dejo mensaje, asi que para 48 de los 201 el dialogo
-   sigue viendose exactamente como antes. */
+   aparece si esta persona dejo mensaje, asi que para quien no dejo ninguno el
+   dialogo sigue viendose exactamente como antes. */
 .share-que {
   display: flex;
   gap: 0.25rem;
