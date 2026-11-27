@@ -231,6 +231,21 @@ pueden** sacar el Leo genérico del `<img>` del encabezado, porque ese `<img>` v
 importan `assets/mascota-lsyh.webp` directamente (`import leoGenerico from ...`). Volver a leer el
 encabezado haría que la tarjeta de respaldo saliera con un Leo al azar.
 
+## Los créditos del pie
+
+Al final del pie, después de la línea de los padres y separados por una raya, van los créditos:
+**Virtual Marketing Manager en asociación con A Fishing Day**, con los dos Instagram
+(`@vmarketingm` y `@afishingday`) como forma de contacto.
+
+Esto **revierte a propósito** una decisión de septiembre de 2026, cuando se quitó toda marca de
+agencia del sitio para no exponer a la empresa. Luis pidió volver a ponerla el 26 de noviembre. Si
+alguien encuentra la nota vieja, esta es la que manda.
+
+Van al final y no arriba porque el portal es de los padres de familia, y el pie ya lo dice en su
+primera línea: estos créditos son la firma de quien lo construyó, no el encabezado. Los colores no
+usan `--text-muted` (#64748b, 4,24:1), que es justo el contraste bajo que anotó la auditoría de
+noviembre.
+
 ## Qué se mide
 
 Google Analytics (vía Firebase, `G-R5PKWZT9CH`; propiedad GA4 `p525865313`). Además de las visitas que

@@ -1929,6 +1929,51 @@ body {
 }
 .footer-contacto:hover { border-color: var(--gold); }
 
+/* Créditos de quién construyó el portal. Van al final del pie, después de la
+   línea de los padres, y separados por una raya: el portal es de ellos, esto es
+   la firma de quien lo hizo. No se usa --text-muted (#64748b, 4,24:1) para nada
+   de aquí, que es justo el contraste bajo que anotó la auditoría de noviembre. */
+.footer-creditos {
+  width: 100%;
+  max-width: 30rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.footer-creditos-linea {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+.footer-creditos-linea strong {
+  color: var(--text-soft);
+  font-weight: 600;
+}
+.footer-creditos-redes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.15rem 1.5rem;
+  margin: 0.35rem 0 0;
+}
+.footer-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  /* El relleno vertical es para el dedo, no para el ojo: deja el enlace en unos
+     36 px de alto, que es lo mínimo cómodo para tocar en celular. */
+  padding: 0.45rem 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-soft);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+.footer-ig svg { width: 15px; height: 15px; flex-shrink: 0; }
+.footer-ig:hover,
+.footer-ig:focus-visible { color: var(--gold); }
+
 /* ── MODAL: solicitud de datos (Ley 1581) ─────────────────────────── */
 button.footer-contacto { background: none; border: none; border-bottom: 1px solid rgba(250, 204, 21, 0.35); padding: 0; font: inherit; font-weight: 600; color: var(--gold); cursor: pointer; }
 .sol-overlay {
